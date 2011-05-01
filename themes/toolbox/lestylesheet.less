@@ -13,7 +13,7 @@ This theme, like WordPress, is licensed under the GPL.
 Use it to make something cool, have fun, and share what you've learned with others.
 */
 
-/*webfont classes: .StMarieWebSC-Thin .StMarieWeb-Thin */
+/* webfont classes: */
 
 .StMarieWebSC-Thin {
 	font-weight: normal;
@@ -28,12 +28,22 @@ Use it to make something cool, have fun, and share what you've learned with othe
 	font-family: 'StMarieWebThin', sans-serif;
 }
 
+/* farben nach paulines beschreibung */
+@dunkelgrau: #282828;
+@hellblau: #eaf1f2;
+@rot: #b64830;
+@blau: #6ea9dc;
+@mittelgrau: #8c8c8c;
+@hellgrau: #f3f3f3;
+
+/* global */
+
 body {
 	.StMarieWeb-Thin;
-	/*font-weight: normal;
-	font-style: normal;
-	line-height:normal;
-	font-family: 'StMarieWebThin', sans-serif;*/
+	background: @dunkelgrau;
+}
+#page * {
+	background: @hellblau;
 }
 
 /* =Structure
@@ -111,30 +121,30 @@ body {
 
 /* =Menu
 -------------------------------------------------------------- */
-
-#access {
+/*
+#main_navi {
 	background: #eee;
 	display: block;
 	float: left;
 	margin: 0 auto 1em;
 	width: 100%;
 }
-#access ul {
+#main_navi ul {
 	list-style: none;
 	margin: 0;
 	padding-left: 0;
 }
-#access li {
+#main_navi li {
 	float: left;
 	position: relative;
 }
-#access a {
+#main_navi a {
 	display: block;
 	line-height: 2em;
 	padding: 0 1em;
 	text-decoration: none;
 }
-#access ul ul {
+#main_navi ul ul {
 	box-shadow: 0 3px 3px rgba(0,0,0,0.2);
 	-moz-box-shadow: 0 3px 3px rgba(0,0,0,0.2);
 	-webkit-box-shadow: 0 3px 3px rgba(0,0,0,0.2);
@@ -145,26 +155,92 @@ body {
 	left: 0;
 	z-index: 99999;
 }
-#access ul ul ul {
+#main_navi ul ul ul {
 	left: 100%;
 	top: 0;
 }
-#access ul ul a {
+#main_navi ul ul a {
 	background: #dedede;
 	line-height: 1em;
 	padding: .5em .5em .5em 1em;
 	width: 10em;
 	height: auto;
 }
-#access li:hover > a,
-#access ul ul :hover > a {
+#main_navi li:hover > a,
+#main_navi ul ul :hover > a {
 	background: #dedede;
 }
-#access ul ul a:hover {
+#main_navi ul ul a:hover {
 	background: #cecece;
 }
-#access ul li:hover > ul {
+#main_navi ul li:hover > ul {
 	display: block;
+}*/
+
+#main_navi {
+	background: #eee;
+	display: block;
+	float: left;
+	margin: 0 auto 1em;
+	width: 100%;
+	ul {
+		list-style: none;
+		margin: 0;
+		padding-left: 0;
+		ul {
+			box-shadow: 0 3px 3px rgba(0,0,0,0.2);
+			-moz-box-shadow: 0 3px 3px rgba(0,0,0,0.2);
+			-webkit-box-shadow: 0 3px 3px rgba(0,0,0,0.2);
+			display: none;
+			float: left;
+			position: absolute;
+			top: 2em;
+			left: 0;
+			z-index: 99999;
+			&:hover > a {
+				background: #dedede;
+			}
+			ul {
+				left: 100%;
+				top: 0;
+			}
+			a {
+				background: #dedede;
+				line-height: 1em;
+				padding: .5em .5em .5em 1em;
+				width: 10em;
+				height: auto;
+				&:hover {
+					background: #cecece;
+				}
+			}
+		}
+		li:hover > ul {
+			display: block;
+		}
+
+	}
+	li {
+		float: left;
+		position: relative;
+		&:hover > a {
+			background: #dedede;
+		}
+	}
+	a {
+		display: block;
+		line-height: 2em;
+		padding: 0 1em;
+		text-decoration: none;
+	}
+}
+
+
+#top_navi {
+	#main_navi;
+	ul {
+		float: right;
+	}
 }
 
 
@@ -319,7 +395,9 @@ img.alignright {
 
 /* =Forms
 -------------------------------------------------------------- */
-
+#search {
+	float: right;
+}
 #searchform label {
 	display: none;
 }

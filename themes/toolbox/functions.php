@@ -24,10 +24,11 @@ if ( ! isset( $content_width ) )
 	$content_width = 640; /* pixels */
 
 /**
- * This theme uses wp_nav_menu() in one location.
+ * This theme uses wp_nav_menu() in two locations.
  */
 register_nav_menus( array(
-	'primary' => __( 'Primary Menu', 'toolbox' ),
+	'main' => __( 'Main Menu', 'toolbox' ),
+	'top' => __( 'Top Menu', 'toolbox' ),
 ) );
 
 /**

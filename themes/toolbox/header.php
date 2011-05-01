@@ -29,10 +29,16 @@
 
 	?></title>
 <link rel="profile" href="http://gmpg.org/xfn/11" />
+
+<!-- webfonts -->
 <link rel="stylesheet" href="<?php bloginfo( 'stylesheet_directory' ) ; ?>/webfonts/webfonts.css" type="text/css" charset="utf-8" media="all">
+<!-- less-file -->
 <link rel="stylesheet/less" href="<?php bloginfo( 'stylesheet_directory' ) ; ?>/lestylesheet.less" type="text/css">
+<!-- dummy -->
 <link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo( 'stylesheet_url' ); ?>" />
+<!-- less.js -->
 <script src="<?php bloginfo( 'stylesheet_directory' ) ; ?>/less.js" type="text/javascript"></script>
+
 <?php if ( is_singular() && get_option( 'thread_comments' ) ) wp_enqueue_script( 'comment-reply' ); ?>
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
 <!--[if lt IE 9]>
@@ -45,16 +51,23 @@
 <body <?php body_class(); ?>>
 <div id="page" class="hfeed">
 	<header id="branding" role="banner">
+			<nav id="top_navi" role="navigation">
+			<!-- Top Right Navi -->
+				<aside id="search" class="widget widget_search">
+					<?php get_search_form(); ?>
+				</aside>
+				<?php wp_nav_menu( array( 'theme_location' => 'top' ) ); ?>
+			</nav>
 			<hgroup>
 				<h1 id="site-title"><span><a href="<?php echo home_url( '/' ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></span></h1>
 				<h2 id="site-description"><?php bloginfo( 'description' ); ?></h2>
 			</hgroup>
 
-			<nav id="access" role="navigation">
+			<nav id="main_navi" role="navigation">
 				<h1 class="section-heading"><?php _e( 'Main menu', 'toolbox' ); ?></h1>
 				<div class="skip-link screen-reader-text"><a href="#content" title="<?php esc_attr_e( 'Skip to content', 'toolbox' ); ?>"><?php _e( 'Skip to content', 'toolbox' ); ?></a></div>
-
-				<?php wp_nav_menu( array( 'theme_location' => 'primary' ) ); ?>
+				<!-- Main Menu -->
+				<?php wp_nav_menu( array( 'theme_location' => 'main' ) ); ?> 
 			</nav><!-- #access -->
 	</header><!-- #branding -->
 
