@@ -131,6 +131,69 @@ body {
 	float: left;
 	margin: 0 auto 1em;
 	width: 100%;
+
+	.generic_menu_point {
+		position: relative;
+		@voffset: -53px;
+		@imgheight: 43px;
+
+		img, a {
+			border: 0px;
+		}
+		.inactive {
+			display:block;
+		}
+		.active {
+			display:none;
+		}
+		&:hover {
+			.inactive {
+				display: none;
+			}
+			.active {
+				display: block;
+			}
+		}
+	}
+
+	.main_menu_news {
+		.generic_menu_point;
+		top: @voffset - 0 * @imgheight;
+		left: 5px;
+	}
+
+	.main_menu_essentrinken {
+		.generic_menu_point;
+		top: @voffset - 1 * @imgheight;
+		left: 86px;
+	}
+	.main_menu_reise {
+		.generic_menu_point;
+		top: @voffset - 2 * @imgheight;
+		left: 280px;
+	}
+	.main_menu_hotels {
+		.generic_menu_point;
+		top: @voffset - 3 * @imgheight;
+		left: 364px;
+	}
+	.main_menu_social {
+		.generic_menu_point;
+		top: @voffset - 4 * @imgheight;
+		left: 464px;
+	}
+	.main_menu_termine {
+		.generic_menu_point;
+		top: @voffset - 5 * @imgheight;
+		left: 633px;
+	}
+	.main_menu_tv {
+		.generic_menu_point;
+		top: @voffset - 6 * @imgheight;
+		left: 744px;
+	}
+
+
 	ul {
 		list-style: none;
 		margin: 0;

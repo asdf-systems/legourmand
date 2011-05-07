@@ -62,8 +62,20 @@
 			<nav id="main_navi" role="navigation">
 				<h1 class="section-heading"><?php _e( 'Main menu', 'toolbox' ); ?></h1>
 				<div class="skip-link screen-reader-text"><a href="#content" title="<?php esc_attr_e( 'Skip to content', 'toolbox' ); ?>"><?php _e( 'Skip to content', 'toolbox' ); ?></a></div>
-				<!-- Main Menu -->
-				<?php wp_nav_menu( array( 'theme_location' => 'main' ) ); ?> 
+				<!-- (Original) Main Menu-->
+				<?php /*wp_nav_menu( array( 'theme_location' => 'main' ) );*/ ?>
+				<!-- (asdf) Main Menu -->
+				<?php
+					$pages = Array("news", "essentrinken", "reise", "hotels", "social", "termine", "tv");
+					foreach($pages as $page) {
+				?>	
+					<div class="main_menu_<?=$page;?>">
+						<a href="">
+							<img src="<?php bloginfo('stylesheet_directory');?>/media/<?=$page;?>_inaktiv.png" class="inactive">
+							<img src="<?php bloginfo('stylesheet_directory');?>/media/<?=$page;?>_aktiv.png" class="active">
+						</a>
+					</div>
+				<? } ?>
 			</nav><!-- #access -->
 	</header><!-- #branding -->
 
