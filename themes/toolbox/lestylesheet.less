@@ -77,11 +77,6 @@ body {
 	overflow: hidden;
 	width: 220px;
 }
-#colophon {
-	clear: both;
-	display: block;
-	width: 100%;
-}
 
 /* Increase the size of the content area for templates without sidebars */
 .full-width #content,
@@ -400,21 +395,34 @@ img.alignright {
 -------------------------------------------------------------- */
 #search {
 	float: right;
+	margin-left: 2em;
 }
-#searchform label {
-	display: none;
+#searchform {
+	label {
+		display: none;
+	}
+	input#searchinput {
+		.StMarieWeb-Thin;
+		height: 30px;
+		width: 180px;
+		border: 0;
+		/*background-image: url('media/pfeil_hellgrau_suche.png');
+		&:focus {
+			background-image: none;
+		}*/
+	}
+	input#searchsubmit {
+		display:none;
+	}
 }
-#searchform input#s {
-	width: 60%;
-}
-input[type=text],
+/*input[type=text],
 input#s {
 	margin: 0 1em 0 0;
 	width: 60%;
 }
 textarea {
 	width: 80%;
-}
+}*/
 
 /* Class for labelling required form items */
 .required {
@@ -464,6 +472,12 @@ article.comment {
 -------------------------------------------------------------- */
 
 #colophon {
-	padding: 1em 0 0;
+	clear: both;
+	display: block;
+	padding: 1em;
+	text-align: center;
+}
+#site-generator {
+	margin-bottom: 1em;
 }
 

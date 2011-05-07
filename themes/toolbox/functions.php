@@ -31,6 +31,19 @@ register_nav_menus( array(
 	'top' => __( 'Top Menu', 'toolbox' ),
 ) );
 
+function get_asdf_search_form() {
+	echo '
+	<form role="search" method="get" id="searchform" action="http://projects.asdf-systems.de/gourmand/wordpress/" > 
+	<div><label class="screen-reader-text" for="s">Search for:</label>
+	<img id = "headerimage" src="';
+	bloginfo( 'stylesheet_directory' ) ;
+	echo '/media/pfeil_hellgrau_suche.png" >	
+	<input type="text" value="HIER SUCHEN" name="searchinput" id="searchinput" /> 
+	<input type="submit" id="searchsubmit" value="Search" /> 
+	</div> 
+	</form>';
+}
+
 /**
  * Add default posts and comments RSS feed links to head
  */
