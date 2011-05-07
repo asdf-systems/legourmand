@@ -38,6 +38,9 @@
 <link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo( 'stylesheet_url' ); ?>" />
 <!-- less.js -->
 <script src="<?php bloginfo( 'stylesheet_directory' ) ; ?>/less.js" type="text/javascript"></script>
+<!-- jquery.js -->
+<script src="<?php bloginfo( 'stylesheet_directory' ) ; ?>/jquery.js" type="text/javascript"></script>
+<script src="<?php bloginfo( 'stylesheet_directory' ) ; ?>/jquery-ui.js" type="text/javascript"></script>
 
 <?php if ( is_singular() && get_option( 'thread_comments' ) ) wp_enqueue_script( 'comment-reply' ); ?>
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
@@ -75,7 +78,31 @@
 							<img src="<?php bloginfo('stylesheet_directory');?>/media/<?=$page;?>_aktiv.png" class="active">
 						</a>
 					</div>
-				<? } ?>
+				<?php 
+					}
+					foreach($pages as $page) {
+				?>	
+					<div class="generic_menu_rollout main_menu_<?=$page;?>_rollout">
+						SCHABLALALAAL
+					</div>
+					<script>
+						var $rollout = $(".main_menu_<?=$page;?>_rollout");
+						var $button = $(".main_menu_<?=$page;?>");
+						$(".main_menu_<?=$page;?>").mouseenter(function() {
+							$rollout.position({
+								"my": "left top",
+								"at": "left bottom",
+								"of": $(".main_menu_<?=$page;?>")
+							});
+							$(".main_menu_<?=$page;?>_rollout").addClass("generic_menu_rollout_hover");
+						});
+						$(".main_menu_<?=$page;?>_rollout").mouseleave(function() {
+							$(".main_menu_<?=$page;?>_rollout").removeClass("generic_menu_rollout_hover");
+						});
+					</script>
+				<?php
+					}
+				?>
 			</nav><!-- #access -->
 	</header><!-- #branding -->
 
