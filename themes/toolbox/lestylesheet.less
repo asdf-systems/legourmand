@@ -42,24 +42,35 @@ body {
 	.StMarieWeb-Thin;
 	background: @dunkelgrau;
 }
-#page * {
-	background: @hellblau;
-}
 
 /* =Structure
 -------------------------------------------------------------- */
 
 #page {
+	background: @hellblau;
 	display: block;
-	margin: 1em;
+	width: 1019px;
+	.aligncenter;
+	text-align: center;
+	> * {
+		width: 959px;
+		text-align: left;
+		margin-left: 32px;
+		margin-right: 32px;
+	}
+}
+#main {
 }
 #primary {
 	float: left;
-	margin: 0 -240px 0 0;
-	width: 100%;
+	width: 636px;
+}
+#secondary {
+	float: left;
+	width: 313px;
 }
 #content {
-	margin: 0 280px 0 0;
+	//margin: 0 280px 0 0;
 }
 #main .widget-area {
 	float: right;
