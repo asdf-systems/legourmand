@@ -55,6 +55,11 @@ add_theme_support( 'automatic-feed-links' );
 add_theme_support( 'post-formats', array( 'aside', 'gallery' ) );
 
 /**
+ * Add support for the post-thumbnails
+ */
+add_theme_support('post-thumbnails');
+
+/**
  * Get our wp_nav_menu() fallback, wp_page_menu(), to show a home link.
  */
 function toolbox_page_menu_args($args) {

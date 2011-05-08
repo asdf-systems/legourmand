@@ -7,6 +7,10 @@
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<header class="entry-header">
+		<?php if ( is_home() ) : ?>
+			<h1 class="entry-cat"><?php $categories = get_the_category(); echo $categories[0]->cat_name; // use first cat only ?></h1>
+			<?php the_post_thumbnail('thumbnail', 'class=thumbnail'); ?>
+		<?php endif; ?>
 		<h1 class="entry-title"><a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 'toolbox' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark"><?php the_title(); ?></a></h1>
 
 		<?php if ( 'post' == $post->post_type ) : ?>
