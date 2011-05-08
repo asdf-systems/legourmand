@@ -124,20 +124,32 @@ body {
 
 /* =Menu
 -------------------------------------------------------------- */
+#branding {
+	position: relative;
+}
 
 #main_navi {
+}
+
+#main_navi {
+	position: relative;
 	background: #eee;
 	display: block;
-	float: left;
+	//float: left;
 	margin: 0 auto 1em;
 	width: 100%;
-	height: 0px;
+	height: 10px;
 
-	.generic_menu_point {
-		position: relative;
-		width: 0px;
-		@voffset: -53px;
-		@imgheight: 43px;
+	.generic_menu {
+		position: absolute;
+		top: -53px;
+	}
+
+	.generic_menu_button {
+		position: absolute;
+		width: auto;
+		height: auto;
+		top: -53px;
 
 		img, a {
 			border: 0px;
@@ -158,58 +170,41 @@ body {
 		}
 	}
 
-	.main_menu_news {
-		.generic_menu_point;
-		top: @voffset - 0 * @imgheight;
-		left: 5px;
+	.menu_button_news {
+	   left: 5px;
 	}
 
-	.main_menu_essentrinken {
-		.generic_menu_point;
-		top: @voffset - 1 * @imgheight;
-		left: 86px;
+	.menu_button_essentrinken {
+	   left: 86px;
 	}
 
-	.main_menu_reise {
-		.generic_menu_point;
-		top: @voffset - 2 * @imgheight;
-		left: 280px;
+	.menu_button_reise {
+	   left: 280px;
 	}
 
-	.main_menu_hotels {
-		.generic_menu_point;
-		top: @voffset - 3 * @imgheight;
-		left: 364px;
+	.menu_button_hotels {
+	   left: 364px;
 	}
 
-	.main_menu_social {
-		.generic_menu_point;
-		top: @voffset - 4 * @imgheight;
-		left: 464px;
+	.menu_button_social {
+	   left: 464px;
 	}
 
-	.main_menu_termine {
-		.generic_menu_point;
-		top: @voffset - 5 * @imgheight;
-		left: 633px;
+	.menu_button_termine {
+	   left: 633px;
 	}
 
-	.main_menu_tv {
-		.generic_menu_point;
-		top: @voffset - 6 * @imgheight;
+	.menu_button_tv {
 		left: 744px;
 	}
 
 	.generic_menu_rollout {
-		position: relative;
-		display: none;
+		width: auto;
+		height: auto;
+		position: absolute;
+		background-color: #FFFFFF;
 	}
 	
-	.generic_menu_rollout_hover {
-		.generic_menu_rollout;
-		display: block;
-	}
-
 	ul {
 		list-style: none;
 		margin: 0;

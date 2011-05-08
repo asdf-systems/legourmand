@@ -72,37 +72,53 @@
 					$pages = Array("news", "essentrinken", "reise", "hotels", "social", "termine", "tv");
 					foreach($pages as $page) {
 				?>	
-					<div class="main_menu_<?=$page;?>">
+					<div class="generic_menu_button menu_button_<?=$page;?>">
 						<a href="">
 							<img src="<?php bloginfo('stylesheet_directory');?>/media/<?=$page;?>_inaktiv.png" class="inactive">
 							<img src="<?php bloginfo('stylesheet_directory');?>/media/<?=$page;?>_aktiv.png" class="active">
 						</a>
 					</div>
-				<?php 
-					}
-					foreach($pages as $page) {
-				?>	
-					<div class="generic_menu_rollout main_menu_<?=$page;?>_rollout">
-						SCHABLALALAAL
+					<div class="generic_menu_rollout menu_rollout_<?=$page;?>">
+						<?=$page;?>
+						asfasdfadsfsdaf<br>
+						asfasdfadsfsdaf<br>
+						asfasdfadsfsdaf<br>
+						asfasdfadsfsdaf<br>
+						asfasdfadsfsdaf<br>
+						asfasdfadsfsdaf<br>
+						asfasdfadsfsdaf<br>
+						asfasdfadsfsdaf<br>
+						asfasdfadsfsdaf<br>
+						asfasdfadsfsdaf<br>
+						asfasdfadsfsdaf<br>
+						asfasdfadsfsdaf<br>
+						asfasdfadsfsdaf<br>
 					</div>
 					<script>
-						var $rollout = $(".main_menu_<?=$page;?>_rollout");
-						var $button = $(".main_menu_<?=$page;?>");
-						$(".main_menu_<?=$page;?>").mouseenter(function() {
-							$rollout.position({
-								"my": "left top",
-								"at": "left bottom",
-								"of": $(".main_menu_<?=$page;?>")
-							});
-							$(".main_menu_<?=$page;?>_rollout").addClass("generic_menu_rollout_hover");
-						});
-						$(".main_menu_<?=$page;?>_rollout").mouseleave(function() {
-							$(".main_menu_<?=$page;?>_rollout").removeClass("generic_menu_rollout_hover");
-						});
+						$(".menu_button_<?=$page;?>").hover(
+							function() {
+								$(".generic_menu_rollout").hide();
+								var $rollout = this.child(".generic_menu_rollout");
+								var $button = this.child(".generic_menu_button");
+								$rollout.slideDown("fast");
+								$rollout.position({
+									my: "left top",
+									at: "left bottom",
+									of: $button
+								});
+							},
+							function() {
+								var $rollout = this.child(".generic_menu_rollout");
+								$rollout.hide();
+							}
+						);
 					</script>
-				<?php
+				<?php 
 					}
 				?>
+				<script>
+					$(".generic_menu_rollout").hide();
+				</script>
 			</nav><!-- #access -->
 	</header><!-- #branding -->
 
