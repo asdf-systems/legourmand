@@ -15,17 +15,24 @@ Use it to make something cool, have fun, and share what you've learned with othe
 
 /* webfont classes: */
 
-.StMarieWebSC-Thin {
+#Fonts {
 	font-weight: normal;
 	font-style: normal;
 	line-height:normal;
-	font-family: 'StMarieWebSCThin', sans-serif;
-}
-.StMarieWeb-Thin {
-	font-weight: normal;
-	font-style: normal;
-	line-height:normal;
-	font-family: 'StMarieWebThin', sans-serif;
+	.StMarieWebSC-Thin {
+		font-family: 'StMarieWebSCThin', sans-serif;
+	}
+	.StMarieWeb-Thin {
+		font-family: 'StMarieWebThin', sans-serif;
+	}
+
+	.Brandon-Regular {
+		font-family: 'BrandonGrotesque-Regular', Verdana;
+	}
+
+	.Droid {
+		font-family: 'Droid Serif', serif;
+	}
 }
 
 /* farben nach paulines beschreibung */
@@ -39,7 +46,7 @@ Use it to make something cool, have fun, and share what you've learned with othe
 /* global */
 
 body {
-	.StMarieWeb-Thin;
+	#Fonts > .Droid;
 	background: @dunkelgrau;
 }
 
@@ -243,9 +250,29 @@ body {
 
 
 #top_navi {
-	#main_navi;
+	#Fonts > .Brandon-Regular;
 	ul {
+		position: relative;
 		float: right;
+		list-style-type: none;
+		li {
+			position: absolute;
+			top: -7px;
+		}
+		// Mediadaten
+		#menu-item-4593 {
+			left: -185px;
+			width: 100px;
+		}
+		// Impressum
+		#menu-item-4594 {
+			left: -100px;
+		}
+		//Vita
+		#menu-item-4635 {
+			left: -20px;
+			width: 80px;
+		}
 	}
 }
 
@@ -444,7 +471,7 @@ img.alignright {
 		display: none;
 	}
 	input#searchinput {
-		.StMarieWeb-Thin;
+		#Fonts > .Brandon-Regular;
 		height: 30px;
 		width: 180px;
 		border: 0;
