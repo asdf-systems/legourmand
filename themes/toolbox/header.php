@@ -41,6 +41,8 @@
 <!-- jquery.js -->
 <script src="<?php bloginfo( 'stylesheet_directory' ) ; ?>/jquery.js" type="text/javascript"></script>
 <script src="<?php bloginfo( 'stylesheet_directory' ) ; ?>/jquery-ui.js" type="text/javascript"></script>
+<script src="<?php bloginfo( 'stylesheet_directory' ) ; ?>/hackStuff.js" type="text/javascript"></script>
+<script src="<?php bloginfo( 'stylesheet_directory' ) ; ?>/Rolloutpanel.js" type="text/javascript"></script>
 
 <?php if ( is_singular() && get_option( 'thread_comments' ) ) wp_enqueue_script( 'comment-reply' ); ?>
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
@@ -67,50 +69,87 @@
 				<div class="skip-link screen-reader-text"><a href="#content" title="<?php esc_attr_e( 'Skip to content', 'toolbox' ); ?>"><?php _e( 'Skip to content', 'toolbox' ); ?></a></div>
 				<!-- (Original) Main Menu-->
 				<?php /*wp_nav_menu( array( 'theme_location' => 'main' ) );*/ ?>
+				
+				
 				<!-- (asdf) Main Menu -->
+				
+			
 				<?php
 					$pages = Array("news", "essentrinken", "reise", "hotels", "social", "termine", "tv");
+					$categorieNames = Array("News - Allgemein", "Essen & Trinken", "Reise", "Hotels", "Social Media", "Termine", "Le Gourmand TV");
+					$count = 0;
 					foreach($pages as $page) {
-				?>	
-					<div class="generic_menu_button menu_button_<?=$page;?>">
+										?>	
+					<div id= "menu_button_<?=$page;?>" class="generic_menu_button menu_button_<?=$page;?>">
 						<a href="">
 							<img src="<?php bloginfo('stylesheet_directory');?>/media/<?=$page;?>_inaktiv.png" class="inactive">
 							<img src="<?php bloginfo('stylesheet_directory');?>/media/<?=$page;?>_aktiv.png" class="active">
 						</a>
 					</div>
-					<div class="generic_menu_rollout menu_rollout_<?=$page;?>">
-						<?=$page;?>
-						asfasdfadsfsdaf<br>
-						asfasdfadsfsdaf<br>
-						asfasdfadsfsdaf<br>
-						asfasdfadsfsdaf<br>
-						asfasdfadsfsdaf<br>
-						asfasdfadsfsdaf<br>
-						asfasdfadsfsdaf<br>
-						asfasdfadsfsdaf<br>
-						asfasdfadsfsdaf<br>
-						asfasdfadsfsdaf<br>
-						asfasdfadsfsdaf<br>
-						asfasdfadsfsdaf<br>
-						asfasdfadsfsdaf<br>
+					
+					<div id= class=>
+						<?php
+							// Query all subcategories for the current rollout
+							$args = array('hierarchical' => false, 'parent' => get_cat_id($categorieNames[$count]) );
+							$categories = get_categories($args);
+							$count ++;
+														
+							foreach($categories as $categorie){
+								$categorieName = $categorie->cat_name;	
+						?>
+								<?=$categorieName;?><br>
+						<?php
+							}	
+						?>
+						new RollOutPanel(parent, positionX, positionY, members,"menu_rollout_<?=$page;?>", parent, spacing, spacingLeft, bgImage, offsetTop, animSpeed, mouseOutFunction,"generic_menu_rollout menu_rollout_<?=$page;?>");
 					</div>
+					
 					<script>
+						// Position the Rollout
+						$button = $(".menu_button_<?=$page;?>");
+						var $rollout = $(".menu_rollout_<?=$page;?>");
+						
+						
+						var x = new Unit($button.css("left"));
+						var y = new Unit($button.css("top"));
+						var wx = new Unit($button.css("width"));
+						var wy = new Unit($button.css("height"));
+						y.add(wy);
+						x.add(20);
+						$rollout.css("left",x.getValue() );
+						$rollout.css("top",y.getValue() );
+
+
+					
+						// Hover Functions		
 						$(".menu_button_<?=$page;?>").hover(
-							function() {
-								$(".generic_menu_rollout").hide();
-								var $rollout = this.child(".generic_menu_rollout");
-								var $button = this.child(".generic_menu_button");
-								$rollout.slideDown("fast");
-								$rollout.position({
-									my: "left top",
-									at: "left bottom",
-									of: $button
-								});
+							function(e) {
+								// This bezieht sich in diese falle auf den menu_button -> jQuery Doku
+								var $rollout = $(".menu_rollout_<?=$page;?>");
+								var $rollouts = $(".generic_menu_rollout");
+								$rollouts.each(
+									function(){
+										if(this.id != $rollout.get(0).id){
+											//Stops all animations, end jump to end of animation
+											$(this).stop(true,true); 	
+											$(this).hide();
+										}
+									}
+								)
+
+
+								$rollout.slideDown("slow");
+
+								
 							},
-							function() {
-								var $rollout = this.child(".generic_menu_rollout");
-								$rollout.hide();
-							}
+							function(e) {
+								var $rollout = $(".menu_rollout_<?=$page;?>");
+								if(!mouseOverPanel(e,$rollout)){
+									$rollout.hide();
+								}
+							}		
+
+							
 						);
 					</script>
 				<?php 
