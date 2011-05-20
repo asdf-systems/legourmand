@@ -1,0 +1,1 @@
+Rolloutpanel.prototype = new Panel();

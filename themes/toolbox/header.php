@@ -112,9 +112,13 @@
 						//$rollout.css("left",x.getValue() );
 						//$rollout.css("top",y.getValue() );
 
+					</script>
 
-
-					//new RollOutPanel($("main_navi").get(0), x.getValue(), y.getValue(), <?=json_encode($categorieNames);?>,"menu_rollout_<?=$page;?>", 5, 5, "<?php bloginfo('stylesheet_directory');?>/media/hotels_rollout_lang">, 5, 200, mouseOutFunctionCallback,"generic_menu_rollout menu_rollout_<?=$page;?>");
+					<img id = "<?=$page;?>_bgImage" src="<?php bloginfo('stylesheet_directory');?>/media/hotels_rollout_lang.png">	
+					<script>
+					var image = $("<?=$page;?>_bgImage").get(0);
+					alert(image.id)
+					new RollOutPanel($("main_navi").get(0), x.getValue(), y.getValue(), <?=json_encode($categorieNames);?>,"menu_rollout_<?=$page;?>", 5, 5, image, 5, 200, mouseOutFunctionCallback,"generic_menu_rollout menu_rollout_<?=$page;?>");
 					
 					
 				

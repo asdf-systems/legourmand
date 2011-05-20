@@ -161,6 +161,8 @@ RollOutPanel.prototype.updatePosition = function(){
 }
 
 
-
+function getNumber(value){
+	return new Unit(value).getValue();	
+}
 
 

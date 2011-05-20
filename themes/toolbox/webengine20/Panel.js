@@ -1,0 +1,1 @@
+Panel.prototype = new Element();
