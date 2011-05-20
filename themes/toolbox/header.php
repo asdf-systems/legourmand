@@ -41,8 +41,8 @@
 <!-- jquery.js -->
 <script src="<?php bloginfo( 'stylesheet_directory' ) ; ?>/jquery.js" type="text/javascript"></script>
 <script src="<?php bloginfo( 'stylesheet_directory' ) ; ?>/jquery-ui.js" type="text/javascript"></script>
-<script src="<?php bloginfo( 'stylesheet_directory' ) ; ?>/hackStuff.js" type="text/javascript"></script> -->	
-<!-- <script //src="<?php bloginfo( 'stylesheet_directory' ) ; ?>/Rolloutpanel.js" type="text/javascript"></script> -->
+<script src="<?php bloginfo( 'stylesheet_directory' ) ; ?>/hackStuff.js" type="text/javascript"></script>	
+<script src="<?php bloginfo( 'stylesheet_directory' ) ; ?>/Rolloutpanel.js" type="text/javascript"></script>
 
 <?php if ( is_singular() && get_option( 'thread_comments' ) ) wp_enqueue_script( 'comment-reply' ); ?>
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
@@ -86,7 +86,7 @@
 							<img src="<?php bloginfo('stylesheet_directory');?>/media/<?=$page;?>_aktiv.png" class="active">
 						</a>
 					</div>
-					
+					<script>
 					<?php
 						// Query all subcategories for the current rollout
 						$args = array('hierarchical' => false, 'parent' => get_cat_id($categorieNames[$count]) );
@@ -97,6 +97,7 @@
 							array_push($categorieNames , $categorie->cat_name);	
 						}	
 					?>
+					
 						// Position the Rollout
 						$button = $(".menu_button_<?=$page;?>");
 						var $rollout = $(".menu_rollout_<?=$page;?>");
@@ -116,7 +117,7 @@
 					//new RollOutPanel($("main_navi").get(0), x.getValue(), y.getValue(), <?=json_encode($categorieNames);?>,"menu_rollout_<?=$page;?>", 5, 5, "<?php bloginfo('stylesheet_directory');?>/media/hotels_rollout_lang">, 5, 200, mouseOutFunctionCallback,"generic_menu_rollout menu_rollout_<?=$page;?>");
 					
 					
-					<script>
+				
 						
 					
 						// Hover Functions		
