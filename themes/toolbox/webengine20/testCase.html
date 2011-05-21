@@ -1,0 +1,25 @@
+<html>
+<head> 
+	<script type="text/javascript" src="../jquery.js"></script>
+	<script type="text/javascript" src="Engine.js"></script>
+	<script type="text/javascript" src="EngineEvents.js"></script>
+	<script type="text/javascript" src="EventParameter.js"></script>
+	<script type="text/javascript" src="EngineGlobals.js"></script>
+	<script type="text/javascript" src="Unit.js"></script>
+	
+	<script type="text/javascript" src="Element.js"></script>
+	
+	<script type="text/javascript">
+		function load(){
+			var test = new asdf_Element("testElement", $("#mainBody").get(0), 10, 10, "black", 200, 200, "absolute", "testclass", true, 600);
+			test.show();
+			alert(test.mId);	
+		}
+		
+	</script>
+</head>
+
+<body id="mainBody" onLoad="javascript:load();">
+
+</body>
+</html>
