@@ -33,7 +33,10 @@ function onMouseClick(event){
         params = new EventParameter();
         params = object.mMouseClickParams[i];
         params.event = event;
-        object.mMouseClickEvents[i](params);
+        alert("MID: " + object.mId);
+	alert("I: " + i);
+	alert("ClickEvent: " + object.mMouseClickEvents[i]);
+	    object.mMouseClickEvents[i](params);
     }
 }
 

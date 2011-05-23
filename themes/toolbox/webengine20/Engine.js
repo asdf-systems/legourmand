@@ -20,8 +20,9 @@ asdf_Engine.createDomObject = function(parent, id, type, css, extra_css, src, ex
 	var domparent;
     if(parent != null && parent != undefined){
     	domparent = parent.mParent;
-    } else
-    	domparent = parent;
+    } else{
+		alert("Error: CreateDom Object need Element as Parent!! get only: " + parent.id);
+	}
     
     if(domparent == null){
         if(globals.debug > 0)
@@ -70,7 +71,7 @@ asdf_Engine.createDomObject = function(parent, id, type, css, extra_css, src, ex
     
     $(domparent).append(cmd);
     var domObject = $(type+"[id="+id+"]").get(0);
-
+    domObject.nextNode = parent;
     return domObject;                  
 }
 
