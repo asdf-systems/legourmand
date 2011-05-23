@@ -32,7 +32,18 @@ function asdf_Element(id, parent, positionX, positionY, bgColor, width, height, 
     }
 
     this.mId = id;
-    this.mParent        = parent; 
+    this.mParent = parent;
+    if(parent.mType != null && parent.mType != undefined ){ // we got an element
+    	if(parent.addElement != null && parent.addElement != undefined){
+    		parent.addElement(this);	
+    	} else {
+    		if(globals.debug > 1 )
+    			alert("Warning: Adding Element : " + this.mId + " as child to non container Type element: " + parent.mId);
+    			this.mParent        = parent.mDomTreeObject; 	
+    	}
+    	
+    }
+    
     this.mType          = "BaseElement";
 
     if(positionX == null){
@@ -79,11 +90,13 @@ function asdf_Element(id, parent, positionX, positionY, bgColor, width, height, 
     // Holds function Pointer
     this.mMouseOverEvents = new Array();
     this.mMouseOutEvents = new Array();
+	this.mMouseEnterEvents = new Array();
     this.mMouseClickEvents = new Array();
     
     // ParameterEvents typ: EventParameter()
     this.mMouseOverParams = new Array();
     this.mMouseOutParams = new Array();
+	this.mMouseEnterParams = new Array();
     this.mMouseClickParams = new Array();
     
     return this;
@@ -97,6 +110,7 @@ asdf_Element.prototype.show = function(){
 		$(this.mDomTreeObject).mouseover(onMouseOver);
 		$(this.mDomTreeObject).mouseout(onMouseOut);
 		$(this.mDomTreeObject).click(onMouseClick);
+		$(this.mDomTreeObject).mouseenter(onMouseEnter);
 		this.mDomTreeObject.style.position = this.mPositionType;
 		this.setPosition(this.mPosX, this.mPosY);
 		this.setSize(this.mWidth, this.mHeight);
@@ -179,6 +193,20 @@ asdf_Element.prototype.registerOnMouseOutEvent = function(functionName,  propaga
         
     this.mMouseOutEvents[this.mMouseOutEvents.length] = functionName;
     this.mMouseOutParams[this.mMouseOutParams.length] = params;
+    
+}
+
+/**
+ * Adds an Function that is called everytime Mouse Enter the BaseElement
+ * \param: functionName    string           Name of the Function
+ * \param: propagate		bool			say if the event call should propagated to parents / childs or not
+ * \param: params          EventParameter   Parameter for the called functions
+ */
+asdf_Element.prototype.registerOnMouseEnterEvent = function(functionName,  propagate, params){
+   	params = this.initParams(params, propagate);
+        
+    this.mMouseEnterEvents[this.mMouseOutEvents.length] = functionName;
+    this.mMouseEnterParams[this.mMouseOutParams.length] = params;
     
 }
 //*};

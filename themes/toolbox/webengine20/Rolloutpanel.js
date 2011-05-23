@@ -26,4 +26,66 @@ function asdf_Rolloutpanel(id, parent, positionX, positionY, bgColor, width , he
 		this.mAnimationSpeed = globals.defaultAnimationSpeed;
 	} else
 		this.mAnimationSpeed = animationSpeed;
+		
+	this.mMouseOver = false;
+	registerOnMouseEnterEvent(this.enter, false);
+	registerOnMouseOutEvent(this.leave, false);
+	var parentElement = parent.nextNode;
+	if(parentElement.registerOnMouseOutEvent != null && parentElement.registerOnMouseOutEvent){
+		parent.nextNode.registerOnMouseOutEvent(this.checkSlide, false);	
+	}
+	
+
+		
+	
+}
+
+asdf_Rolloutpanel.prototype.enter = function(params){
+	var object = params.event.currentTarget.nextNode;
+	object.mMouseOver = true;
+}
+asdf_Rolloutpanel.prototype.leave = function(params){
+	var object = params.event.currentTarget.nextNode;
+	object.mMouseOver = false;
+	object.slideup();
+}
+
+asdf_Rolloutpanel.prototype.stopAnimation = function(){
+	// ! TBD
+	
+}
+
+asdf_Rolloutpanel.prototype.checkSlide = function(params){
+	var object = params.event.currentTarget.nextNode;
+	if(!object.isOverPanel()){
+		slideup();
+	}
+}
+
+asdf_Rolloutpanel.prototype.slidedown = function(){
+  $(this.mDomTreeObject).slideDown(this.mAnimationSpeed, this.rollDownCallback);	
+}
+
+asdf_Rolloutpanel.prototype.slideup = function(){
+	$(this.mDomTreeObject).slideUp(this.mAnimationSpeed, this.rollUpCallback);	
+}
+
+asdf_Rolloutpanel.prototype.isMouseOverPanel(){
+	return this.mMouseOver;
+}
+/**
+  * function called if animation for rollup is finished
+  */
+asdf_Rolloutpanel.prototype.rollDownCallback = function (){
+	// ACHTUNG: this is pointing to mDomTreeObject
+    //var object = this.parentElement.nextNode;
+}
+
+/**
+  * function called if animation for rollup is finished
+  */
+asdf_Rolloutpanel.prototype.rollUpCallback = function (){
+	// ACHTUNG: this is pointing to mDomTreeObject
+    //var object = this.parentElement.nextNode;
+    //object.hide();
 }

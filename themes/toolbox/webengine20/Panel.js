@@ -22,8 +22,8 @@ function asdf_Panel(id, parent, positionX, positionY, bgColor, width , height, p
 	this.mChildren = new Array();
 	this.mType = "Panel";
 	
-	this.mDomTreeObject = createDomObject(this, this.mId, "div", this.mType, this.mExtraClassCSS);
-    this.mDomTreeObject.style.position = this.mPositionType;
+	this.show();
+	$(this.mDomTreeObject).hide();
 }
 
 /**

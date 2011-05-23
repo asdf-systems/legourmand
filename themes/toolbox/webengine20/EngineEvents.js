@@ -31,6 +31,23 @@ function onMouseOut(event){
 }
 
 /**
+ * React on MouseEnter Events and call all saved Functions for the object
+ */
+function onMouseOut(event){
+    var object = event.currentTarget.nextNode;
+    var propagate = true;
+    for(var i=0; i< object.mMouseEnterEvents.length; i++){
+        params = new EventParameter();
+        params = object.mMouseEnterParams[i];
+        propagate = params.parameter.pop();
+        params.event = event;
+        object.mMouseEnterEvents[i].call(this, params);
+        checkStopCnd(propagate);
+    }
+    
+}
+
+/**
  * React on MouseOut Events and call all saved Functions for the object
  */
 function onMouseClick(event){
