@@ -20,6 +20,7 @@ asdf_Engine.extend(asdf_Panel,asdf_Element);
 function asdf_Panel(id, parent, positionX, positionY, bgColor, width , height, positionType, extra_css_class, initialShow, zIndex){
 	asdf_Panel.baseConstructor.call(this,id, parent, positionX, positionY, bgColor, width , height, positionType, extra_css_class, initialShow, zIndex);
 	this.mChildren = new Array();
+	this.mType = "Panel"
 }
 
 /**
