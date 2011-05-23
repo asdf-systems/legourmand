@@ -130,14 +130,26 @@ asdf_Element.prototype.setSize = function(x,y){
 		
 }
 
+asdf_Element.prototype.initParams = function(params, propagate){
+	if(params == null)
+        params = new EventParameter();
+    if(propagate) // do this because propagate can be null
+    	params.parameter.push(true);
+    else
+    	params.parameter.push(false);
+    
+    return params;	
+}
 /**
  * Adds an Function that is called everytime Mouse is over the BaseElement
  * \param: functionName    string           Name of the Function
+ * \param: propagate		bool			say if the event call should propagated to parents / childs or not
  * \param: params          EventParameter   Parameter for the called functions
  */
-asdf_Element.prototype.registerOnMouseOverEvent = function(functionName, params){
-    if(params == null)
-        params = new EventParameter();
+asdf_Element.prototype.registerOnMouseOverEvent = function(functionName, propagate, params){
+    params = this.initParams(params, propagate);
+
+    	
     this.mMouseOverEvents[this.mMouseOverEvents.length] = functionName;
     this.mMouseOverParams[this.mMouseOverParams.length] = params;
 
@@ -146,11 +158,11 @@ asdf_Element.prototype.registerOnMouseOverEvent = function(functionName, params)
 /**
  * Adds an Function that is called everytime BaseElement is clicked
  * \param: functionName    string           Name of the Function
+ * \param: propagate		bool			say if the event call should propagated to parents / childs or not
  * \param: params          EventParameter   Parameter for the called functions
  */
-asdf_Element.prototype.registerOnMouseClickEvent = function(functionName,  params){
-    if(params == null)
-        params = new EventParameter();
+asdf_Element.prototype.registerOnMouseClickEvent = function(functionName,  propagate, params){
+	params = this.initParams(params, propagate);
         
     this.mMouseClickEvents[this.mMouseClickEvents.length] = functionName;
     this.mMouseClickParams[this.mMouseClickParams.length] = params;
@@ -159,11 +171,11 @@ asdf_Element.prototype.registerOnMouseClickEvent = function(functionName,  param
 /**
  * Adds an Function that is called everytime Mouse leave the BaseElement
  * \param: functionName    string           Name of the Function
+ * \param: propagate		bool			say if the event call should propagated to parents / childs or not
  * \param: params          EventParameter   Parameter for the called functions
  */
-asdf_Element.prototype.registerOnMouseOutEvent = function(functionName,  params){
-    if(params == null)
-        params = new EventParameter();
+asdf_Element.prototype.registerOnMouseOutEvent = function(functionName,  propagate, params){
+   	params = this.initParams(params, propagate);
         
     this.mMouseOutEvents[this.mMouseOutEvents.length] = functionName;
     this.mMouseOutParams[this.mMouseOutParams.length] = params;

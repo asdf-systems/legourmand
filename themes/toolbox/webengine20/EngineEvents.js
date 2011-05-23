@@ -6,8 +6,10 @@ function onMouseOver(event){
     for(var i=0; i< object.mMouseOverEvents.length; i++){
         params =new EventParameter();
         params = object.mMouseOverParams[i];
+        var propagate = params.parameter.pop();
         params.event = event;
-        object.mMouseOverEvents[i](params);
+        object.mMouseOverEvents[i].call(this,params);
+        checkStopCnd(propagate);
     }
 }
 
@@ -16,12 +18,16 @@ function onMouseOver(event){
  */
 function onMouseOut(event){
     var object = event.currentTarget.nextNode;
+    var propagate = true;
     for(var i=0; i< object.mMouseOutEvents.length; i++){
         params = new EventParameter();
         params = object.mMouseOutParams[i];
+        propagate = params.parameter.pop();
         params.event = event;
-        object.mMouseOutEvents[i](params);
+        object.mMouseOutEvents[i].call(this, params);
+        checkStopCnd(propagate);
     }
+    
 }
 
 /**
@@ -32,11 +38,10 @@ function onMouseClick(event){
     for(var i=0; i< object.mMouseClickEvents.length; i++){
         params = new EventParameter();
         params = object.mMouseClickParams[i];
+        var propagate = params.parameter.pop();
         params.event = event;
-        alert("MID: " + object.mId);
-	alert("I: " + i);
-	alert("ClickEvent: " + object.mMouseClickEvents[i]);
-	    object.mMouseClickEvents[i](params);
+	    object.mMouseClickEvents[i].call(this,params);
+	    checkStopCnd(propagate);
     }
 }
 
@@ -53,7 +58,24 @@ function onKeyPress(event){
     for(var i=0; i< object.mKeyPressEvents.length; i++){
         params = new EventParameter();
         params = object.mKeyPressParams[i];
+        var propagate = params.parameter.pop();
         params.event = event;
-        object.mKeyPressEvents[i](params);
+        object.mKeyPressEvents[i].call(this,params);
+        checkStopCnd(propagate);
     }
+}
+
+function checkStopCnd(flag){
+	if(flag == null){
+		if(globals.debug > 0)
+			alert("Error : CheckPropagation get no value - EngineEvents.js");	
+	}
+	if(!flag){ // we have to stop the propagation
+		if (event.stopPropagation) {
+			event.stopPropagation();
+		} else {
+			event.cancelBubble = true;
+  		} 
+	}
+		
 }
