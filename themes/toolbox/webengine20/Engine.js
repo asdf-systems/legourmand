@@ -1,3 +1,6 @@
+// namespace placeholder
+asdf_Engine = {};
+	
 /**
  * Erstellt ein neues DomTreeObject und hängt es beim angegebenen Parent ein
  * \return: newDomTreeObject or null if error occurs
@@ -12,7 +15,7 @@
  * \param:  extraContent    string  Conent that shoul come after > so for <p>extraContent</p>
  */
 
-function createDomObject(parent, id, type, css, extra_css, src, extraContent){
+asdf_Engine.createDomObject = function(parent, id, type, css, extra_css, src, extraContent){
     // check Params
 	var domparent;
     if(parent != null && parent != undefined){
@@ -60,7 +63,7 @@ function createDomObject(parent, id, type, css, extra_css, src, extraContent){
     if(extraContent == null)
         extraContent = "";
         
-     var ending = checkForTypesWithEnding(type);
+     var ending = asdf_Engine.checkForTypesWithEnding(type);
      if(ending)
         cmd += extraContent + "</"+type+">";
     
@@ -75,18 +78,17 @@ function createDomObject(parent, id, type, css, extra_css, src, extraContent){
  * check if type need an ending like <p>, <a>, <h> etc
  * \return true if nedded false else
  */
-function checkForTypesWithEnding(type){
-   var flag = false
-   flag |= type.match(/^h?/);
-   flag |= type == "p";
-   flag |= type == "pre";
-   flag |= type == "b";
-   flag |= type == "div";
-   
-   return flag;
+asdf_Engine.checkForTypesWithEnding = function(type){
+	var flag = false
+	flag |= type.match(/^h?/);
+	flag |= type == "p";
+	flag |= type == "pre";
+	flag |= type == "b";
+	flag |= type == "div";
+	return flag;
 }
 
-function checkBrowser(){
+asdf_Engine.checkBrowser = function(){
     var userAgent = navigator.userAgent.toLowerCase();
     // Figure out what browser is being used
     jQuery.browser = {
@@ -103,8 +105,36 @@ function checkBrowser(){
 /**
  * @return cleaned path (deleted // and ./ )
  */
-function cleanPath(path){
+asdf_Engine.cleanPath = function(path){
     path = path.replace(/\/\//, "/");
     path = path.replace(/\.\//, "");
     return path;
+}
+
+/**
+ * inheritance
+ * 
+ * @author Kevin Lindsey
+ * @version 1.0
+ * 
+ * copyright 2006, Kevin Lindsey
+ * 
+ */
+
+/**
+ * A function used to extend one class with another
+ * 
+ * @param {Object} subClass
+ * 		The inheriting class, or subclass
+ * @param {Object} baseClass
+ * 		The class from which to inherit
+ */
+asdf_Engine.extend = function(subClass, baseClass) {
+   function inheritance() {}
+   inheritance.prototype = baseClass.prototype;
+
+   subClass.prototype = new inheritance();
+   subClass.prototype.constructor = subClass;
+   subClass.baseConstructor = baseClass;
+   subClass.superClass = baseClass.prototype;
 }

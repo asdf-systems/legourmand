@@ -1,14 +1,6 @@
 function asdf_Element(id, parent, positionX, positionY, bgColor, width, height, positionType, extra_css_class, initialShow, zIndex){
-
-    this.initElement(id, parent, positionX, positionY, bgColor, width, height, positionType, extra_css_class, initialShow, zIndex);
-    return this;
-};
-
-/*
- * This function is build to give child classes the possibility to Call the base class Constructor
-*/
-asdf_Element.prototype.initElement = function(id, parent, positionX, positionY, bgColor, width, height, positionType, extra_css_class, initialShow, zIndex){
-		
+	
+			
 	if(id == null){
      	if(globals.debug > 0)
            alert("BaseElement: Id is not set - cancel");
@@ -93,26 +85,31 @@ asdf_Element.prototype.initElement = function(id, parent, positionX, positionY, 
     this.mMouseOverParams = new Array();
     this.mMouseOutParams = new Array();
     this.mMouseClickParams = new Array();
-}
+    
+    return this;
+};
+
 
 asdf_Element.prototype.show = function(){
-	
-	if(this.mDomTreeObject == null){
-		this.mDomTreeObject = createDomObject(this, this.mId, "div", this.mType, this.mExtraClassCSS);
-            $(this.mDomTreeObject).mouseover(onMouseOver);
-            $(this.mDomTreeObject).mouseout(onMouseOut);
-            $(this.mDomTreeObject).click(onMouseClick);
-            this.mDomTreeObject.style.position = this.mPositionType;
-            this.setPosition(this.mPosX, this.mPosY);
-            this.setSize(this.mWidth, this.mHeight);
-            this.mDomTreeObject.style.background = this.mBgColor;
-            this.mDomTreeObject.style.zIndex = this.mZIndex;
 
-    }
-    $(this.mDomTreeObject).show();	
+	if(this.mDomTreeObject == null){
+		this.mDomTreeObject = asdf_Engine.createDomObject(this, this.mId, "div", this.mType, this.mExtraClassCSS);
+		$(this.mDomTreeObject).mouseover(onMouseOver);
+		$(this.mDomTreeObject).mouseout(onMouseOut);
+		$(this.mDomTreeObject).click(onMouseClick);
+		this.mDomTreeObject.style.position = this.mPositionType;
+		this.setPosition(this.mPosX, this.mPosY);
+		this.setSize(this.mWidth, this.mHeight);
+		this.mDomTreeObject.style.background = this.mBgColor;
+		this.mDomTreeObject.style.zIndex = this.mZIndex;
+
+	}
+	$(this.mDomTreeObject).show();	
 }
 
-asdf_Element.prototype.hide = function(){}
+asdf_Element.prototype.hide = function(){
+	$(this.mDomTreeObject).hide();
+}
 
 // Print out the current HTML Tree (so can be used for static HTML pages)
 asdf_Element.prototype.write = function(){}

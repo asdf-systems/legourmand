@@ -15,8 +15,24 @@
  * \param: initialShow  bool        state if child should be shwon if parent is show
  * \param: z-Index      int         number to show in fore or background - higer is more in Front
  */
-asdf_Panel.prototype = new Element(id, parent, positionX, positionY, bgColor, width , height, positionType, extra_css_class, initialShow, zIndex);
+asdf_Engine.extend(asdf_Panel,asdf_Element);
 
-asdf_Panel.prototype.addElement(element){
-	
+function asdf_Panel(id, parent, positionX, positionY, bgColor, width , height, positionType, extra_css_class, initialShow, zIndex){
+	asdf_Panel.baseConstructor.call(this,id, parent, positionX, positionY, bgColor, width , height, positionType, extra_css_class, initialShow, zIndex);
+	this.mChildren = new Array();
 }
+
+/**
+ * Add Child to the DomTree and save as Child
+ * @param child     Element childElement to addd
+ */
+asdf_Panel.prototype.addElement = function(element){
+	this.mChildren.push(element);
+	$(element.mDomTreeObject).appendTo(this.mDomTreeObject);
+}
+
+
+
+
+   
+	

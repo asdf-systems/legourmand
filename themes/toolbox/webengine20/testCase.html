@@ -8,12 +8,18 @@
 	<script type="text/javascript" src="Unit.js"></script>
 	
 	<script type="text/javascript" src="Element.js"></script>
+	<script type="text/javascript" src="Panel.js"></script>
 	
 	<script type="text/javascript">
 		function load(){
-			var test = new asdf_Element("testElement", $("#mainBody").get(0), 10, 10, "black", 200, 200, "absolute", "testclass", true, 600);
-			test.show();
-			alert(test.mId);	
+			var elem1 = new asdf_Element("testElement", $("#mainBody").get(0), 10, 10, "black", 200, 200, "absolute", "testclass", true, 600);
+			elem1.show();
+			alert("Element too hide:" + elem1.mId);	
+			elem1.hide();
+			var pan1 = new asdf_Panel("testPanel", $("#mainBody").get(0), 10, 10, "red", 400, 400, "absolute", "testclass", true, 500);
+			pan1.show();
+			pan1.addElement(elem1);
+			elem1.show();
 		}
 		
 	</script>
