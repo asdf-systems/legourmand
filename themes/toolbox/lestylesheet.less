@@ -19,6 +19,8 @@ Use it to make something cool, have fun, and share what you've learned with othe
 	font-weight: normal;
 	font-style: normal;
 	line-height:normal;
+	text-decoration: none;
+
 	.StMarieWebSC-Thin {
 		font-family: 'StMarieWebSCThin', sans-serif;
 	}
@@ -26,12 +28,47 @@ Use it to make something cool, have fun, and share what you've learned with othe
 		font-family: 'StMarieWebThin', sans-serif;
 	}
 
-	.Brandon-Regular {
-		font-family: 'BrandonGrotesque-Regular', Verdana;
+	.Brandon {
+		.Common {
+			font-family: 'BrandonGrotesque-Regular', Verdana;
+			line-height: 1.4;
+		}
+
+		.Regular {
+			#Fonts > .Brandon > .Common;
+		}
+		
+		.Bold {
+			#Fonts > .Brandon > .Common;
+			font-family: 'BrandonGrotesque-Bold', Verdana;
+		}
+
+		.Italic {
+			#Fonts > .Brandon > .Common;
+			font-family: 'BrandonGrotesque-RegularItalic', Verdana;
+		}
 	}
 
 	.Droid {
-		font-family: 'Droid Serif', serif;
+		.Common {
+			font-family: 'Droid Serif', serif;
+			line-height: 1;
+			font-weight: 400;
+		}
+
+		.Regular {
+			#Fonts > .Droid > .Common;
+		}
+
+		.Bold {
+			#Fonts > .Droid > .Common;
+			font-weight: 700;
+		}
+
+		.Italic {
+			#Fonts > .Droid > .Common;
+			font-style: italic;
+		}
 	}
 }
 
@@ -42,11 +79,12 @@ Use it to make something cool, have fun, and share what you've learned with othe
 @blau: #6ea9dc;
 @mittelgrau: #8c8c8c;
 @hellgrau: #f3f3f3;
+@weiss: #ffffff;
 
 /* global */
 
 body {
-	#Fonts > .Droid;
+	#Fonts > .Brandon > .Regular;
 	background: @dunkelgrau;
 }
 
@@ -250,7 +288,7 @@ body {
 
 
 #top_navi {
-	#Fonts > .Brandon-Regular;
+	#Fonts > .Brandon > .Regular;
 	ul {
 		position: relative;
 		float: right;
@@ -285,22 +323,68 @@ body {
 	clear: both;
 	display: block;
 }
-#content nav {
-	display: block;
-	overflow: hidden;
+#content {
+	nav {
+		display: block;
+		overflow: hidden;
+		.nav-previous {
+			float: left;
+			width: 50%;
+		}
+		.nav-next {
+			float: right;
+			text-align: right;
+			width: 50%;
+		}
+	}
+	#nav-above {
+		display: none;
+	}
+	.post {
+		padding: 25px;
+		background-color: @weiss;
+		.entry-title {
+			#Fonts > .Droid > .Italic;
+			color: @rot;
+			font-size: 22pt;
+		}
+		.entry-content {
+			#Fonts > .Brandon > .Regular;
+			font-size: 12pt;
+			strong {
+				#Fonts > .Brandon > .Bold;
+			}
+		}
+		.entry-category {
+			margin-top: 5px;
+			margin-bottom: 5px;
+			color: @mittelgrau;
+			position: relative;
+			height: 10px;
+			hr {
+				border: 1px solid @mittelgrau;
+				border-collapse: collapse;
+			}
+
+			.entry-category-name {
+				#Fonts > .Brandon > .Bold;
+				position: relative;
+				.aligncenter;
+				top: -12pt;
+				text-align: center;
+				span {
+					padding: 5px;
+					background-color: @weiss;
+					a:visited, a:active, a:hover, a:link {
+						color: @mittelgrau;
+						text-decoration: none;
+					}
+				}
+			}
+		}
+	}
 }
-#content nav .nav-previous {
-	float: left;
-	width: 50%;
-}
-#content nav .nav-next {
-	float: right;
-	text-align: right;
-	width: 50%;
-}
-#content #nav-above {
-	display: none;
-}
+
 .paged #content #nav-above,
 .single #content #nav-above {
 	display: block;
@@ -471,7 +555,7 @@ img.alignright {
 		display: none;
 	}
 	input#searchinput {
-		#Fonts > .Brandon-Regular;
+		#Fonts > .Brandon > .Regular;
 		height: 30px;
 		width: 180px;
 		border: 0;
