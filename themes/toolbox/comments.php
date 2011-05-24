@@ -66,6 +66,10 @@ endif; // ends check for toolbox_comment()
 ?>
 
 	<div id="comments">
+		<div class="hr-header">
+			<hr>
+			<div class="hr-title"><span>Comments</span></div>
+		</div>
 	<?php if ( post_password_required() ) : ?>
 		<div class="nopassword"><?php _e( 'This post is password protected. Enter the password to view any comments.', 'toolbox' ); ?></div>
 	</div><!-- .comments -->
