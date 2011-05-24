@@ -35,6 +35,7 @@ Use it to make something cool, have fun, and share what you've learned with othe
 @blau: #6ea9dc;
 @mittelgrau: #8c8c8c;
 @hellgrau: #f3f3f3;
+@debugblue: blue;
 
 /* global */
 
@@ -57,6 +58,13 @@ body {
 		text-align: left;
 		margin-left: 32px;
 		margin-right: 32px;
+	}
+	> #main { /* only main page */
+		width: 959px + 2*5px;
+		text-align: left;
+		padding: 0px;
+		margin-left: 32px - 5px;
+		margin-right: 32px - 5px;
 	}
 }
 #main {
@@ -289,17 +297,18 @@ body {
 /** posts **/
 .thumbnail {
 }
-.home #content {
+/*.home #main {
 	text-align: left;
-	}
-.home #content .post {
-	display: block;
+	}*/
+.home #main .post {
+	display: inline-block;
 	overflow: hidden;
-	width: 313px;
-	height: 388px;
+	width: 313px - 2 * 30px;
+	height: 388px - 2 * 30px;
 	padding: 30px;
-	margin: 5px;
-	background-color: blue; //white;
+	margin: 4px;
+	border: 0px;
+	background-color: @debugblue; // white;
 	color: @mittelgrau;
 	a {
 		color: @mittelgrau;
@@ -314,7 +323,10 @@ body {
 		color: @blau;
 	}
 	.entry-content {
-		display: none;
+		img {
+			display: none;
+		}
+		display: block;
 	}
 }
 
