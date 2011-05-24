@@ -7,9 +7,9 @@
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<header class="entry-header">
-		<div class="entry-category">
+		<div class="hr-header">
 			<hr>
-			<div class="entry-category-name"><span><?=get_the_category_list(" ");?></span></div>
+			<div class="hr-title"><span><?=get_the_category_list(" ");?></span></div>
 		</div>
 		<h1 class="entry-title"><?php the_title(); ?></h1>
 
@@ -29,9 +29,6 @@
 	</div><!-- .entry-content -->
 
 	<footer class="entry-meta">
-		<?php
-			echo "Categories: ".get_the_category_list( ', ' );
-		?>
-
+		SHARE THIS MOTHERFUCKING POST!
 	</footer><!-- .entry-meta -->
 </article><!-- #post-<?php the_ID(); ?> -->

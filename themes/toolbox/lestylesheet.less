@@ -171,6 +171,7 @@ body {
 	float: left;
 	margin: 0 auto 1em;
 	width: 100%;
+	height: 0px;
 
 	.generic_menu_point {
 		position: relative;
@@ -341,8 +342,8 @@ body {
 		display: none;
 	}
 	.post {
-		padding: 25px;
 		background-color: @weiss;
+		padding: 25px;
 		.entry-title {
 			#Fonts > .Droid > .Italic;
 			color: @rot;
@@ -355,31 +356,39 @@ body {
 				#Fonts > .Brandon > .Bold;
 			}
 		}
-		.entry-category {
-			margin-top: 5px;
-			margin-bottom: 5px;
-			color: @mittelgrau;
-			position: relative;
-			height: 10px;
-			hr {
-				border: 1px solid @mittelgrau;
-				border-collapse: collapse;
-			}
+	}
+	#comments {
+		padding: 25px;
+		background-color: @weiss;
+	}
+}
 
-			.entry-category-name {
-				#Fonts > .Brandon > .Bold;
-				position: relative;
-				.aligncenter;
-				top: -12pt;
-				text-align: center;
-				span {
-					padding: 5px;
-					background-color: @weiss;
-					a:visited, a:active, a:hover, a:link {
-						color: @mittelgrau;
-						text-decoration: none;
-					}
-				}
+
+.hr-header {
+	margin-top: 5px;
+	margin-bottom: 5px;
+	color: @mittelgrau;
+	position: relative;
+	height: 10px;
+	hr {
+		border: 1px solid @mittelgrau;
+		border-collapse: collapse;
+	}
+
+	.hr-title {
+		#Fonts > .Brandon > .Bold;
+		position: relative;
+		.aligncenter;
+		top: -12pt;
+		text-align: center;
+		span {
+			padding: 5px;
+			background-color: @weiss;
+			color: @mittelgrau;
+			text-decoration: none;
+			a:visited, a:active, a:hover, a:link {
+				color: @mittelgrau;
+				text-decoration: none;
 			}
 		}
 	}
