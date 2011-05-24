@@ -1,4 +1,4 @@
-asdf_Engine.extend(Rolloutpanel, Panel);
+asdf_Engine.extend(asdf_Rolloutpanel, asdf_Panel);
 
 /**
  * Creates an RollOutPanel is only an placing Element without any visible Elements
@@ -17,7 +17,7 @@ asdf_Engine.extend(Rolloutpanel, Panel);
  * \param: initialShow  bool        state if child should be shwon if parent is show
  * \param: z-Index      int         number to show in fore or background - higer is more in Front
  */
-function asdf_Rolloutpanel(id, parent, positionX, positionY, bgColor, width , height,animationSpeed, positionType, extra_css_class, initialShow, zIndex){
+function asdf_Rolloutpanel(id, parent, positionX, positionY, bgColor, width , height,positionType, extra_css_class, initialShow, zIndex, animationSpeed, triggerElement){
 	asdf_Rolloutpanel.baseConstructor.call(this,id, parent, positionX, positionY, bgColor, width , height, positionType, extra_css_class, initialShow, zIndex);
 	
 	this.mType = "Rolloutpanel";
@@ -28,28 +28,55 @@ function asdf_Rolloutpanel(id, parent, positionX, positionY, bgColor, width , he
 		this.mAnimationSpeed = animationSpeed;
 		
 	this.mMouseOver = false;
-	registerOnMouseEnterEvent(this.enter, false);
-	registerOnMouseOutEvent(this.leave, false);
-	var parentElement = parent.nextNode;
-	if(parentElement.registerOnMouseOutEvent != null && parentElement.registerOnMouseOutEvent){
-		parent.nextNode.registerOnMouseOutEvent(this.checkSlide, false);	
+	this.registerOnMouseEnterEvent(this.enter, false);
+	this.registerOnMouseOutEvent(this.leave, false);
+	if(triggerElement == null || triggerElement == undefined){
+		if(globals.debug > 0)
+			alert("Error: Get rollout without trigger - will not be visible: " + this.mId);
+		return null;
 	}
 	
-
+	this.mTimerId = null;
+	this.mTrigger = triggerElement;
+	this.mTrigger.registerOnMouseEnterEvent(this.slidedown, false);
+	this.mTrigger.registerOnMouseOutEvent(this.startTimer, false);
+	var params = new EventParameter();
+	params.parameter.push(true);
+	this.mTrigger.registerOnMouseEnterEvent(this.setMouseOver, false,params );
+	
+	
+	return this;
 		
 	
 }
 
+
+
 asdf_Rolloutpanel.prototype.enter = function(params){
+	if(this.mTimerId != null)
+		window.clearTimer(this.mTimerId);
 	var object = params.event.currentTarget.nextNode;
 	object.mMouseOver = true;
 }
 asdf_Rolloutpanel.prototype.leave = function(params){
 	var object = params.event.currentTarget.nextNode;
-	object.mMouseOver = false;
-	object.slideup();
+	object.startTimer(params);
 }
 
+asdf_Rolloutpanel.prototype.setMouseOver = function(params){
+	var object = params.event.currentTarget.nextNode;
+	object.mMouseOver = params.parameter[0];
+}
+asdf_Rolloutpanel.prototype.startTimer = function(params){
+	this.mMouseOver = false;
+	this.mTimerId = window.setTimeout(this.timerCallback,300);
+}
+
+asdf_Rolloutpanel.prototype.timerCallback = function(params){
+	alert("Slideup");
+	if(!this.mMouseOver)
+		this.slideup();
+}
 asdf_Rolloutpanel.prototype.stopAnimation = function(){
 	// ! TBD
 	
@@ -70,7 +97,7 @@ asdf_Rolloutpanel.prototype.slideup = function(){
 	$(this.mDomTreeObject).slideUp(this.mAnimationSpeed, this.rollUpCallback);	
 }
 
-asdf_Rolloutpanel.prototype.isMouseOverPanel(){
+asdf_Rolloutpanel.prototype.isMouseOverPanel = function(){
 	return this.mMouseOver;
 }
 /**

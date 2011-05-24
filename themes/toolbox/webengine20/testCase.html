@@ -22,11 +22,15 @@
 			pan1.registerOnMouseClickEvent(show, true);*/
 			
 			// Test RolloutPanel
-			var elem2 = new asdf_Element("button", $("#mainBody").get(0), 10, 10, "black", 200, 50, "absolute", "testclass", true, 510);
+			var elem2 = new asdf_Element("button1", $("#mainBody").get(0), 10, 10, "black", 200, 50, "absolute", "testclass", true, 510);
 			elem2.show();
-			var rollout = new asdf_Rolloutpanel("button", $("#mainBody").get(0), 10, 60, "green", 200, 50, "absolute", "testclass", true, 500);
-			var rElem1 = new asdf_Element("button", rollout, 10, 10, "red", 150, 30, "absolute", "testclass", true, 600);
-			var rElem1 = new asdf_Element("button", rollout, 10, 60, "red", 150, 30, "absolute", "testclass", true, 600);
+			var rollout = new asdf_Rolloutpanel("rollout", $("#mainBody").get(0), 10, 60, "green", 200, 500, "absolute", "testclass", true, 500, 200, elem2);
+			//rollout.show();
+			var rElem1 = new asdf_Element("buttonr1", rollout, 10, 10, "red", 150, 30, "absolute", "testclass", true, 600);
+			var rElem2 = new asdf_Element("buttonr2", rollout, 10, 60, "red", 150, 30, "absolute", "testclass", true, 600);
+			rElem1.show();
+			rElem2.show();
+			
 		}
 		
 		function hide(){

@@ -32,6 +32,10 @@ function asdf_Panel(id, parent, positionX, positionY, bgColor, width , height, p
  */
 asdf_Panel.prototype.addElement = function(element){
 	this.mChildren.push(element);
+	if(element.mDomTreeObject == null){
+		element.show();
+		element.hide();
+	}
 	$(element.mDomTreeObject).appendTo(this.mDomTreeObject);
 }
 

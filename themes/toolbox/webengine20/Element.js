@@ -34,13 +34,15 @@ function asdf_Element(id, parent, positionX, positionY, bgColor, width, height, 
     this.mId = id;
     this.mParent = parent;
     if(parent.mType != null && parent.mType != undefined ){ // we got an element
-    	if(parent.addElement != null && parent.addElement != undefined){
+    	this.mParent        = parent.mDomTreeObject; 	
+	if(parent.addElement != null && parent.addElement != undefined){
     		parent.addElement(this);	
+
     	} else {
     		if(globals.debug > 1 )
     			alert("Warning: Adding Element : " + this.mId + " as child to non container Type element: " + parent.mId);
-    			this.mParent        = parent.mDomTreeObject; 	
     	}
+	
     	
     }
     

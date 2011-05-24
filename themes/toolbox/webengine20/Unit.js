@@ -1,15 +1,16 @@
 function Unit(valueX,valueY){
-    if(valueX.mValue != null && valueX.mUnit != null && ( valueY == null || valueY == undefined ) ){ // we got a unit
-    	valueY = valueX.mUnit;
-    	valueX = valueX.mValue;
-    } else if(valueY == null){ // we have to seperate
-    	valueY = this.getUnit(valueX);
-    	valueX = this.getValueWithoutUnits(valueX);
-    }
-    this.mValue = valueX;
-    this.mUnit = valueY;  
-    
-    return this;  
+	
+	if(typeof(valueX) == "object" && valueX.mValue != null && valueX.mUnit != null && ( valueY == null || valueY == undefined ) ){ // we got a unit
+		valueY = valueX.mUnit;
+		valueX = valueX.mValue;
+	} else if(valueY == null){ // we have to seperate
+		valueY = this.getUnit(valueX);
+		valueX = this.getValueWithoutUnits(valueX);
+	}
+	this.mValue = valueX;
+	this.mUnit = valueY;  
+
+	return this;  
  }
  
  Unit.prototype.add = function(value){

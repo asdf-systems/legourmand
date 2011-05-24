@@ -33,7 +33,7 @@ function onMouseOut(event){
 /**
  * React on MouseEnter Events and call all saved Functions for the object
  */
-function onMouseOut(event){
+function onMouseEnter(event){
     var object = event.currentTarget.nextNode;
     var propagate = true;
     for(var i=0; i< object.mMouseEnterEvents.length; i++){
