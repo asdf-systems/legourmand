@@ -29,6 +29,12 @@
 	</div><!-- .entry-content -->
 
 	<footer class="entry-meta">
-		SHARE THIS MOTHERFUCKING POST!
+		<div class="hr-header">
+			<hr>
+			<div class="hr-title"><span>SHARE THIS POST</span></div>
+		</div>
+		<?php echo easy_retweet_button(); ?>
+		<iframe src="http://www.facebook.com/plugins/like.php?href=<? the_permalink(); ?>&amp;layout=standard&amp;show-faces=true&amp;width=470&amp;action=like&amp;colorscheme=light" scrolling="no" frameborder="0" allowTransparency="true" style="border:none; overflow:hidden; width:470px; height:60px"></iframe>
+		<?php the_flattr_permalink() ?>
 	</footer><!-- .entry-meta -->
 </article><!-- #post-<?php the_ID(); ?> -->
