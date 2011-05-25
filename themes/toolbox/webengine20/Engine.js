@@ -139,3 +139,8 @@ asdf_Engine.extend = function(subClass, baseClass) {
    subClass.baseConstructor = baseClass;
    subClass.superClass = baseClass.prototype;
 }
+
+
+asdf_Engine.bind = function(toObject, methodName){
+    return function(params){toObject[methodName](params)}
+}

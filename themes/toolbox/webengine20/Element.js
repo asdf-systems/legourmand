@@ -33,18 +33,7 @@ function asdf_Element(id, parent, positionX, positionY, bgColor, width, height, 
 
     this.mId = id;
     this.mDomTreeObject = null;
-    this.mParent = parent;
-    if(parent.mType != null && parent.mType != undefined ){ // we got an element
-    	this.mParent        = parent.mDomTreeObject; 	
-	if(parent.addElement != null && parent.addElement != undefined){
-    		parent.addElement(this);	
-
-    	} else {
-    		if(globals.debug > 1 )
-    			alert("Warning: Adding Element : " + this.mId + " as child to non container Type element: " + parent.mId);
-    	}	
-    }
-    
+        
     this.mType          = "BaseElement";
 
     if(positionX == null){
@@ -85,6 +74,19 @@ function asdf_Element(id, parent, positionX, positionY, bgColor, width, height, 
     else
         this.mZIndex = zIndex;
     
+    this.mParent = parent;
+    if(parent.mType != null && parent.mType != undefined ){ // we got an element
+    	this.mParent        = parent.mDomTreeObject; 	
+	if(parent.addElement != null && parent.addElement != undefined){
+    		parent.addElement(this);	
+
+    	} else {
+    		if(globals.debug > 1 )
+    			alert("Warning: Adding Element : " + this.mId + " as child to non container Type element: " + parent.mId);
+    	}	
+    }
+
+
 	// private:
     // Holds function Pointer
     this.mMouseOverEvents = new Array();
@@ -160,7 +162,9 @@ asdf_Element.prototype.initParams = function(params, propagate){
  * \param: params          EventParameter   Parameter for the called functions
  */
 asdf_Element.prototype.registerOnMouseOverEvent = function(functionName, propagate, params){
-    params = this.initParams(params, propagate);
+   	if(propagate == null || propagate == undefined)
+   		propagate = true;
+	params = this.initParams(params, propagate);
 
     	
     this.mMouseOverEvents[this.mMouseOverEvents.length] = functionName;
@@ -175,6 +179,8 @@ asdf_Element.prototype.registerOnMouseOverEvent = function(functionName, propaga
  * \param: params          EventParameter   Parameter for the called functions
  */
 asdf_Element.prototype.registerOnMouseClickEvent = function(functionName,  propagate, params){
+	if(propagate == null || propagate == undefined)
+   		propagate = true;
 	params = this.initParams(params, propagate);
         
     this.mMouseClickEvents[this.mMouseClickEvents.length] = functionName;
@@ -188,6 +194,8 @@ asdf_Element.prototype.registerOnMouseClickEvent = function(functionName,  propa
  * \param: params          EventParameter   Parameter for the called functions
  */
 asdf_Element.prototype.registerOnMouseOutEvent = function(functionName,  propagate, params){
+   	if(propagate == null || propagate == undefined)
+   		propagate = true;
    	params = this.initParams(params, propagate);
         
     this.mMouseOutEvents[this.mMouseOutEvents.length] = functionName;
@@ -202,10 +210,12 @@ asdf_Element.prototype.registerOnMouseOutEvent = function(functionName,  propaga
  * \param: params          EventParameter   Parameter for the called functions
  */
 asdf_Element.prototype.registerOnMouseEnterEvent = function(functionName,  propagate, params){
+    if(propagate == null || propagate == undefined)
+   		propagate = true;
    	params = this.initParams(params, propagate);
         
-    this.mMouseEnterEvents[this.mMouseOutEvents.length] = functionName;
-    this.mMouseEnterParams[this.mMouseOutParams.length] = params;
+    this.mMouseEnterEvents[this.mMouseEnterEvents.length] = functionName;
+    this.mMouseEnterParams[this.mMouseEnterParams.length] = params;
     
 }
 //*};

@@ -28,8 +28,10 @@ function asdf_Rolloutpanel(id, parent, positionX, positionY, bgColor, width , he
 		this.mAnimationSpeed = animationSpeed;
 		
 	this.mMouseOver = false;
-	this.registerOnMouseEnterEvent(this.enter, false);
-	this.registerOnMouseOutEvent(this.leave, false);
+	this.registerOnMouseEnterEvent(asdf_Engine.bind(this, "enter"), false);
+	this.registerOnMouseOutEvent(asdf_Engine.bind(this, "leave"), false);
+	this.registerOnMouseOverEvent(asdf_Engine.bind(this, "enter"), false);
+	
 	if(triggerElement == null || triggerElement == undefined){
 		if(globals.debug > 0)
 			alert("Error: Get rollout without trigger - will not be visible: " + this.mId);
@@ -38,11 +40,12 @@ function asdf_Rolloutpanel(id, parent, positionX, positionY, bgColor, width , he
 	
 	this.mTimerId = null;
 	this.mTrigger = triggerElement;
-	this.mTrigger.registerOnMouseEnterEvent(function(){alert(this.id); this.slidedown.call(this);}, false);
-	this.mTrigger.registerOnMouseOutEvent(this.startTimer, false);
+	this.mTrigger.registerOnMouseEnterEvent(asdf_Engine.bind(this, "slidedown"), false);
+	this.mTrigger.registerOnMouseOutEvent(asdf_Engine.bind(this, "startTimer"), false);
+	
 	var params = new EventParameter();
 	params.parameter.push(true);
-	this.mTrigger.registerOnMouseEnterEvent(this.setMouseOver, false,params );
+	this.mTrigger.registerOnMouseEnterEvent(asdf_Engine.bind(this, "setMouseOver"), false, params );
 	
 	
 	return this;
@@ -54,26 +57,29 @@ function asdf_Rolloutpanel(id, parent, positionX, positionY, bgColor, width , he
 
 asdf_Rolloutpanel.prototype.enter = function(params){
 	if(this.mTimerId != null)
-		window.clearTimer(this.mTimerId);
+		window.clearTimeout(this.mTimerId);
+	this.mTimerId = null;
 	var object = params.event.currentTarget.nextNode;
 	object.mMouseOver = true;
 }
 asdf_Rolloutpanel.prototype.leave = function(params){
 	var object = params.event.currentTarget.nextNode;
 	object.startTimer(params);
+
 }
 
 asdf_Rolloutpanel.prototype.setMouseOver = function(params){
-	var object = params.event.currentTarget.nextNode;
-	object.mMouseOver = params.parameter[0];
+	this.mMouseOver = params.parameter[0];
 }
 asdf_Rolloutpanel.prototype.startTimer = function(params){
-	this.mMouseOver = false;
-	this.mTimerId = window.setTimeout(this.timerCallback,300);
+	if(this.mTimerId == null){
+		this.mMouseOver = false;
+		this.mTimerId = window.setTimeout(asdf_Engine.bind(this,"timerCallback"),300);
+	}
 }
 
 asdf_Rolloutpanel.prototype.timerCallback = function(params){
-	alert("Slideup");
+	//alert("TimerCallback: Slideup element: " + this.mId + " X " + this.id);
 	if(!this.mMouseOver)
 		this.slideup();
 }
@@ -83,8 +89,7 @@ asdf_Rolloutpanel.prototype.stopAnimation = function(){
 }
 
 asdf_Rolloutpanel.prototype.checkSlide = function(params){
-	var object = params.event.currentTarget.nextNode;
-	if(!object.isOverPanel()){
+	if(!this.isOverPanel()){
 		slideup();
 	}
 }

@@ -4,11 +4,10 @@
 function onMouseOver(event){
     var object = event.currentTarget.nextNode;
     for(var i=0; i< object.mMouseOverEvents.length; i++){
-        params =new EventParameter();
         params = object.mMouseOverParams[i];
         var propagate = params.parameter.pop();
         params.event = event;
-        object.mMouseOverEvents[i].call(this,params);
+        object.mMouseOverEvents[i](params);
         checkStopCnd(propagate);
     }
 }
@@ -20,11 +19,10 @@ function onMouseOut(event){
     var object = event.currentTarget.nextNode;
     var propagate = true;
     for(var i=0; i< object.mMouseOutEvents.length; i++){
-        params = new EventParameter();
         params = object.mMouseOutParams[i];
         propagate = params.parameter.pop();
         params.event = event;
-        object.mMouseOutEvents[i].call(this, params);
+        object.mMouseOutEvents[i](params);
         checkStopCnd(propagate);
     }
     
@@ -37,11 +35,10 @@ function onMouseEnter(event){
     var object = event.currentTarget.nextNode;
     var propagate = true;
     for(var i=0; i< object.mMouseEnterEvents.length; i++){
-        params = new EventParameter();
         params = object.mMouseEnterParams[i];
         propagate = params.parameter.pop();
         params.event = event;
-        object.mMouseEnterEvents[i].call(this, params);
+        object.mMouseEnterEvents[i](params);
         checkStopCnd(propagate);
     }
     
@@ -53,11 +50,10 @@ function onMouseEnter(event){
 function onMouseClick(event){
     var object = event.currentTarget.nextNode;
     for(var i=0; i< object.mMouseClickEvents.length; i++){
-        params = new EventParameter();
         params = object.mMouseClickParams[i];
         var propagate = params.parameter.pop();
         params.event = event;
-	    object.mMouseClickEvents[i].call(this,params);
+	    object.mMouseClickEvents[i](params);
 	    checkStopCnd(propagate);
     }
 }
@@ -73,19 +69,17 @@ function onKeyPress(event){
         return ;
     }
     for(var i=0; i< object.mKeyPressEvents.length; i++){
-        params = new EventParameter();
         params = object.mKeyPressParams[i];
         var propagate = params.parameter.pop();
         params.event = event;
-        object.mKeyPressEvents[i].call(this,params);
+        object.mKeyPressEvents[i](params);
         checkStopCnd(propagate);
     }
 }
 
 function checkStopCnd(flag){
 	if(flag == null){
-		if(globals.debug > 0)
-			alert("Error : CheckPropagation get no value - EngineEvents.js");	
+		flag = true;	
 	}
 	if(!flag){ // we have to stop the propagation
 		if (event.stopPropagation) {
