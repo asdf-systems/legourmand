@@ -73,6 +73,7 @@ Use it to make something cool, have fun, and share what you've learned with othe
 }
 
 /* farben nach paulines beschreibung */
+@schwarz: #000000;
 @dunkelgrau: #282828;
 @hellblau: #eaf1f2;
 @rot: #b64830;
@@ -362,7 +363,45 @@ body {
 		margin-top: 10px;
 		background-color: @weiss;
 	}
+
+	#commentdiv {
+		input, textarea {
+			#Fonts > .Brandon > .Regular;
+			font-size: 10pt;
+			border: 0px;
+			background-color: @hellgrau;
+			color: @mittelgrau;
+			
+		}
+		padding: 25px;
+		margin-top: 10px;
+		background-color: @weiss;
+		#comment {
+			width: 576px;
+			height: 77px;
+			margin-top: 1em;
+		}
+		#author, #email, #website {
+			#Fonts > .Brandon > .Bold;
+			width: 576px/3;
+		}
+		.submitdiv {
+			margin-top: 10px;
+			margin-bottom: 10px;
+			margin-left: auto;
+			margin-right: auto;
+			text-align: center;
+			background-color: @weiss;
+			#submit {
+				#Fonts > .Brandon > .Bold;
+				position: relative;
+				color: @schwarz;
+				background-color: @weiss;
+			}
+		}
+	}
 }
+
 
 
 .hr-header {
@@ -378,7 +417,9 @@ body {
 
 	.hr-title {
 		#Fonts > .Brandon > .Bold;
+		font-size: 11pt;
 		position: relative;
+		text-transform: uppercase;
 		.aligncenter;
 		top: -12pt;
 		text-align: center;
