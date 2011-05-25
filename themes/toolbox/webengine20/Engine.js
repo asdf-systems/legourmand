@@ -103,6 +103,21 @@ asdf_Engine.checkBrowser = function(){
     return jQuery.browser;
 }
 
+asdf_Engine.initParameter(param, message, defaultValue){
+	if(param == null || param == undefined){
+		if(defaultValue != null && defaultValue != undefined){ // warning level
+			if(globals.debug > 1)
+				alert("Warning - initParameter: " + param + "\n" + message);	
+			param = defaultValue;
+		} else { // error level
+			throw("Error: - initParameter: " + param + "\n" + message)
+			param = null;
+		}
+	}
+	
+	return param;	
+}
+
 /**
  * @return cleaned path (deleted // and ./ )
  */
