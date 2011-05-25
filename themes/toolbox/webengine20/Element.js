@@ -32,6 +32,7 @@ function asdf_Element(id, parent, positionX, positionY, bgColor, width, height, 
     }
 
     this.mId = id;
+    this.mDomTreeObject = null;
     this.mParent = parent;
     if(parent.mType != null && parent.mType != undefined ){ // we got an element
     	this.mParent        = parent.mDomTreeObject; 	
@@ -41,9 +42,7 @@ function asdf_Element(id, parent, positionX, positionY, bgColor, width, height, 
     	} else {
     		if(globals.debug > 1 )
     			alert("Warning: Adding Element : " + this.mId + " as child to non container Type element: " + parent.mId);
-    	}
-	
-    	
+    	}	
     }
     
     this.mType          = "BaseElement";
@@ -85,8 +84,6 @@ function asdf_Element(id, parent, positionX, positionY, bgColor, width, height, 
         this.mZIndex = 500;
     else
         this.mZIndex = zIndex;
-           
-    this.mDomTreeObject = null;
     
 	// private:
     // Holds function Pointer

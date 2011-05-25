@@ -38,7 +38,7 @@ function asdf_Rolloutpanel(id, parent, positionX, positionY, bgColor, width , he
 	
 	this.mTimerId = null;
 	this.mTrigger = triggerElement;
-	this.mTrigger.registerOnMouseEnterEvent(this.slidedown, false);
+	this.mTrigger.registerOnMouseEnterEvent(function(){alert(this.id); this.slidedown.call(this);}, false);
 	this.mTrigger.registerOnMouseOutEvent(this.startTimer, false);
 	var params = new EventParameter();
 	params.parameter.push(true);
@@ -90,6 +90,7 @@ asdf_Rolloutpanel.prototype.checkSlide = function(params){
 }
 
 asdf_Rolloutpanel.prototype.slidedown = function(){
+  this.show();
   $(this.mDomTreeObject).slideDown(this.mAnimationSpeed, this.rollDownCallback);	
 }
 
