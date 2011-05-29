@@ -28,9 +28,9 @@ function asdf_Rolloutpanel(id, parent, positionX, positionY, bgColor, width , he
 		this.mAnimationSpeed = animationSpeed;
 		
 	this.mMouseOver = false;
-	this.registerOnMouseEnterEvent(asdf_Engine.bind(this, "enter"), false);
-	this.registerOnMouseOutEvent(asdf_Engine.bind(this, "leave"), false);
-	this.registerOnMouseOverEvent(asdf_Engine.bind(this, "enter"), false);
+	this.registerOnMouseEnterEvent(asdf_Engine.bind(this, "enter"), true);
+	this.registerOnMouseOutEvent(asdf_Engine.bind(this, "leave"), true);
+	this.registerOnMouseOverEvent(asdf_Engine.bind(this, "enter"), true);
 	
 	if(triggerElement == null || triggerElement == undefined){
 		if(globals.debug > 0)
@@ -40,12 +40,9 @@ function asdf_Rolloutpanel(id, parent, positionX, positionY, bgColor, width , he
 	
 	this.mTimerId = null;
 	this.mTrigger = triggerElement;
-	this.mTrigger.registerOnMouseEnterEvent(asdf_Engine.bind(this, "slidedown"), false);
-	this.mTrigger.registerOnMouseOutEvent(asdf_Engine.bind(this, "startTimer"), false);
-	
-	var params = new EventParameter();
-	params.parameter.push(true);
-	this.mTrigger.registerOnMouseEnterEvent(asdf_Engine.bind(this, "setMouseOver"), false, params );
+	this.mTrigger.registerOnMouseEnterEvent(asdf_Engine.bind(this, "slidedown"), true);
+	this.mTrigger.registerOnMouseOutEvent(asdf_Engine.bind(this, "startTimer"), true);
+	this.mTrigger.registerOnMouseOverEvent(asdf_Engine.bind(this, "stopTimer"), true );
 	
 	
 	return this;
@@ -55,12 +52,15 @@ function asdf_Rolloutpanel(id, parent, positionX, positionY, bgColor, width , he
 
 
 
-asdf_Rolloutpanel.prototype.enter = function(params){
+asdf_Rolloutpanel.prototype.enter = function(){
+	this.stopTimer();
+}
+
+asdf_Rolloutpanel.prototype.stopTimer = function(){
 	if(this.mTimerId != null)
 		window.clearTimeout(this.mTimerId);
 	this.mTimerId = null;
-	var object = params.event.currentTarget.nextNode;
-	object.mMouseOver = true;
+	this.mMouseOver = true;
 }
 asdf_Rolloutpanel.prototype.leave = function(params){
 	var object = params.event.currentTarget.nextNode;
@@ -75,7 +75,7 @@ asdf_Rolloutpanel.prototype.startTimer = function(params){
 	this.mMouseOver = false;
 	if(this.mTimerId == null){
 		
-		this.mTimerId = window.setTimeout(asdf_Engine.bind(this,"timerCallback"),300);
+		this.mTimerId = window.setTimeout(asdf_Engine.bind(this,"timerCallback"),100);
 	}
 }
 

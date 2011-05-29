@@ -72,8 +72,8 @@ asdf_Background.prototype.allImagesLoaded = function(){
 	}
 	
 	this.mBgImage = asdf_Engine.createDomObject(this, this.mId+ "_bgImage", "img", this.mType, this.mExtraClassCSS, sourceImage.src);
-	this.mBgImage.style.height = new Unit($(this.mDomTreeObject).height()).getValue();
-	this.mBgImage.style.width = new Unit($(this.mDomTreeObject).width()).getValue();
+	this.mBgImage.style.height = this.mHeight.getValue();
+	this.mBgImage.style.width = this.mWidth.getValue();
 	this.mBgImage.style.left = this.mPosX.getValue();
 	this.mBgImage.style.top = this.mPosY.getValue();
 	

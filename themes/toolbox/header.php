@@ -41,8 +41,18 @@
 <!-- jquery.js -->
 <script src="<?php bloginfo( 'stylesheet_directory' ) ; ?>/jquery.js" type="text/javascript"></script>
 <script src="<?php bloginfo( 'stylesheet_directory' ) ; ?>/jquery-ui.js" type="text/javascript"></script>
-<script src="<?php bloginfo( 'stylesheet_directory' ) ; ?>/hackStuff.js" type="text/javascript"></script>	
-<script src="<?php bloginfo( 'stylesheet_directory' ) ; ?>/Rolloutpanel.js" type="text/javascript"></script>
+<script type="text/javascript" src="<?php bloginfo( 'stylesheet_directory' ) ; ?>/webengine20/Engine.js"></script>
+<script type="text/javascript" src="<?php bloginfo( 'stylesheet_directory' ) ; ?>/webengine20/EngineEvents.js"></script>
+<script type="text/javascript" src="<?php bloginfo( 'stylesheet_directory' ) ; ?>/webengine20/EventParameter.js"></script>
+<script type="text/javascript" src="<?php bloginfo( 'stylesheet_directory' ) ; ?>/webengine20/EngineGlobals.js"></script>
+<script type="text/javascript" src="<?php bloginfo( 'stylesheet_directory' ) ; ?>/webengine20/Unit.js"></script>
+
+<script type="text/javascript" src="<?php bloginfo( 'stylesheet_directory' ) ; ?>/webengine20/Element.js"></script>
+<script type="text/javascript" src="<?php bloginfo( 'stylesheet_directory' ) ; ?>/webengine20/Panel.js"></script>
+<script type="text/javascript" src="<?php bloginfo( 'stylesheet_directory' ) ; ?>/webengine20/Rolloutpanel.js"></script>
+<script type="text/javascript" src="<?php bloginfo( 'stylesheet_directory' ) ; ?>/webengine20/Background.js"></script>
+
+<script type="text/javascript" src="<?php bloginfo( 'stylesheet_directory' ) ; ?>/headerFunctions.js"></script>
 
 <?php if ( is_singular() && get_option( 'thread_comments' ) ) wp_enqueue_script( 'comment-reply' ); ?>
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
@@ -79,15 +89,7 @@
 					$categorieNames = Array("News - Allgemein", "Essen & Trinken", "Reise", "Hotels", "Social Media", "Termine", "Le Gourmand TV");
 					$count = 0;
 					foreach($pages as $page) {
-				?>	
-						<div id= "menu_button_<?=$page;?>" class="generic_menu_button menu_button_<?=$page;?>">
-							<a href="">
-								<img src="<?php bloginfo('stylesheet_directory');?>/media/<?=$page;?>_inaktiv.png" class="inactive">
-								<img src="<?php bloginfo('stylesheet_directory');?>/media/<?=$page;?>_aktiv.png" class="active">
-							</a>
-						</div>
-						<script>
-					<?php
+						
 						// Query all subcategories for the current rollout
 						$args = array('hierarchical' => false, 'parent' => get_cat_id($categorieNames[$count]) );
 						$categories = get_categories($args);
@@ -96,60 +98,19 @@
 						foreach($categories as $categorie){
 							array_push($categorieNames , $categorie->cat_name);	
 						}	
-					?>
+				?>
 					
-						// Position the Rollout
-						$button = $(".menu_button_<?=$page;?>");
-						var buttonElement = new asdf_Element("menuElement_<?=$page?>", $("#main_navi").get(0), $button.position().left, $button.position().top, "transparent", $button.width(), $button.height(), "absolute", "", true, 800);
-						var rollout =  new asdf_Rolloutpanel("rollout", $("#mainBody").get(0), $button.position().left, $button.position().top, "green", 200, 500, "absolute", "Rollout_<?=$page?>", true, 500, 200, buttonElement);
-						var imgArray = new Array("<?php bloginfo('stylesheet_directory');?>/media/<?=$page?>_rollout_lang.png", "<?php bloginfo('stylesheet_directory');?>/media/<?=$page?>_rollout_kurz.png");
-						// ONLY WORKING WITH ABSOLUTE VALUES for width and Height
-						var bg = new asdf_Background("bg", rollout, $button.position().left, $button.position().top, "red", 200, 500, "absolute", "testclass", true, 800, "stretch",imgArray);
-						bg.show();
+						<div id= "menu_button_<?=$page;?>" class="generic_menu_button menu_button_<?=$page;?>">
+							<a href="">
+								<img src="<?php bloginfo('stylesheet_directory');?>/media/<?=$page;?>_inaktiv.png" class="inactive" onLoad="buttonLoaded('<?=$page;?>', '<?php bloginfo('stylesheet_directory');?>');">
+								<img src="<?php bloginfo('stylesheet_directory');?>/media/<?=$page;?>_aktiv.png" class="active">
+							</a>
+						</div>
+						<script>
+					
+					
+						//loadRolloutpanel("<?=$page;?>", "<?php bloginfo('stylesheet_directory');?>");
 						
-
-					</script>
-
-					<img id = "<?=$page;?>_bgImage" src="<?php bloginfo('stylesheet_directory');?>/media/hotels_rollout_lang.png">	
-					<script>
-					var image = $("<?=$page;?>_bgImage").get(0);
-					alert(image.id)
-					new RollOutPanel($("main_navi").get(0), x.getValue(), y.getValue(), <?=json_encode($categorieNames);?>,"menu_rollout_<?=$page;?>", 5, 5, image, 5, 200, mouseOutFunctionCallback,"generic_menu_rollout menu_rollout_<?=$page;?>");
-					
-					
-				
-						
-					
-						// Hover Functions		
-						$(".menu_button_<?=$page;?>").hover(
-							function(e) {
-								// This bezieht sich in diese falle auf den menu_button -> jQuery Doku
-								/*var $rollout = $(".menu_rollout_<?=$page;?>");
-								var $rollouts = $(".generic_menu_rollout");
-								$rollouts.each(
-									function(){
-										if(this.id != $rollout.get(0).id){
-											//Stops all animations, end jump to end of animation
-											$(this).stop(true,true); 	
-											$(this).hide();
-										}
-									}
-								)*/
-
-
-								$rollout.slideDown("slow");
-
-								
-							},
-							function(e) {
-								var $rollout = $(".menu_rollout_<?=$page;?>");
-								if(!mouseOverPanel(e,$rollout)){
-									$rollout.hide();
-								}
-							}		
-
-							
-						);
 					</script>
 				<?php 
 					}
