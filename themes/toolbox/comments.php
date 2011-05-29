@@ -131,12 +131,18 @@ endif; // ends check for toolbox_comment()
 	<?php /*comment_form();*/ ?>
 	<form action="<?php echo get_option('siteurl'); ?>/wp-comments-post.php" method="post" id="commentform">
 
-	<div><textarea name="comment" id="comment" tabindex="4" onFocus="clearText(this)" onBlur="clearText(this)" ></textarea></div>
-	<div><input type="text" name="author" id="author" value="" size="22" tabindex="1" onFocus="clearText(this)" onBlur="clearText(this)" value="NAME (erforderlich)" />
-	<input type="text" name="email" id="email" value="" size="22" tabindex="2"  value="EMAIL (wird nicht publiziert)"/>
-	<input type="text" name="website" id="website" value="" size="22" tabindex="3"  value="WEBSITE"/></div>
+	<div>
+		<textarea name="comment" id="comment" tabindex="4" onFocus="clearText(this)" onBlur="clearText(this)" ></textarea>
+	</div>
+	<div>
+		<input type="text" name="author" id="author" value="" size="22" tabindex="1" onFocus="clearText(this)" onBlur="clearText(this)" value="NAME (erforderlich)">
+		<input type="text" name="email" id="email" value="" size="22" tabindex="2"  value="EMAIL (wird nicht publiziert)">
+		<input type="text" name="website" id="website" value="" size="22" tabindex="3"  value="WEBSITE">
+	</div>
 
-	<div class="submitdiv"><input name="submit" type="submit" id="submit" tabindex="5" value="KOMMENTAR SENDEN" /></div>
+	<div class="submitdiv">
+	<img src="<?php echo bloginfo('stylesheet_directory');?>/media/pfeil_schwarz_comment.png"><input name="submit" type="submit" id="submit" tabindex="5" value="KOMMENTAR SENDEN" />
+	</div>
 	<?php comment_id_fields(); ?>
 
 	<?php do_action('comment_form', $post->ID); ?>

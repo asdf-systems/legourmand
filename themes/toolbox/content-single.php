@@ -14,12 +14,13 @@
 		<h1 class="entry-title"><?php the_title(); ?></h1>
 
 		<div class="entry-meta">
+		von <?=get_the_author();?> am <?=get_the_date();?>, mit <?=comments_number("keinem Kommentar", "einem Kommentar", "%s Kommentaren");?>
 			<?php
-				echo "Permalink: ".get_permalink();
-				echo "Date(c): ".get_the_date( 'c' );
+				/*echo "Permalink: ".get_permalink();
+				echo "Date(std-format): ".get_the_date( 'c' );
 				echo "Date: ".get_the_date();
 				echo "Authorurl: ".get_author_posts_url( get_the_author_meta( 'ID' ) );
-				echo "Author: ".get_the_author();
+				echo "Author: ".get_the_author();*/
 			?>
 		</div><!-- .entry-meta -->
 	</header><!-- .entry-header -->
