@@ -103,7 +103,7 @@ asdf_Engine.checkBrowser = function(){
     return jQuery.browser;
 }
 
-asdf_Engine.initParameter(param, message, defaultValue){
+asdf_Engine.initParameter = function (param, message, defaultValue){
 	if(param == null || param == undefined){
 		if(defaultValue != null && defaultValue != undefined){ // warning level
 			if(globals.debug > 1)
@@ -158,4 +158,79 @@ asdf_Engine.extend = function(subClass, baseClass) {
 
 asdf_Engine.bind = function(toObject, methodName){
     return function(params){toObject[methodName](params)}
+}
+
+/**
+ * Check if one string is substring oof another
+ * @param   small   string  string that is maybe in the other one
+ * @param   big     string  string that maybe contaisn the other one
+ * @return true if big contains small, false else
+ */
+asdf_Engine.isSubstringOf = function(small ,big){
+    //! \todop check
+    var subLen = small.length;
+    var flag = false;
+    for(var i=0; i < ( big.length-subLen ); i++){
+        if(small == big.substring(i, i+subLen)){
+            flag = true;
+            break;
+        }
+            
+    }
+    
+    return flag;
+}
+
+/**
+ * removes an elemnt at index from array
+ * @return array without element
+ */
+asdf_Engine.removeElementFromArray = function(index, array){
+    var ret = new Array();
+    for(var i=0; i < array.length ;i++){
+        if(i!=index)
+            ret[ret.length] = array[i];
+    }
+    return ret;
+}
+
+/**
+ * removes an elemnt at index from array
+ * @return array without element
+ */
+asdf_Engine.removeElementFromString = function(index, string){
+    var ret = "";
+    for(var i=0; i < string.length ;i++){
+        if(i!=index)
+            ret+= string[i];
+    }
+    return ret;
+}
+
+/**
+ * trims whitespaces of a string start and end
+ * @param string string to trim
+ * @return trimmed string
+ */
+asdf_Engine.trimString = function(string){
+     if(string == null || string == undefined){
+        if(globals.debug > 0)
+            alert("Error: trimString(), String is undefined ");
+        return string;
+     }
+     
+        
+     return string.replace(/^\s*/, "").replace(/\s*$/, "");
+}
+
+/**
+ * check if an element is part of an Array
+ */
+asdf_Engine.isElementOf = function(element, array){
+    for(var i=0; i < array.length; i++){
+        if(array[i] == element)
+            return true;
+    }
+    
+    return false;
 }

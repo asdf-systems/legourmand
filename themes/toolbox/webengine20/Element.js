@@ -14,12 +14,12 @@ function asdf_Element(id, parent, positionX, positionY, bgColor, width, height, 
     }
 
     if(width == null || width == "")
-        this.mWidth = new Unit(0);
+        this.mWidth = new Unit("auto");
     else 
         this.mWidth = new Unit(width);
 
     if(height == null || height == "")
-        this.mHeight = new Unit(0);
+        this.mHeight = new Unit("auto");
     else 
         this.mHeight = new Unit(height);   
     

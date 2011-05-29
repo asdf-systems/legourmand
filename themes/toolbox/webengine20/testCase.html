@@ -10,6 +10,7 @@
 	<script type="text/javascript" src="Element.js"></script>
 	<script type="text/javascript" src="Panel.js"></script>
 	<script type="text/javascript" src="Rolloutpanel.js"></script>
+	<script type="text/javascript" src="Background.js"></script>
 	
 	<script type="text/javascript">
 		function load(){
@@ -30,6 +31,9 @@
 			var rElem2 = new asdf_Element("buttonr2", rollout, 10, 60, "red", 150, 30, "absolute", "testclass", true, 600);
 			rElem1.show();
 			rElem2.show();
+			var imgArray = new Array("../media/essentrinken_rollout_kurz.png", "../media/essentrinken_rollout_lang.png");
+			var bg = new asdf_Background("bg", rollout, 10, 60, "red", 200, 500, "absolute", "testclass", true, 800, "stretch",imgArray);
+			bg.show();
 			
 		}
 		

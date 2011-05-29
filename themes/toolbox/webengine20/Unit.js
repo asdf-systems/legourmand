@@ -36,7 +36,10 @@ function Unit(valueX,valueY){
  }
  
  Unit.prototype.getValue = function(){
- 	return (this.mValue + "" + this.mUnit);
+	 if(this.mValue != "auto")
+		return (this.mValue + "" + this.mUnit);
+	 else 
+		return "auto";
  }
  
  
