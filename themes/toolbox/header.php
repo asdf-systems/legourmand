@@ -79,14 +79,14 @@
 					$categorieNames = Array("News - Allgemein", "Essen & Trinken", "Reise", "Hotels", "Social Media", "Termine", "Le Gourmand TV");
 					$count = 0;
 					foreach($pages as $page) {
-										?>	
-					<div id= "menu_button_<?=$page;?>" class="generic_menu_button menu_button_<?=$page;?>">
-						<a href="">
-							<img src="<?php bloginfo('stylesheet_directory');?>/media/<?=$page;?>_inaktiv.png" class="inactive">
-							<img src="<?php bloginfo('stylesheet_directory');?>/media/<?=$page;?>_aktiv.png" class="active">
-						</a>
-					</div>
-					<script>
+				?>	
+						<div id= "menu_button_<?=$page;?>" class="generic_menu_button menu_button_<?=$page;?>">
+							<a href="">
+								<img src="<?php bloginfo('stylesheet_directory');?>/media/<?=$page;?>_inaktiv.png" class="inactive">
+								<img src="<?php bloginfo('stylesheet_directory');?>/media/<?=$page;?>_aktiv.png" class="active">
+							</a>
+						</div>
+						<script>
 					<?php
 						// Query all subcategories for the current rollout
 						$args = array('hierarchical' => false, 'parent' => get_cat_id($categorieNames[$count]) );
@@ -100,17 +100,13 @@
 					
 						// Position the Rollout
 						$button = $(".menu_button_<?=$page;?>");
-						var $rollout = $(".menu_rollout_<?=$page;?>");
+						var buttonElement = new asdf_Element("menuElement_<?=$page?>", $("#main_navi").get(0), $button.position().left, $button.position().top, "transparent", $button.width(), $button.height(), "absolute", "", true, 800);
+						var rollout =  new asdf_Rolloutpanel("rollout", $("#mainBody").get(0), $button.position().left, $button.position().top, "green", 200, 500, "absolute", "Rollout_<?=$page?>", true, 500, 200, buttonElement);
+						var imgArray = new Array("<?php bloginfo('stylesheet_directory');?>/media/<?=$page?>_rollout_lang.png", "<?php bloginfo('stylesheet_directory');?>/media/<?=$page?>_rollout_kurz.png");
+						// ONLY WORKING WITH ABSOLUTE VALUES for width and Height
+						var bg = new asdf_Background("bg", rollout, $button.position().left, $button.position().top, "red", 200, 500, "absolute", "testclass", true, 800, "stretch",imgArray);
+						bg.show();
 						
-						
-						var x = new Unit($button.css("left"));
-						var y = new Unit($button.css("top"));
-						var wx = new Unit($button.css("width"));
-						var wy = new Unit($button.css("height"));
-						y.add(wy);
-						x.add(20);
-						//$rollout.css("left",x.getValue() );
-						//$rollout.css("top",y.getValue() );
 
 					</script>
 
