@@ -72,16 +72,19 @@ asdf_Rolloutpanel.prototype.setMouseOver = function(params){
 	this.mMouseOver = params.parameter[0];
 }
 asdf_Rolloutpanel.prototype.startTimer = function(params){
+	this.mMouseOver = false;
 	if(this.mTimerId == null){
-		this.mMouseOver = false;
+		
 		this.mTimerId = window.setTimeout(asdf_Engine.bind(this,"timerCallback"),300);
 	}
 }
 
 asdf_Rolloutpanel.prototype.timerCallback = function(params){
+	
 	//alert("TimerCallback: Slideup element: " + this.mId + " X " + this.id);
-	if(!this.mMouseOver)
-		this.slideup();
+	this.mTimerId = null;
+	this.slideup();
+	
 }
 asdf_Rolloutpanel.prototype.stopAnimation = function(){
 	// ! TBD
