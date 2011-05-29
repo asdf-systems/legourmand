@@ -51,6 +51,7 @@
 <script type="text/javascript" src="<?php bloginfo( 'stylesheet_directory' ) ; ?>/webengine20/Panel.js"></script>
 <script type="text/javascript" src="<?php bloginfo( 'stylesheet_directory' ) ; ?>/webengine20/Rolloutpanel.js"></script>
 <script type="text/javascript" src="<?php bloginfo( 'stylesheet_directory' ) ; ?>/webengine20/Background.js"></script>
+<script type="text/javascript" src="<?php bloginfo( 'stylesheet_directory' ) ; ?>/webengine20/Text.js"></script>
 
 <script type="text/javascript" src="<?php bloginfo( 'stylesheet_directory' ) ; ?>/headerFunctions.js"></script>
 
@@ -97,19 +98,17 @@
 						$categorieNames = array();						
 						foreach($categories as $categorie){
 							array_push($categorieNames , $categorie->cat_name);	
-						}	
+						}
+						//var_dump($categorieNames);
 				?>
-					
 						<div id= "menu_button_<?=$page;?>" class="generic_menu_button menu_button_<?=$page;?>">
 							<a href="">
-								<img src="<?php bloginfo('stylesheet_directory');?>/media/<?=$page;?>_inaktiv.png" class="inactive" onLoad="buttonLoaded('<?=$page;?>', '<?php bloginfo('stylesheet_directory');?>');">
+								<!-- onload function calls also the loadRolloaut Function -->
+								<img src="<?php bloginfo('stylesheet_directory');?>/media/<?=$page;?>_inaktiv.png" class="inactive" onLoad="buttonLoaded('<?=$page;?>', '<?php bloginfo('stylesheet_directory');?>', <?=str_replace("\"", "'",json_encode($categorieNames));?>);">
 								<img src="<?php bloginfo('stylesheet_directory');?>/media/<?=$page;?>_aktiv.png" class="active">
 							</a>
 						</div>
 						<script>
-					
-					
-						//loadRolloutpanel("<?=$page;?>", "<?php bloginfo('stylesheet_directory');?>");
 						
 					</script>
 				<?php 

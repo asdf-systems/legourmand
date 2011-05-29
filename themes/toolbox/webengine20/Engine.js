@@ -110,6 +110,7 @@ asdf_Engine.initParameter = function (param, message, defaultValue){
 				alert("Warning - initParameter: " + param + "\n" + message);	
 			param = defaultValue;
 		} else { // error level
+			alert("Error");
 			throw("Error: - initParameter: " + param + "\n" + message)
 			param = null;
 		}
@@ -233,4 +234,21 @@ asdf_Engine.isElementOf = function(element, array){
     }
     
     return false;
+}
+
+asdf_Engine.createElementFromHTML = function(object, parent){
+	var elem = new asdf_Element(object.id + "_elem", parent, $(object).position().left, $(object).position().top, object.style.backgroundColor, $(object).width() , $(object).height(), object.style.position, "", true, object.zIndex);
+	elem.mDomTreeObject = object;
+	$(elem.mDomTreeObject).mouseover(onMouseOver);
+	$(elem.mDomTreeObject).mouseout(onMouseOut);
+	$(elem.mDomTreeObject).click(onMouseClick);
+	$(elem.mDomTreeObject).mouseenter(onMouseEnter);
+	elem.mDomTreeObject.style.position = elem.mPositionType;
+	elem.setPosition(elem.mPosX, elem.mPosY);
+	elem.setSize(elem.mWidth, elem.mHeight);
+	elem.mDomTreeObject.style.background = elem.mBgColor;
+	elem.mDomTreeObject.style.zIndex = elem.mZIndex;
+	elem.mDomTreeObject.nextNode = elem;
+	
+	return elem;
 }
