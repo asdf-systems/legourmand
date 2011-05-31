@@ -13,9 +13,16 @@
 	<header class="entry-header">
 		<div class="hr-header">
 			<hr>
-			<div class="hr-title"><span><?=$firstcat->cat_name;?></span></div>
+			<div class="hr-title"><span>
+				<?  if(!is_page()): ?>
+					<a href="<?=get_category_link($firstcat->cat_ID);?>"><?=$firstcat->cat_name;?></a>
+				<? else: ?>
+					<a href="<?=get_page_link();?>"><?=the_title();?></a>
+				<? endif; ?>
+			</span></div>
 		</div>
-		<h1 class="entry-title"><?php the_title(); ?></h1>
+		<? if(!is_page()):?>
+		<h1 class="entry-title"><a href="<?=get_permalink();?>"><?php the_title(); ?></a></h1>
 
 		<div class="entry-meta">
 		von <?=get_the_author();?> am <?=get_the_date();?>, mit <?=comments_number("keinem Kommentar", "einem Kommentar", "% Kommentaren");?>
@@ -27,6 +34,7 @@
 				echo "Author: ".get_the_author();*/
 			?>
 		</div><!-- .entry-meta -->
+		<? endif;?>
 	</header><!-- .entry-header -->
 
 	<div class="entry-content">

@@ -59,6 +59,7 @@ endif; // ends check for toolbox_comment()
 
 ?>
 
+	<?php if ( have_comments() ) : ?>
 	<div id="comments">
 		<div class="hr-header">
 			<hr>
@@ -73,7 +74,6 @@ endif; // ends check for toolbox_comment()
 
 	<?php // You can start editing here -- including this comment! ?>
 
-	<?php if ( have_comments() ) : ?>
 		<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : // are there comments to navigate through ?>
 		<nav id="comment-nav-above">
 			<h1 class="section-heading"><?php _e( 'Comment navigation', 'toolbox' ); ?></h1>
@@ -94,25 +94,6 @@ endif; // ends check for toolbox_comment()
 		</nav>
 		<?php endif; // check for comment navigation ?>
 
-	<?php else : // this is displayed if there are no comments so far ?>
-
-		<?php if ( comments_open() ) : // If comments are open, but there are no comments ?>
-		<p class="nocomments"><?php _e( 'No comments yet.', 'toolbox' ); ?></p>
-		<?php else : // or, if we don't have comments:
-
-			/* If there are no comments and comments are closed,
-			 * let's leave a little note, shall we?
-			 * But only on posts! We don't want the note on pages.
-			 */
-			if ( ! comments_open() && ! is_page() ) :
-			?>
-			<p class="nocomments"><?php _e( 'Comments are closed.', 'toolbox' ); ?></p>
-			<?php endif; // end ! comments_open() && ! is_page() ?>
-
-
-		<?php endif; ?>
-
-	<?php endif; ?>
 	</div>
 	
 	
@@ -143,3 +124,4 @@ endif; // ends check for toolbox_comment()
 	</form>
 
 </div><!-- #comments -->
+	<?php endif; ?>
