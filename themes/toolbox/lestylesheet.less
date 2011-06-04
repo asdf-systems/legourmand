@@ -738,17 +738,46 @@ article.comment {
 }
 
 #social_footer {
-	* {
-		display: inline;
+	display: table;
+	width: 100%;
+	vertical-align: middle;
+	/* * {
+		display: inline-block;
+	}*/
+	> div {
+		vertical-align: middle;
+		display:table-cell;
+		* {
+			vertical-align: middle;
+			display:inline-block;
+		}
 	}
+	font {
+		position:relative;
+		top: 5px;
+	}
+	font-size: 10px;
 	#twitter_div  {
+		//.alignleft;
+		float: left;
 		> div {
 			#main_navi > .generic_menu_point;
 		}
 	}
 	#facebook_div {
+		clear:both;
+		margin-left: auto;
+		margin-right: auto;
+		> iframe {
+			width:90px;
+			height:20px;
+		}
 		> div {
 			#main_navi > .generic_menu_point;
 		}
+	}
+	#flattr_div  {
+		//.alignright;
+		float: right;
 	}
 }

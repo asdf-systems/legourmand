@@ -48,7 +48,7 @@
 			<img class="inactive" src="<?php bloginfo( 'stylesheet_directory' ) ; ?>/media/facebook_klein_inaktiv.png">
 			<img class="active" src="<?php bloginfo( 'stylesheet_directory' ) ; ?>/media/facebook_klein_aktiv.png">
 		</div>
-		<iframe src="http://www.facebook.com/plugins/like.php?href=<? the_permalink(); ?>&amp;layout=standard&amp;show-faces=true&amp;width=470&amp;action=like&amp;colorscheme=light" scrolling="no" frameborder="0" allowTransparency="true" style="border:none; overflow:hidden; width:470px; height:60px"></iframe>
+		<iframe src="http://www.facebook.com/plugins/like.php?href=<? the_permalink(); ?>&layout=button_count&show-faces=true&width=470&action=like&colorscheme=light" scrolling="no" frameborder="0" allowTransparency="true" style="border:none; overflow:hidden"></iframe>
 	    </div>
 	    <div id="flattr_div">
 		<?php the_flattr_permalink() ?>
