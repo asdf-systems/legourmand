@@ -111,8 +111,9 @@ body {
 	float: left;
 	width: 636px;
 }
+
 #secondary {
-	float: left;
+	float: right;
 	width: 313px;
 }
 #content {
@@ -121,7 +122,6 @@ body {
 #main .widget-area {
 	float: right;
 	overflow: hidden;
-	width: 220px;
 }
 
 /* Increase the size of the content area for templates without sidebars */
@@ -345,7 +345,6 @@ body {
 	.post, .page {
 		background-color: @weiss;
 		padding: 25px;
-		margin-top: 25px;
 		overflow: hidden;
 		.entry-title {
 			#Fonts > .Droid > .Italic;
@@ -573,6 +572,8 @@ body {
 }
 
 /* Aside Posts */
+
+
 .format-gallery .gallery-thumb {
 	float: left;
 	margin-right: 1em;
@@ -693,12 +694,32 @@ article.comment {
 
 .widget {
 	display: block;
-}
-.widget-area .widget_search {
-	overflow: hidden;
-}
-.widget-area .widget_search input {
-	float: left;
+	background-color: @weiss;
+	@lr: 25px;
+	@tb: 10px;
+	padding-left: @lr;
+	padding-right: @lr;
+	padding-top: @tb;
+	padding-bottom: @tb;
+
+	.widget-title {
+		color: @blau;
+		#Fonts > .Brandon > .Bold;
+		font-size: 11pt;
+		text-transform: uppercase;
+	}
+	a:link, a:visited, a:active, a:hover {
+		#Fonts > .Droid > .Italic;
+		color: @schwarz;
+		text-decoration: none;
+	}
+
+	.widget_search {
+		overflow: hidden;
+	}
+	.widget_search input {
+		float: left;
+	}
 }
 
 
