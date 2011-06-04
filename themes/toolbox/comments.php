@@ -59,18 +59,13 @@ endif; // ends check for toolbox_comment()
 
 ?>
 
-	<?php if ( have_comments() ) : ?>
-	<div id="comments">
-		<div class="hr-header">
-			<hr>
-			<div class="hr-title"><span><?php _e('Comments', 'toolbox');?></span></div>
-		</div>
-	<?php if ( post_password_required() ) : ?>
-		<div class="nopassword"><?php _e( 'This post is password protected. Enter the password to view any comments.', 'toolbox' ); ?></div>
-	</div><!-- .comments -->
-	<?php return;
-		endif;
-	?>
+	<?php if ( comments_open() ) : ?>
+		<?php if(have_comments()) :?>
+			<div id="comments">
+				<div class="hr-header">
+					<hr>
+					<div class="hr-title"><span><?php _e('Comments', 'toolbox');?></span></div>
+				</div>
 
 	<?php // You can start editing here -- including this comment! ?>
 
@@ -95,6 +90,7 @@ endif; // ends check for toolbox_comment()
 		<?php endif; // check for comment navigation ?>
 
 	</div>
+	<?php endif; // have_comments() ?>
 	
 	
 	<div id="commentdiv">
