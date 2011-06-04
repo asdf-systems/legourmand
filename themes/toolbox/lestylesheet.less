@@ -701,6 +701,7 @@ article.comment {
 	padding-right: @lr;
 	padding-top: @tb;
 	padding-bottom: @tb;
+	margin-bottom: 10px;
 
 	.widget-title {
 		color: @blau;
@@ -708,10 +709,14 @@ article.comment {
 		font-size: 11pt;
 		text-transform: uppercase;
 	}
-	a:link, a:visited, a:active, a:hover {
-		#Fonts > .Droid > .Italic;
-		color: @schwarz;
-		text-decoration: none;
+
+	.tagcloud {
+		a:link, a:visited, a:active, a:hover {
+			#Fonts > .Droid > .Italic;
+			color: @schwarz;
+			text-decoration: none;
+		}
+	}
 	}
 
 	.widget_search {
