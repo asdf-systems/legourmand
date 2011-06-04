@@ -92,3 +92,24 @@ function toolbox_widgets_init() {
 	) );	
 }
 add_action( 'init', 'toolbox_widgets_init' );
+
+/* begin excerpt customization */
+function new_excerpt_more($more) {
+       global $post;
+	return ' [...] <a class="more-link" href="'. get_permalink($post->ID) . '">WEITERLESEN</a>';
+}
+add_filter('excerpt_more', 'new_excerpt_more');
+
+function new_excerpt_length($length) {
+	$visible = 20;
+	$cutaway = 15;
+	var_dump(has_post_thumbnail(get_the_ID()));
+	var_dump(get_the_ID());
+	if (has_post_thumbnail(get_the_ID())) {
+		$visible -= $cutaway;
+	}
+	return $visible;
+}
+add_filter('excerpt_length', 'new_excerpt_length');
+/* end excerpt customization */
+

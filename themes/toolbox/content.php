@@ -21,6 +21,9 @@
 				<? endif; ?>
 			</span></div>
 		</div>
+		<?php if ( is_home() ) : ?>
+			<?php the_post_thumbnail('thumbnail', 'class=thumbnail'); ?>
+		<?php endif; ?>
 		<? if(!is_page()):?>
 		<h1 class="entry-title"><a href="<?=get_permalink();?>"><?php the_title(); ?></a></h1>
 
@@ -38,7 +41,13 @@
 	</header><!-- .entry-header -->
 
 	<div class="entry-content">
-		<?php the_content(); ?>
+		<?php 
+			if (is_home() ) {
+				the_excerpt();
+			} else {
+				the_content();
+			}
+		?>
 	</div><!-- .entry-content -->
 
         <footer class="entry-meta">

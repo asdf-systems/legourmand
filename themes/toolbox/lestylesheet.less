@@ -496,6 +496,9 @@ body {
 /* main page */
 /** posts **/
 .thumbnail {
+	margin-top: 10px;
+	width:100%;
+	height:auto;
 }
 .home .entry-cat {
 	
@@ -539,35 +542,24 @@ body {
 	top: 388px + 2*5px;
 }
 .home #main .post {
+	#content > .post;
 	display: block;
 	overflow: hidden;
 	width: 313px - 2 * 30px;
 	height: 388px - 2 * 30px;
 	padding: 30px;
-	/*margin-left: 3px;
-	margin-right: 3px;
-	margin-top: 5px;
-	margin-bottom: 5px;
-	border: 0px;*/
-	background-color: white;
-	color: @mittelgrau;
-	a {
-		color: @mittelgrau;
+	.entry-title {
+		font-size: 18px;
 	}
-	h1 {
-		color: @rot;
-		a {
-			color: @rot;
-		}
-	}
-	.more-link {
-		color: @blau;
-	}
+
 	.entry-content {
 		img {
 			display: none;
 		}
 		display: block;
+	}
+	.entry-meta {
+		display: none;
 	}
 }
 
