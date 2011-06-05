@@ -745,7 +745,6 @@ article.comment {
 
 /* =Widgets
 -------------------------------------------------------------- */
-
 .widget {
 	display: block;
 	background-color: @weiss;
@@ -756,6 +755,10 @@ article.comment {
 	padding-top: @tb;
 	padding-bottom: @tb;
 	margin-bottom: 10px;
+
+	input {
+		border: 0;
+	}
 
 	.widget-title {
 		color: @blau;
@@ -806,8 +809,23 @@ article.comment {
 			}
 		}
 	}
+	.asdf_archive {
+		color: @hellgrau;
+		select {
+			#Fonts > .Brandon > .Bold;
+			font-size: 12pt;
+			color: @dunkelgrau;
+			border: none;
+			background-color: @mittelgrau;
+			width: 100%;
+			
+		}
+	}
 
-	.widget_archive {
+	.asdf_most_recent {
+	}
+
+	/*.widget_archive {
 		select {
 			#Fonts > .Brandon > .Bold;
 			font-size: 12pt;
@@ -817,7 +835,7 @@ article.comment {
 			width: 100%;
 			
 		}
-	}
+	}*/
 
 	.widget_search {
 		overflow: hidden;
