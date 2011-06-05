@@ -101,12 +101,10 @@ function new_excerpt_more($more) {
 add_filter('excerpt_more', 'new_excerpt_more');
 
 function new_excerpt_length($length) {
-	$visible = 20;
-	$cutaway = 15;
-	var_dump(has_post_thumbnail(get_the_ID()));
-	var_dump(get_the_ID());
-	if (has_post_thumbnail(get_the_ID())) {
-		$visible -= $cutaway;
+	$visible = 6;
+	$addition = 30;
+	if (null == get_the_post_thumbnail()) { // no thumbnail -> more text
+		$visible += $addition;
 	}
 	return $visible;
 }
