@@ -300,23 +300,29 @@ body {
 
 
 #top_navi {
-	#Fonts > .Brandon > .Regular;
+	#Fonts > .Brandon > .Bold;
+	a, a:link, a:active, a:visited, a:hover {
+		color: @mittelgrau;
+		text-decoration: none;
+		text-transform: uppercase;
+		font-size: 8pt;
+	}
 	ul {
 		position: relative;
 		float: right;
 		list-style-type: none;
 		li {
 			position: absolute;
-			top: -7px;
+			top: -5px;
 		}
 		// Mediadaten
 		#menu-item-4593 {
-			left: -185px;
+			left: -200px;
 			width: 100px;
 		}
 		// Impressum
 		#menu-item-4594 {
-			left: -100px;
+			left: -110px;
 		}
 		//Vita
 		#menu-item-4635 {
@@ -694,6 +700,13 @@ img.alignright {
 #search {
 	float: right;
 	margin-left: 2em;
+	padding-left: 0px;
+	padding-right: 0px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	height: 1em;
+	margin-top: 5px;
+	margin-bottom: 5px;
 }
 #searchform {
 	label {
@@ -701,7 +714,7 @@ img.alignright {
 	}
 	input#searchinput {
 		#Fonts > .Brandon > .Regular;
-		height: 30px;
+		height: 1em;
 		width: 180px;
 		border: 0;
 		/*background-image: url('media/pfeil_hellgrau_suche.png');
