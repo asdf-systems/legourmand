@@ -370,6 +370,7 @@ body {
 		background-color: @weiss;
 		padding: 25px;
 		overflow: hidden;
+		margin-bottom: 10px;
 		.entry-title {
 			#Fonts > .Droid > .Italic;
 			color: @rot;
@@ -380,6 +381,7 @@ body {
 			}
 		}
 		.entry-content {
+			overflow: hidden;
 			#Fonts > .Brandon > .Regular;
 			font-size: 12pt;
 			strong {
@@ -1012,5 +1014,14 @@ article.comment {
 	#flattr_div  {
 		//.alignright;
 		float: right;
+	}
+}
+
+#site-generator {
+	right: 2em;
+	color: @mittelgrau;
+	a, a:active, a:hover, a:link, a:visited {
+		color: @blau;
+		text-decoration: underline;
 	}
 }
