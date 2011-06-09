@@ -8,14 +8,16 @@
 	</div><!-- #main -->
 
 	<footer id="colophon" role="contentinfo">
-		<aside id="meta" class="widget">
+		<!--<aside id="meta" class="widget">
 			<h1 class="widget-title"><?php _e( 'Meta', 'toolbox' ); ?></h1>
 			<ul>
 				<?php wp_register(); ?>
 				<aside><?php wp_loginout(); ?></aside>
-				<?php wp_meta(); ?>
+				<?php 
+					//wp_meta(); 
+				?>
 			</ul>
-		</aside>
+		</aside>//-->
 			<div id="site-generator">
 				<a href="http://wordpress.org/" rel="generator">Proudly powered by WordPress</a><span class="sep"> | </span>
 				<font>Theme LeGourmand by <a href="http://www.asdf-systems.de" rel="designer">asdf-systems</a></font>

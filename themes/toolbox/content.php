@@ -5,46 +5,76 @@
  */
 ?>
 
+<?php
+	$cats = get_the_category(); // Get all categories
+	$firstcat = $cats[0]; // First category
+?>
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<header class="entry-header">
+		<div class="hr-header">
+			<hr>
+			<div class="hr-title"><span>
+				<?  if(!is_page()): ?>
+					<a href="<?=get_category_link($firstcat->cat_ID);?>"><?=$firstcat->cat_name;?></a>
+				<? else: ?>
+					<a href="<?=get_page_link();?>"><?=the_title();?></a>
+				<? endif; ?>
+			</span></div>
+		</div>
 		<?php if ( is_home() ) : ?>
-			<h1 class="entry-cat"><?php $categories = get_the_category(); echo $categories[0]->cat_name; // use first cat only ?></h1>
 			<?php the_post_thumbnail('thumbnail', 'class=thumbnail'); ?>
 		<?php endif; ?>
-		<h1 class="entry-title"><a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 'toolbox' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark"><?php the_title(); ?></a></h1>
+		<? if(!is_page()):?>
+		<h1 class="entry-title"><a href="<?=get_permalink();?>"><?php the_title(); ?></a></h1>
 
-		<?php if ( 'post' == $post->post_type ) : ?>
 		<div class="entry-meta">
+		von <?=get_the_author();?> am <?=get_the_date();?>, mit <?=comments_number("keinem Kommentar", "einem Kommentar", "% Kommentaren");?>
 			<?php
-				printf( __( '<span class="sep">Posted on </span><a href="%1$s" rel="bookmark"><time class="entry-date" datetime="%2$s" pubdate>%3$s</time></a> <span class="sep"> by </span> <span class="author vcard"><a class="url fn n" href="%4$s" title="%5$s">%6$s</a></span>', 'toolbox' ),
-					get_permalink(),
-					get_the_date( 'c' ),
-					get_the_date(),
-					get_author_posts_url( get_the_author_meta( 'ID' ) ),
-					sprintf( esc_attr__( 'View all posts by %s', 'toolbox' ), get_the_author() ),
-					get_the_author()
-				);
+				/*echo "Permalink: ".get_permalink();
+				echo "Date(std-format): ".get_the_date( 'c' );
+				echo "Date: ".get_the_date();
+				echo "Authorurl: ".get_author_posts_url( get_the_author_meta( 'ID' ) );
+				echo "Author: ".get_the_author();*/
 			?>
 		</div><!-- .entry-meta -->
-		<?php endif; ?>
+		<? endif;?>
 	</header><!-- .entry-header -->
 
-	<?php if ( is_search() ) : // Only display Excerpts for search pages ?>
-	<div class="entry-summary">
-		<?php the_excerpt( __( 'Continue reading <span class="meta-nav">&rarr;</span>', 'toolbox' ) ); ?>
-	</div><!-- .entry-summary -->
-	<?php else : ?>
 	<div class="entry-content">
-		<?php the_content( __( 'Continue reading <span class="meta-nav">&rarr;</span>', 'toolbox' ) ); ?>
-		<?php wp_link_pages( array( 'before' => '<div class="page-link">' . __( 'Pages:', 'toolbox' ), 'after' => '</div>' ) ); ?>
+		<?php 
+			if (is_home() ) {
+				the_excerpt();
+			} else {
+				the_content();
+			}
+		?>
 	</div><!-- .entry-content -->
-	<?php endif; ?>
 
-	<footer class="entry-meta">
-		<!--<span class="cat-links"><span class="entry-utility-prep entry-utility-prep-cat-links"><?php _e( 'Posted in ', 'toolbox' ); ?></span><?php the_category( ', ' ); ?></span>
-		<span class="sep"> | </span>
-		<?php the_tags( '<span class="tag-links">' . __( 'Tagged ', 'toolbox' ) . '</span>', ', ', '<span class="sep"> | </span>' ); ?>
-		<span class="comments-link"><?php comments_popup_link( __( 'Leave a comment', 'toolbox' ), __( '1 Comment', 'toolbox' ), __( '% Comments', 'toolbox' ) ); ?></span>//-->
-		<?php edit_post_link( __( 'Edit', 'toolbox' ), '<span class="sep">|</span> <span class="edit-link">', '</span>' ); ?>
-	</footer><!-- #entry-meta -->
+        <footer class="entry-meta">
+    	<div class="hr-header">
+    	    <hr>
+    	    <div class="hr-title"><span>SHARE THIS POST</span></div>
+    	</div>
+    	<div id="social_footer">
+    	    <div id="twitter_div">
+		<font>TWEET THIS</font>
+		<div>
+			<img class="inactive" src="<?php bloginfo( 'stylesheet_directory' ) ; ?>/media/twitter_klein_inaktiv.png">
+			<img class="active" src="<?php bloginfo( 'stylesheet_directory' ) ; ?>/media/twitter_klein_aktiv.png">
+		</div>
+		<?php echo easy_retweet_button(); ?>
+	    </div>
+	    <div id="facebook_div">
+		<font>SHARE ON FACEBOOK</font>
+		<div>
+			<img class="inactive" src="<?php bloginfo( 'stylesheet_directory' ) ; ?>/media/facebook_klein_inaktiv.png">
+			<img class="active" src="<?php bloginfo( 'stylesheet_directory' ) ; ?>/media/facebook_klein_aktiv.png">
+		</div>
+		<iframe src="http://www.facebook.com/plugins/like.php?href=<? the_permalink(); ?>&layout=button_count&show-faces=true&width=470&action=like&colorscheme=light" scrolling="no" frameborder="0" allowTransparency="true" style="border:none; overflow:hidden"></iframe>
+	    </div>
+	    <div id="flattr_div">
+		<?php the_flattr_permalink() ?>
+	    </div>
+	</div>
+    </footer><!-- .entry-meta -->
 </article><!-- #post-<?php the_ID(); ?> -->
