@@ -114,43 +114,31 @@ Before the sky turned black. -->
 <!-- script src="http://ajax.googleapis.com/ajax/libs/jquery/1.2.6/jquery.min.js" type="text/javascript"></script -->
 <script src="jquery.min.js" type="text/javascript"></script>
 <script type="text/javascript">
+var timeout         = 500;
+var closetimer		= 0;
+var ddmenuitem      = 0;
 
-function Jsddm() {
-	this.timeout         = 500;
-	this.closetimer		= 0;
-	this.ddmenuitem      = 0;
-}
+function jsddm_open()
+{	jsddm_canceltimer();
+	jsddm_close();
+	ddmenuitem = $(this).find('ul').eq(0).css('visibility', 'visible');}
 
-Jsddm.prototype.jsddm_close = function() {
-	if(this.ddmenuitem) this.ddmenuitem.css('visibility', 'hidden');
-};
+function jsddm_close()
+{	if(ddmenuitem) ddmenuitem.css('visibility', 'hidden');}
 
-Jsddm.prototype.jsddm_timer = function() {
-	this.closetimer = window.setTimeout(this.jsddm_close, this.timeout);
-};
+function jsddm_timer()
+{	closetimer = window.setTimeout(jsddm_close, timeout);}
 
-Jsddm.prototype.jsddm_canceltimer = function() {
-	if(this.closetimer) {
-		window.clearTimeout(this.closetimer);
-		this.closetimer = null;
-	}
-};
-Jsddm.prototype.jsddm_open = function() {
-	this.jsddm_canceltimer();
-	this.jsddm_close();
-	this.ddmenuitem = $(this).find('ul').eq(0).css('visibility', 'visible');
-};
+function jsddm_canceltimer()
+{	if(closetimer)
+	{	window.clearTimeout(closetimer);
+		closetimer = null;}}
 
+$(document).ready(function()
+{	$('#jsddm > li').bind('mouseover', jsddm_open);
+	$('#jsddm > li').bind('mouseout',  jsddm_timer);});
 
-var myJsddm = new Jsddm();
-
-
-$(document).ready(function() {
-	$('#jsddm > li').bind('mouseover', myJsddm.jsddm_open);
-	$('#jsddm > li').bind('mouseout',  myJsddm.jsddm_timer);
-	});
-
-document.onclick = myJsddm.jsddm_close;
+document.onclick = jsddm_close;
 </script>
 
 <ul id="jsddm">
