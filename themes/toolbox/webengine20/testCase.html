@@ -11,6 +11,7 @@
 	<script type="text/javascript" src="Panel.js"></script>
 	<script type="text/javascript" src="Rolloutpanel.js"></script>
 	<script type="text/javascript" src="Background.js"></script>
+	<script type="text/javascript" src="Button.js"></script>
 	
 	<script type="text/javascript">
 		function load(){
@@ -23,7 +24,7 @@
 			pan1.registerOnMouseClickEvent(show, true);*/
 			
 			// Test RolloutPanel
-			var elem2 = new asdf_Element("button1", $("#mainBody").get(0), 10, 10, "black", 200, 50, "absolute", "testclass", true, 510);
+			var elem2 = new asdf_Button("button1", $("#mainBody").get(0), 10, 10, "transparent", 200, 50, "absolute", "testclass", true, 510, "../media/essentrinken_inaktiv.png", "../media/essentrinken_aktiv.png");
 			elem2.show();
 			var rollout = new asdf_Rolloutpanel("rollout", $("#mainBody").get(0), 10, 60, "green", 200, 500, "absolute", "testclass", true, 500, 200, elem2);
 			//rollout.show();
