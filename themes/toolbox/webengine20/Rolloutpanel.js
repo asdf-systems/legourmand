@@ -16,7 +16,26 @@ asdf_Engine.extend(asdf_Rolloutpanel, asdf_Panel);
  * \param: extra_css    string      Name of extra css_classes for the HTML Object
  * \param: initialShow  bool        state if child should be shwon if parent is show
  * \param: z-Index      int         number to show in fore or background - higer is more in Front
+ * \param: animSpeed	int			Speed in ms for rollout and rollin animation
+ * \param: triggerElem	element		Element which show the rollout when hovered
+
+ * USAGE: 
+  var rollout = new asdf_Rolloutpanel("buttonID", $("#PARENTHTMLID").get(0) OR ASDF_ELEMENT, posX, posY, "backgroundColor", width, height, "positionType", "extraCSS", initialShow, zIndex, animationSpeed, TriggerElement);
+
+ * Example:
+   var button = new asdf_Button("button1", $("#mainBody").get(0), 10, 10, "transparent", 200, 50, "absolute", "testclass", true, 510, "../media/essentrinken_inaktiv.png", "../media/essentrinken_aktiv.png");
+			button.show();
+			var rollout = new asdf_Rolloutpanel("rollout", $("#mainBody").get(0), 10, 60, "green", 200, 500, "absolute", "testclass", true, 500, 200, button);
+			var rElem1 = new asdf_Text("text1", rollout, 10, 10, "red", 150, 30, "absolute", "testclass", true, 600, "kalte Küche");
+			var rElem2 = new asdf_Text("text2", rollout, 10, 60, "red", 150, 30, "absolute", "testclass", true, 600, "SPAß an der FREUDE");
+			rElem1.show();
+			rElem2.show();
+ 
+ * Example to add an std HTML Object and no Element: 
+	 var Elem1 = asdf_Engine.createElementFromHTML = function(htmlobject, rollout);
+	 Elem1.show();
  */
+ 
 function asdf_Rolloutpanel(id, parent, positionX, positionY, bgColor, width , height,positionType, extra_css_class, initialShow, zIndex, animationSpeed, triggerElement){
 	asdf_Rolloutpanel.baseConstructor.call(this,id, parent, positionX, positionY, bgColor, width , height, positionType, extra_css_class, initialShow, zIndex);
 	

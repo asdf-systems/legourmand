@@ -1,6 +1,6 @@
 asdf_Engine.extend(asdf_Button,asdf_Element);
 /**
-USAGE: var myButton = new asdf_Button("buttonName", $("#PARENTHTMLID").get(0) OR ASDF_ELEMENT, posX, posY, "backgroundColor", width, height, "positionType", "extraCSS", initialShow, zINdex, "NormalImage.png", "activeImage.png", "hoverImage.png" );
+USAGE: var myButton = new asdf_Button("buttonID", $("#PARENTHTMLID").get(0) OR ASDF_ELEMENT, posX, posY, "backgroundColor", width, height, "positionType", "extraCSS", initialShow, zIndex, "NormalImage.png", "activeImage.png", "hoverImage.png" );
 	Then register click Events with:
 	myButton.registerOnMouseClickEvent(asdf_Engine.bind(Element, "functionName"), true);
 	
