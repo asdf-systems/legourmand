@@ -17,5 +17,7 @@ function loadRolloutpanel(page, path, categories, trigger){
 		posY += elem.getHeight().mValue +5 ;
 		
 	}
+	
+	return rollout;
 }
 

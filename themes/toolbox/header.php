@@ -102,8 +102,13 @@
 						//var_dump($categorieNames);
 				?>
 					<script>
-						var menu_button = new asdf_Button(new asdf_Button("button1", $("#mainBody").get(0), 10, 10, "transparent", 200, 50, "absolute", "testclass", true, 510, "<?php bloginfo('stylesheet_directory');?>/media/<?=$page;?>_inaktiv.png", "<?php bloginfo('stylesheet_directory');?>/media/<?=$page;?>_aktiv.png");
-						loadRolloutpanel("<?=$page;?>", <?=$path?>, categories, trigger){		
+						var menu_button = new asdf_Button(new asdf_Button("button1", $("#mainBody").get(0), 10, 10, "transparent", 200, 50, "absolute", ".generic_menu_button  menu_button<?=page;?>", true, 510, "<?php bloginfo('stylesheet_directory');?>/media/<?=$page;?>_inaktiv.png", "<?php bloginfo('stylesheet_directory');?>/media/<?=$page;?>_aktiv.png");
+						
+						var rollout = loadRolloutpanel('<?=$page;?>', '<?php bloginfo('stylesheet_directory');?>', <?=str_replace("\"", "'",json_encode($categorieNames));?>, menu_button);	
+						
+						rollout.registerOnMouseLeaveEvent(asdf_Engine.bind(button, "deactivate"), true);
+						rollout.registerOnMouseEnterEvent(asdf_Engine.bind(button, "activate"), true);
+							
 					</script>
 				<?php 
 					}
