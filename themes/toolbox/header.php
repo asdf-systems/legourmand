@@ -101,15 +101,9 @@
 						}
 						//var_dump($categorieNames);
 				?>
-						<div id= "menu_button_<?=$page;?>" class="generic_menu_button menu_button_<?=$page;?>">
-							<a href="">
-								<!-- onload function calls also the loadRolloaut Function -->
-								<img src="<?php bloginfo('stylesheet_directory');?>/media/<?=$page;?>_inaktiv.png" class="inactive" onLoad="buttonLoaded('<?=$page;?>', '<?php bloginfo('stylesheet_directory');?>', <?=str_replace("\"", "'",json_encode($categorieNames));?>);">
-								<img src="<?php bloginfo('stylesheet_directory');?>/media/<?=$page;?>_aktiv.png" class="active">
-							</a>
-						</div>
-						<script>
-						
+					<script>
+						var menu_button = new asdf_Button(new asdf_Button("button1", $("#mainBody").get(0), 10, 10, "transparent", 200, 50, "absolute", "testclass", true, 510, "<?php bloginfo('stylesheet_directory');?>/media/<?=$page;?>_inaktiv.png", "<?php bloginfo('stylesheet_directory');?>/media/<?=$page;?>_aktiv.png");
+						loadRolloutpanel("<?=$page;?>", <?=$path?>, categories, trigger){		
 					</script>
 				<?php 
 					}
