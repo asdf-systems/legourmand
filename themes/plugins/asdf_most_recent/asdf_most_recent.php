@@ -22,18 +22,55 @@ function asdf_most_recent() { ?>
 			</div>
 			<div class="content">
 				<div class="articles">
-					<font> content articles</font>
+					<?php display_articles(); ?>
 				</div>
 				<div class="comments">
-					<font> content comments</font>
+					<?php display_comments(); ?>
 				</div>
 				<div class="tweets">
-					<font> content tweets</font>
+					<?php display_tweets(); ?>
 				</div>
 			</div>
 		</div>
 	</div>
-<?php }
+<?php } 
+
+function display_articles() {
+		 $articles = get_posts( array('numberposts' => 3) ) ;
+		 //var_dump($articles);
+		 foreach ($articles as $i => $article) {
+		 	if ($i > 0) {
+				?><hr><?php
+			}
+			echo get_the_post_thumbnail( $article->ID, array(80,80));
+		 	?><h1 class="date"><?php echo $article->post_date; ?></h1><?php
+		 	?><h1 class="title">
+				<a href="<?php echo $article->guid; ?>"><?php echo $article->post_title; ?></a>
+			</h1><?php
+		 }
+}
+
+function display_comments() {
+		 $comments = get_comments( array('number' => 3) ) ;
+		 //var_dump($articles);
+		 foreach ($comments as $i => $comment) {
+		 	if ($i > 0) {
+				?><hr><?php
+			}
+			//echo get_the_post_thumbnail( $comment->ID, array(80,80));
+		 	?><h1 class="post">
+				<a href="<?php echo $comment->comment_author_url; ?>"><?php echo $comment->comment_author; ?></a>
+			</h1><?php
+		 	?><h1 class="post">
+				<?php $post = get_post($comment->comment_post_ID); ?>
+				<a href="<?php echo $post->guid; ?>"><?php echo $post->post_title; ?></a>
+			</h1><?php
+		}
+}
+
+function display_tweets() {
+		?><font> bilder 40x40px tweets comments</font><?php
+}
  
 function init_asdf_most_recent(){
 	register_sidebar_widget("asdf Most Recent Widget", "asdf_most_recent");     

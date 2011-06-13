@@ -12,5 +12,7 @@ function asdf_most_recent_show_content(event) {
 }
 
 $(document).ready(function() {
-   $('.asdf_most_recent .buttons h1').bind('click',  asdf_most_recent_show_content);
+	$('.asdf_most_recent .content .comments').hide();
+	$('.asdf_most_recent .content .tweets').hide();
+	$('.asdf_most_recent .buttons h1').bind('click',  asdf_most_recent_show_content);
 });
