@@ -58,13 +58,16 @@ function display_comments() {
 				?><hr><?php
 			}
 			//echo get_the_post_thumbnail( $comment->ID, array(80,80));
-		 	?><h1 class="post">
-				<a href="<?php echo $comment->comment_author_url; ?>"><?php echo $comment->comment_author; ?></a>
-			</h1><?php
-		 	?><h1 class="post">
-				<?php $post = get_post($comment->comment_post_ID); ?>
-				<a href="<?php echo $post->guid; ?>"><?php echo $post->post_title; ?></a>
-			</h1><?php
+			echo get_avatar( $comment->user_id, 80);
+		 	?><div>
+				<font class="author">
+					<a href="<?php echo $comment->comment_author_url; ?>"><?php echo $comment->comment_author; ?>:</a>
+				</font><?php
+				?><font class="post">
+					<?php $post = get_post($comment->comment_post_ID); ?>
+					<a href="<?php echo $post->guid; ?>"><?php echo $post->post_title; ?></a>
+				</font>
+			</div><?php
 		}
 }
 
