@@ -14,3 +14,7 @@
 	font-style: normal;
 }
 
+ @font-face {font-family: 'BrandonGrotesque-Regular';src: url('eot/style_187188.eot');src: url('eot/style_187188.eot?#iefix') format('embedded-opentype'),url('woff/style_187188.woff') format('woff'),url('ttf/style_187188.ttf') format('truetype'),url('svg/style_187188.svg#BrandonGrotesque-Regular') format('svg'),url('svg/style_187188.svgz#BrandonGrotesque-Regular') format('svg');}
+ @font-face {font-family: 'BrandonGrotesque-Bold';src: url('eot/style_187190.eot');src: url('eot/style_187190.eot?#iefix') format('embedded-opentype'),url('woff/style_187190.woff') format('woff'),url('ttf/style_187190.ttf') format('truetype'),url('svg/style_187190.svg#BrandonGrotesque-Bold') format('svg'),url('svg/style_187190.svgz#BrandonGrotesque-Bold') format('svg');}
+ @font-face {font-family: 'BrandonGrotesque-RegularItalic';src: url('eot/style_187195.eot');src: url('eot/style_187195.eot?#iefix') format('embedded-opentype'),url('woff/style_187195.woff') format('woff'),url('ttf/style_187195.ttf') format('truetype'),url('svg/style_187195.svg#BrandonGrotesque-RegularItalic') format('svg'),url('svg/style_187195.svgz#BrandonGrotesque-RegularItalic') format('svg');}
+ @font-face {font-family: 'BrandonGrotesque-BoldItalic';src: url('eot/style_187198.eot');src: url('eot/style_187198.eot?#iefix') format('embedded-opentype'),url('woff/style_187198.woff') format('woff'),url('ttf/style_187198.ttf') format('truetype'),url('svg/style_187198.svg#BrandonGrotesque-BoldItalic') format('svg'),url('svg/style_187198.svgz#BrandonGrotesque-BoldItalic') format('svg');}

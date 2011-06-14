@@ -32,6 +32,7 @@
 
 <!-- webfonts -->
 <link rel="stylesheet" href="<?php bloginfo( 'stylesheet_directory' ) ; ?>/webfonts/webfonts.css" type="text/css" charset="utf-8" media="all">
+<link  href="http://fonts.googleapis.com/css?family=Droid+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css" >
 <!-- less-file -->
 <link rel="stylesheet/less" href="<?php bloginfo( 'stylesheet_directory' ) ; ?>/lestylesheet.less" type="text/css">
 <!-- dummy -->
@@ -70,7 +71,7 @@
 			<nav id="top_navi" role="navigation">
 			<!-- Top Right Navi -->
 				<aside id="search" class="widget widget_search">
-					<?php get_search_form(); ?>
+					<?php get_asdf_search_form(); ?>
 				</aside>
 				<?php wp_nav_menu( array( 'theme_location' => 'top' ) ); ?>
 			</nav>
