@@ -112,7 +112,7 @@
 						var rollout_<?=$page;?> = loadRolloutpanel('<?=$page;?>', '<?php bloginfo('stylesheet_directory');?>', <?=str_replace("\"", "'",json_encode($categorieNames));?>,<?=str_replace("\"", "'",json_encode($categorieLinks));?>, menu_button_<?=$page;?>);	
 						
 						rollout_<?=$page;?>.registerOnMouseOutEvent(asdf_Engine.bind(menu_button_<?=$page?>, "deactivate"), true);
-						rollout_<?=$page;?>.registerOnMouseEnterEvent(asdf_Engine.bind(menu_button_<?=$page?>, "activate"), true);
+						rollout_<?=$page;?>.registerOnMouseOverEvent(asdf_Engine.bind(menu_button_<?=$page?>, "activate"), true);
 							
 					</script>
 				<?php 
