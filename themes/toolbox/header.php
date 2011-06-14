@@ -32,13 +32,29 @@
 
 <!-- webfonts -->
 <link rel="stylesheet" href="<?php bloginfo( 'stylesheet_directory' ) ; ?>/webfonts/webfonts.css" type="text/css" charset="utf-8" media="all">
-<link  href="http://fonts.googleapis.com/css?family=Droid+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css" >
 <!-- less-file -->
 <link rel="stylesheet/less" href="<?php bloginfo( 'stylesheet_directory' ) ; ?>/lestylesheet.less" type="text/css">
 <!-- dummy -->
 <link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo( 'stylesheet_url' ); ?>" />
 <!-- less.js -->
 <script src="<?php bloginfo( 'stylesheet_directory' ) ; ?>/less.js" type="text/javascript"></script>
+<!-- jquery.js -->
+<script src="<?php bloginfo( 'stylesheet_directory' ) ; ?>/jquery.js" type="text/javascript"></script>
+<script src="<?php bloginfo( 'stylesheet_directory' ) ; ?>/jquery-ui.js" type="text/javascript"></script>
+<script type="text/javascript" src="<?php bloginfo( 'stylesheet_directory' ) ; ?>/webengine20/Engine.js"></script>
+<script type="text/javascript" src="<?php bloginfo( 'stylesheet_directory' ) ; ?>/webengine20/EngineEvents.js"></script>
+<script type="text/javascript" src="<?php bloginfo( 'stylesheet_directory' ) ; ?>/webengine20/EventParameter.js"></script>
+<script type="text/javascript" src="<?php bloginfo( 'stylesheet_directory' ) ; ?>/webengine20/EngineGlobals.js"></script>
+<script type="text/javascript" src="<?php bloginfo( 'stylesheet_directory' ) ; ?>/webengine20/Unit.js"></script>
+
+<script type="text/javascript" src="<?php bloginfo( 'stylesheet_directory' ) ; ?>/webengine20/Element.js"></script>
+<script type="text/javascript" src="<?php bloginfo( 'stylesheet_directory' ) ; ?>/webengine20/Panel.js"></script>
+<script type="text/javascript" src="<?php bloginfo( 'stylesheet_directory' ) ; ?>/webengine20/Rolloutpanel.js"></script>
+<script type="text/javascript" src="<?php bloginfo( 'stylesheet_directory' ) ; ?>/webengine20/Background.js"></script>
+<script type="text/javascript" src="<?php bloginfo( 'stylesheet_directory' ) ; ?>/webengine20/Text.js"></script>
+<script type="text/javascript" src="<?php bloginfo( 'stylesheet_directory' ) ; ?>/webengine20/Button.js"></script>
+
+<script type="text/javascript" src="<?php bloginfo( 'stylesheet_directory' ) ; ?>/headerFunctions.js"></script>
 
 <?php if ( is_singular() && get_option( 'thread_comments' ) ) wp_enqueue_script( 'comment-reply' ); ?>
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
@@ -55,7 +71,7 @@
 			<nav id="top_navi" role="navigation">
 			<!-- Top Right Navi -->
 				<aside id="search" class="widget widget_search">
-					<?php get_asdf_search_form(); ?>
+					<?php get_search_form(); ?>
 				</aside>
 				<?php wp_nav_menu( array( 'theme_location' => 'top' ) ); ?>
 			</nav>
@@ -65,18 +81,46 @@
 				<div class="skip-link screen-reader-text"><a href="#content" title="<?php esc_attr_e( 'Skip to content', 'toolbox' ); ?>"><?php _e( 'Skip to content', 'toolbox' ); ?></a></div>
 				<!-- (Original) Main Menu-->
 				<?php /*wp_nav_menu( array( 'theme_location' => 'main' ) );*/ ?>
+				
+				
 				<!-- (asdf) Main Menu -->
+				
+			
 				<?php
 					$pages = Array("news", "essentrinken", "reise", "hotels", "social", "termine", "tv");
+					$categorieNames = Array("News - Allgemein", "Essen & Trinken", "Reise", "Hotels", "Social Media", "Termine", "Le Gourmand TV");
+					$count = 0;
 					foreach($pages as $page) {
-				?>	
-					<div class="main_menu_<?=$page;?>">
-						<a href="">
-							<img src="<?php bloginfo('stylesheet_directory');?>/media/<?=$page;?>_inaktiv.png" class="inactive">
-							<img src="<?php bloginfo('stylesheet_directory');?>/media/<?=$page;?>_aktiv.png" class="active">
-						</a>
-					</div>
-				<? } ?>
+						
+						// Query all subcategories for the current rollout
+						$args = array('hierarchical' => false, 'parent' => get_cat_id($categorieNames[$count]) );
+						$categories = get_categories($args);
+						
+						$count ++;
+						$categorieNames = array();	
+						$categorieLinks = array();					
+						foreach($categories as $categorie){
+							$categorie_link = get_category_link( $categorie->cat_ID );
+							array_push($categorieNames , $categorie->cat_name);	
+							array_push($categorieLinks, $categorie_link);
+						}
+						//var_dump($categorieNames);
+				?>
+					<script>
+						var menu_button_<?=$page;?> = new asdf_Button("button_<?=$page;?>", $("#main_navi").get(0), null, null, "transparent", null, null, "absolute", "generic_menu_button menu_button_<?=$page;?>", true, 510, "<?php bloginfo('stylesheet_directory');?>/media/<?=$page;?>_inaktiv.png", "<?php bloginfo('stylesheet_directory');?>/media/<?=$page;?>_aktiv.png");
+						menu_button_<?=$page;?>.show();
+						var rollout_<?=$page;?> = loadRolloutpanel('<?=$page;?>', '<?php bloginfo('stylesheet_directory');?>', <?=str_replace("\"", "'",json_encode($categorieNames));?>,<?=str_replace("\"", "'",json_encode($categorieLinks));?>, menu_button_<?=$page;?>);	
+						
+						rollout_<?=$page;?>.registerOnMouseOutEvent(asdf_Engine.bind(menu_button_<?=$page?>, "deactivate"), true);
+						rollout_<?=$page;?>.registerOnMouseEnterEvent(asdf_Engine.bind(menu_button_<?=$page?>, "activate"), true);
+							
+					</script>
+				<?php 
+					}
+				?>
+				<script>
+					$(".generic_menu_rollout").hide();
+				</script>
 			</nav><!-- #access -->
 	</header><!-- #branding -->
 
