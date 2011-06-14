@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<head>
+	
+</head>
+<body>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+
+function Inc () {
+	this.c = 0;
+	this.inc = function () {
+		alert(jQuery.type(myInc));
+		$(this).text(this.c);
+		this.c++;;
+		//alert(this.c);
+	};
+}
+var myInc = new Inc();
+
+function bla() {
+	$(this).text("bla");
+}
+
+$(document).ready(function() {
+	$('h1').bind('click', myInc.inc);
+	//$('h1').bind('mouseover', bla);
+	});
+
+</script>
+
+<h1 onclick="">jQuery Simple Drop Down Menu v0.25</h1>
+</body>
+</html>
