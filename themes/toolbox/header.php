@@ -71,7 +71,7 @@
 			<nav id="top_navi" role="navigation">
 			<!-- Top Right Navi -->
 				<aside id="search" class="widget widget_search">
-					<?php get_search_form(); ?>
+					<?php get_asdf_search_form(); ?>
 				</aside>
 				<?php wp_nav_menu( array( 'theme_location' => 'top' ) ); ?>
 			</nav>
