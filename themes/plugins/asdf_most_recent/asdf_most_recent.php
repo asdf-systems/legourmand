@@ -72,7 +72,32 @@ function display_comments() {
 }
 
 function display_tweets() {
-		?><font> bilder 40x40px tweets comments</font><?php
+		//var_dump (get_my_tweets() );
+		$num = get_option( 'num_tweets_retrieve' );
+		$tweets = split_tweets(	get_my_tweets(), $num );
+		//var_dump($tweets);
+		foreach ($tweets as $i => $tweet) {
+			if ($i != 0) {?>
+				<hr>
+			<?php } ?>
+				<div>
+					<font class="date"><?php echo $tweet[0]; ?> </font>
+					<font class="content"><?php echo $tweet[1]; ?> </font>
+				</div>
+			<?php
+		}
+}
+
+/** split at "<br><br>{DATE}<br>" */
+function split_tweets($plaintext, $num) {
+	$lines = explode("<br>", $plaintext);
+	$lines_per_tweet = 4;
+	//var_dump( $lines);
+	for ($i = 0; $i < $num; $i++) {
+		$result[$i][0] = $lines[$i*$lines_per_tweet];
+		$result[$i][1] = $lines[$i*$lines_per_tweet + 1];
+	}
+	return $result;
 }
  
 function init_asdf_most_recent(){
