@@ -1,7 +1,7 @@
 function loadRolloutpanel(page, path, categories, categorieLinks, trigger){
 	
 	var $button = $(trigger.mDomTreeObject);
-	var bgHeight = categories.length * 35;
+	var bgHeight = categories.length * 25;
 	if(categories.length > 0)
 		bgHeight += 10;
 	bgHeight += "px";
@@ -18,11 +18,11 @@ function loadRolloutpanel(page, path, categories, categorieLinks, trigger){
 	for(var i=0; i < categories.length; i++){
 		var cat = categories[i];
 		cat = "<a href=\""+categorieLinks+"\">" + cat + "</a>";
-		var elem = new asdf_Text(page+"_elem"+i, rollout, posX+5, posY, "transparent", 150, 30, "absolute", "generic_text", true, 600, cat);
+		var elem = new asdf_Text(page+"_elem"+i, rollout, posX+5, posY, "transparent", 150, 25, "absolute", "generic_text", true, 600, cat);
 		elem.show();
 		if(maxWidth < elem.getWidth().mValue)
 			maxWidth = elem.getWidth().mValue;
-		posY += elem.getHeight().mValue +5 ;
+		posY += elem.getHeight().mValue;
 		
 	}
 	
