@@ -58,18 +58,46 @@ function display_comments() {
 				?><hr><?php
 			}
 			//echo get_the_post_thumbnail( $comment->ID, array(80,80));
-		 	?><h1 class="post">
-				<a href="<?php echo $comment->comment_author_url; ?>"><?php echo $comment->comment_author; ?></a>
-			</h1><?php
-		 	?><h1 class="post">
-				<?php $post = get_post($comment->comment_post_ID); ?>
-				<a href="<?php echo $post->guid; ?>"><?php echo $post->post_title; ?></a>
-			</h1><?php
+			echo get_avatar( $comment->user_id, 80);
+		 	?><div>
+				<font class="author">
+					<a href="<?php echo $comment->comment_author_url; ?>"><?php echo $comment->comment_author; ?>:</a>
+				</font><?php
+				?><font class="post">
+					<?php $post = get_post($comment->comment_post_ID); ?>
+					<a href="<?php echo $post->guid; ?>"><?php echo $post->post_title; ?></a>
+				</font>
+			</div><?php
 		}
 }
 
 function display_tweets() {
-		?><font> bilder 40x40px tweets comments</font><?php
+		//var_dump (get_my_tweets() );
+		$num = get_option( 'num_tweets_retrieve' );
+		$tweets = split_tweets(	get_my_tweets(), $num );
+		//var_dump($tweets);
+		foreach ($tweets as $i => $tweet) {
+			if ($i != 0) {?>
+				<hr>
+			<?php } ?>
+				<div>
+					<font class="date"><?php echo $tweet[0]; ?> </font>
+					<font class="content"><?php echo $tweet[1]; ?> </font>
+				</div>
+			<?php
+		}
+}
+
+/** split at "<br><br>{DATE}<br>" */
+function split_tweets($plaintext, $num) {
+	$lines = explode("<br>", $plaintext);
+	$lines_per_tweet = 4;
+	//var_dump( $lines);
+	for ($i = 0; $i < $num; $i++) {
+		$result[$i][0] = $lines[$i*$lines_per_tweet];
+		$result[$i][1] = $lines[$i*$lines_per_tweet + 1];
+	}
+	return $result;
 }
  
 function init_asdf_most_recent(){

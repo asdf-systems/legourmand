@@ -389,6 +389,21 @@ body {
 			}
 		}
 	}
+	.post-189 .entry-content { // links / verweise
+		text-align: justify;
+		-moz-column-count: 2;
+		-moz-column-gap: 12px;
+		-moz-column-rule: 0px solid #c4c8cc;
+		-webkit-column-count: 2;
+		-webkit-column-gap: 12px;
+		-webkit-column-rule: 0px solid #c4c8cc;
+
+		color: black;
+		a:visited, a:active, a:hover, a:link {
+			color: black;
+			text-decoration: none;
+		}
+	}
 	#comments {
 		padding: 25px;
 		margin-top: 10px;
@@ -987,11 +1002,16 @@ article.comment {
 		margin: 0;
 		padding: 0;
 		#Fonts > .Brandon > .Regular;
-		color:@mittelgrau;
+		* {
+			color:@mittelgrau;
+		}
+		.buttons > h1.articles {
+			color:@blau;
+		}
 		.buttons > h1 {
 			display: inline;
 		}
-		.content {
+		> .content {
 			/*.comments, .tweets {
 				display: none;
 			 }*/
@@ -1014,6 +1034,63 @@ article.comment {
 				img {
 					float: left;
 					margin-right: 10px;
+				}
+			 }
+			 .comments {
+				* {
+					padding: 0px;
+					margin: 0px;
+					a {
+						text-decoration: none;
+					}
+				}
+			 	.author {
+					#Fonts > .Brandon > .Bold;
+					font-size: 12pt;
+					color: @blau;
+					display: inline;
+					margin-right: 5px;
+					a {
+						color: @blau;
+						&:visited {
+							color:@blau;
+						}
+					}
+				}
+				.post {
+					#Fonts > .Droid > .Italic;
+					#Fonts > .Droid > .Bold;
+					font-size: 10pt;
+					color: black;
+					display: inline;
+					a {
+						color: black;
+						&:visited {
+							color:black;
+						}
+					}
+				}
+				div {
+					display:inline;
+				}
+				hr {
+					margin-top: 15px;
+					margin-bottom: 15px;
+				}
+				img {
+					float: left;
+					margin-right: 10px;
+				}
+			 }
+			 .tweets {
+			 	.date {
+					#Fonts > .Brandon > .Bold;
+				}
+				.content {
+					#Fonts > .Brandon > .Regular;
+				}
+				div {
+					margin-top: 15px;
 				}
 			 }
 		}
@@ -1087,9 +1164,21 @@ article.comment {
 	display: block;
 	padding: 1em;
 	text-align: center;
+	background-color: @dunkelgrau;
+	width: 1019px;
+	margin-left: 0px;
+	margin-right: 0px;
 }
 #site-generator {
 	margin-bottom: 1em;
+	#Fonts > .Brandon > .Regular;
+	color: @mittelgrau;
+	a {
+		color: @mittelgrau;
+		&:visited {
+			color: @mittelgrau;
+		}
+	}
 }
 
 #social_footer {

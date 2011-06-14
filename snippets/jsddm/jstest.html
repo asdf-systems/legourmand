@@ -11,8 +11,8 @@
 function Inc () {
 	this.c = 0;
 	this.inc = function () {
-		alert(jQuery.type(myInc));
-		$(this).text(this.c);
+		//alert(jQuery.type(myInc));
+		//$(this).text(this.c);
 		this.c++;;
 		//alert(this.c);
 	};
@@ -24,12 +24,12 @@ function bla() {
 }
 
 $(document).ready(function() {
-	$('h1').bind('click', myInc.inc);
+	//$('h1').bind('click', myInc.inc);
 	//$('h1').bind('mouseover', bla);
 	});
 
 </script>
 
-<h1 onclick="">jQuery Simple Drop Down Menu v0.25</h1>
+<h1 onclick="myInc.inc">jQuery Simple Drop Down Menu v0.25</h1>
 </body>
 </html>
