@@ -1,7 +1,11 @@
 function loadRolloutpanel(page, path, categories, categorieLinks, trigger){
 	
 	var $button = $(trigger.mDomTreeObject);
-	var bgHeight = categories.length * 35 + 10 + "px";
+	var bgHeight = categories.length * 35;
+	if(categories.length > 0)
+		bgHeight += 10;
+	bgHeight += "px";
+		
 	var rollout =  new asdf_Rolloutpanel(page+"_rollout", $("#main_navi").get(0), $button.position().left-5, $button.position().top+6 + $button.height(), "transparent", 205, bgHeight, "absolute", "Rollout_"+page, true, 500, 200, trigger);
 	var imgArray = new Array(path + "/media/"+page+"_rollout_lang.png", path + "/media/"+page+"_rollout_kurz.png");
 	// ONLY WORKING WITH ABSOLUTE VALUES for width and Height
