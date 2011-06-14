@@ -1,14 +1,15 @@
 function loadRolloutpanel(page, path, categories, categorieLinks, trigger){
 	
 	var $button = $(trigger.mDomTreeObject);
-	var rollout =  new asdf_Rolloutpanel(page+"_rollout", $("#main_navi").get(0), $button.position().left-5, $button.position().top + $button.height(), "green", 205, 500, "absolute", "Rollout_"+page, true, 500, 200, trigger);
+	var bgHeight = categories.length * 35 + 10 + "px";
+	var rollout =  new asdf_Rolloutpanel(page+"_rollout", $("#main_navi").get(0), $button.position().left-5, $button.position().top+6 + $button.height(), "transparent", 205, bgHeight, "absolute", "Rollout_"+page, true, 500, 200, trigger);
 	var imgArray = new Array(path + "/media/"+page+"_rollout_lang.png", path + "/media/"+page+"_rollout_kurz.png");
 	// ONLY WORKING WITH ABSOLUTE VALUES for width and Height
-	var bg = new asdf_Background(page+"bg", rollout, $button.position().left-5, $button.position().top + $button.height(), "red", 205, 500, "absolute", "testclass", true, 800, "stretch",imgArray);
+	var bg = new asdf_Background(page+"bg", rollout, $button.position().left-5, $button.position().top + $button.height(), "red", 205, bgHeight, "absolute", "testclass", true, 800, "stretch",imgArray);
 	bg.show();
 	// create all child elements
 	var posX = 0; 
-	var posY = 0;
+	var posY = 10;
 	var  maxWidth = 0;
 	for(var i=0; i < categories.length; i++){
 		var cat = categories[i];
