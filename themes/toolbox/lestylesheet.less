@@ -176,6 +176,11 @@ body {
 
 /* =Menu
 -------------------------------------------------------------- */
+
+#branding {
+	position: relative;
+}
+
 .generic_menu_point {
 	position: relative;
 	@voffset: -53px;
@@ -201,51 +206,96 @@ body {
 }
 
 #main_navi {
+	position: relative;
 	background: #eee;
 	display: block;
-	float: left;
+	//float: left;
 	margin: 0 auto 1em;
 	width: 100%;
-	height: 0px;
+	height: 10px;
 
-	.main_menu_news {
-		.generic_menu_point;
-		top: @voffset - 0 * @imgheight;
-		left: 5px;
-	}
-
-	.main_menu_essentrinken {
-		.generic_menu_point;
-		top: @voffset - 1 * @imgheight;
-		left: 86px;
-	}
-	.main_menu_reise {
-		.generic_menu_point;
-		top: @voffset - 2 * @imgheight;
-		left: 280px;
-	}
-	.main_menu_hotels {
-		.generic_menu_point;
-		top: @voffset - 3 * @imgheight;
-		left: 364px;
-	}
-	.main_menu_social {
-		.generic_menu_point;
-		top: @voffset - 4 * @imgheight;
-		left: 464px;
-	}
-	.main_menu_termine {
-		.generic_menu_point;
-		top: @voffset - 5 * @imgheight;
-		left: 633px;
-	}
-	.main_menu_tv {
-		.generic_menu_point;
-		top: @voffset - 6 * @imgheight;
-		left: 744px;
+	.generic_menu {
+		position: absolute;
+		top: -53px;
 	}
 
+	.generic_menu_button {
+		position: absolute;
+		width: auto;
+		height: 43px;
+		top: -60px;
 
+		img, a {
+			border: 0px;
+		}
+		.inactive {
+			display:block;
+		}
+		.active {
+			display:none;
+		}
+		&:hover {
+			.inactive {
+				display: none;
+			}
+			.active {
+				display: block;
+			}
+		}
+	}
+
+	.menu_button_news {
+	   left: 19px;	
+	   width: 67px;   
+	}
+
+	.menu_button_essentrinken {
+	   left: 100px;
+	   width: 179px;
+	}
+
+	.menu_button_reise {
+	   left: 294px;
+		width: 68px;
+	}
+
+	.menu_button_hotels {
+	   left: 378px;
+	   width: 85px;
+	}
+
+	.menu_button_social {
+	   left: 478px;
+	   width: 156px;
+	}
+
+	.menu_button_termine {
+	   left: 647px;
+	   width: 98px;
+	}
+
+	.menu_button_tv {
+		left: 758px;
+		width: 176px;
+	}
+
+	.generic_menu_rollout {
+		width: auto;
+		height: auto;
+		position: absolute;
+		background-color: #FFFFFF;
+	}
+	
+	.generic_text {
+		color: white;	
+		#Fonts > .Brandon > .Bold;
+		a:link, a:visited, a:active, a:hover {
+		#Fonts > .Brandon > .Bold;
+		color: white;
+		text-decoration: none;
+	}
+	}
+	
 	ul {
 		list-style: none;
 		margin: 0;
@@ -307,6 +357,7 @@ body {
 		text-transform: uppercase;
 		font-size: 8pt;
 	}
+
 	ul {
 		position: relative;
 		float: right;

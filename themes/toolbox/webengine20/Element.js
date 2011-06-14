@@ -39,15 +39,15 @@ function asdf_Element(id, parent, positionX, positionY, bgColor, width, height, 
     if(positionX == null){
         if(globals.debug > 1)
            alert("Warning: BaseElement: potitionX is not set");
-        this.mPosX = new Unit(0);
+        this.mPosX = new Unit("auto");
     }
     else
-        this.mPosX      = new Unit(positionX);
+        this.mPosX = new Unit(positionX);
 
     if(positionY == null){
         if(globals.debug > 1)
            alert("Warning: BaseElement: potitionY is not set");
-        this.mPosY = new Unit(0);
+        this.mPosY = new Unit("auto");
     }
     else
         this.mPosY      = new Unit(positionY);
@@ -132,8 +132,10 @@ asdf_Element.prototype.write = function(){}
 asdf_Element.prototype.setPosition = function(x,y){
 	this.mPosX = new Unit(x);
     this.mPosY = new Unit(y);
-    this.mDomTreeObject.style.left = this.mPosX.getValue();
-    this.mDomTreeObject.style.top = this.mPosY.getValue();
+    if(this.mPosX != "auto")
+	    this.mDomTreeObject.style.left = this.mPosX.getValue();
+    if(this.mPosY != "auto")
+	    this.mDomTreeObject.style.top = this.mPosY.getValue();
     	
 } 
 

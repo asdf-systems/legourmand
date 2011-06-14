@@ -95,20 +95,24 @@
 						// Query all subcategories for the current rollout
 						$args = array('hierarchical' => false, 'parent' => get_cat_id($categorieNames[$count]) );
 						$categories = get_categories($args);
+						
 						$count ++;
-						$categorieNames = array();						
+						$categorieNames = array();	
+						$categorieLinks = array();					
 						foreach($categories as $categorie){
+							$categorie_link = get_category_link( $categorie->cat_ID );
 							array_push($categorieNames , $categorie->cat_name);	
+							array_push($categorieLinks, $categorie_link);
 						}
 						//var_dump($categorieNames);
 				?>
 					<script>
-						var menu_button = new asdf_Button("button1_<?=$page;?>", $("#main_navi").get(0), 10, 10, "transparent", 200, 50, "absolute", ".generic_menu_button  menu_button<?=page;?>", true, 510, "<?php bloginfo('stylesheet_directory');?>/media/<?=$page;?>_inaktiv.png", "<?php bloginfo('stylesheet_directory');?>/media/<?=$page;?>_aktiv.png");
-						menu_button.show();
-						var rollout = loadRolloutpanel('<?=$page;?>', '<?php bloginfo('stylesheet_directory');?>', <?=str_replace("\"", "'",json_encode($categorieNames));?>, menu_button);	
+						var menu_button_<?=$page;?> = new asdf_Button("button_<?=$page;?>", $("#main_navi").get(0), null, null, "transparent", null, null, "absolute", "generic_menu_button menu_button_<?=$page;?>", true, 510, "<?php bloginfo('stylesheet_directory');?>/media/<?=$page;?>_inaktiv.png", "<?php bloginfo('stylesheet_directory');?>/media/<?=$page;?>_aktiv.png");
+						menu_button_<?=$page;?>.show();
+						var rollout_<?=$page;?> = loadRolloutpanel('<?=$page;?>', '<?php bloginfo('stylesheet_directory');?>', <?=str_replace("\"", "'",json_encode($categorieNames));?>,<?=str_replace("\"", "'",json_encode($categorieLinks));?>, menu_button_<?=$page;?>);	
 						
-						rollout.registerOnMouseLeaveEvent(asdf_Engine.bind(menu_button, "deactivate"), true);
-						rollout.registerOnMouseEnterEvent(asdf_Engine.bind(menu_button, "activate"), true);
+						rollout_<?=$page;?>.registerOnMouseOutEvent(asdf_Engine.bind(menu_button_<?=$page?>, "deactivate"), true);
+						rollout_<?=$page;?>.registerOnMouseEnterEvent(asdf_Engine.bind(menu_button_<?=$page?>, "activate"), true);
 							
 					</script>
 				<?php 

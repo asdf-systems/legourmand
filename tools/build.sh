@@ -5,7 +5,7 @@ function error() {
 	exit 1
 }
 
-NUMCPU=$(cat /proc/cpuinfo | grep cpuid | wc -l)
+
 
 rm -rf build
 mkdir build
