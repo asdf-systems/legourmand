@@ -1,4 +1,6 @@
 function loadRolloutpanel(page, path, categories, trigger){
+	alert(trigger.mDomTreeObject.id);
+	var $button = $(trigger.mDomTreeObject);
 	var rollout =  new asdf_Rolloutpanel(page+"_rollout", $("#main_navi").get(0), $button.position().left-5, $button.position().top + $button.height(), "green", 205, 500, "absolute", "Rollout_"+page, true, 500, 200, trigger);
 	var imgArray = new Array(path + "/media/"+page+"_rollout_lang.png", path + "/media/"+page+"_rollout_kurz.png");
 	// ONLY WORKING WITH ABSOLUTE VALUES for width and Height

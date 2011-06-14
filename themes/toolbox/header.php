@@ -32,7 +32,6 @@
 
 <!-- webfonts -->
 <link rel="stylesheet" href="<?php bloginfo( 'stylesheet_directory' ) ; ?>/webfonts/webfonts.css" type="text/css" charset="utf-8" media="all">
-<link  href="http://fonts.googleapis.com/css?family=Droid+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css" >
 <!-- less-file -->
 <link rel="stylesheet/less" href="<?php bloginfo( 'stylesheet_directory' ) ; ?>/lestylesheet.less" type="text/css">
 <!-- dummy -->
@@ -53,6 +52,7 @@
 <script type="text/javascript" src="<?php bloginfo( 'stylesheet_directory' ) ; ?>/webengine20/Rolloutpanel.js"></script>
 <script type="text/javascript" src="<?php bloginfo( 'stylesheet_directory' ) ; ?>/webengine20/Background.js"></script>
 <script type="text/javascript" src="<?php bloginfo( 'stylesheet_directory' ) ; ?>/webengine20/Text.js"></script>
+<script type="text/javascript" src="<?php bloginfo( 'stylesheet_directory' ) ; ?>/webengine20/Button.js"></script>
 
 <script type="text/javascript" src="<?php bloginfo( 'stylesheet_directory' ) ; ?>/headerFunctions.js"></script>
 
@@ -71,7 +71,7 @@
 			<nav id="top_navi" role="navigation">
 			<!-- Top Right Navi -->
 				<aside id="search" class="widget widget_search">
-					<?php get_asdf_search_form(); ?>
+					<?php get_search_form(); ?>
 				</aside>
 				<?php wp_nav_menu( array( 'theme_location' => 'top' ) ); ?>
 			</nav>
@@ -103,12 +103,12 @@
 						//var_dump($categorieNames);
 				?>
 					<script>
-						var menu_button = new asdf_Button("button1", $("#mainBody").get(0), 10, 10, "transparent", 200, 50, "absolute", ".generic_menu_button  menu_button<?=page;?>", true, 510, "<?php bloginfo('stylesheet_directory');?>/media/<?=$page;?>_inaktiv.png", "<?php bloginfo('stylesheet_directory');?>/media/<?=$page;?>_aktiv.png");
-						
+						var menu_button = new asdf_Button("button1_<?=$page;?>", $("#main_navi").get(0), 10, 10, "transparent", 200, 50, "absolute", ".generic_menu_button  menu_button<?=page;?>", true, 510, "<?php bloginfo('stylesheet_directory');?>/media/<?=$page;?>_inaktiv.png", "<?php bloginfo('stylesheet_directory');?>/media/<?=$page;?>_aktiv.png");
+						menu_button.show();
 						var rollout = loadRolloutpanel('<?=$page;?>', '<?php bloginfo('stylesheet_directory');?>', <?=str_replace("\"", "'",json_encode($categorieNames));?>, menu_button);	
 						
-						rollout.registerOnMouseLeaveEvent(asdf_Engine.bind(button, "deactivate"), true);
-						rollout.registerOnMouseEnterEvent(asdf_Engine.bind(button, "activate"), true);
+						rollout.registerOnMouseLeaveEvent(asdf_Engine.bind(menu_button, "deactivate"), true);
+						rollout.registerOnMouseEnterEvent(asdf_Engine.bind(menu_button, "activate"), true);
 							
 					</script>
 				<?php 
