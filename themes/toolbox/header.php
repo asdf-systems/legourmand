@@ -88,23 +88,22 @@
 			
 				<?php
 					$pages = Array("news", "essentrinken", "reise", "hotels", "social", "termine", "tv");
-					$categorieNames = Array("News - Allgemein", "Essen & Trinken", "Reise", "Hotels", "Social Media", "Termine", "Le Gourmand TV");
+					$categorySlugs = Array("news", "food_beverages", "travel", "hotels", "socialmedia", "termine", "legourmandtv");
 					$count = 0;
 					foreach($pages as $page) {
 						
 						// Query all subcategories for the current rollout
-						$args = array('hierarchical' => false, 'parent' => get_cat_id($categorieNames[$count]) );
+						$args = array('hierarchical' => false, 'parent' => get_category_by_slug($categorySlugs[$count])->cat_ID );
 						$categories = get_categories($args);
 						
-						$count ++;
-						$categorieNames = array();	
-						$categorieLinks = array();					
+						$count++;
+						$categorieNames = array();
+						$categorieLinks = array();
 						foreach($categories as $categorie){
 							$categorie_link = get_category_link( $categorie->cat_ID );
 							array_push($categorieNames , $categorie->cat_name);	
 							array_push($categorieLinks, $categorie_link);
 						}
-						//var_dump($categorieNames);
 				?>
 					<script>
 						var menu_button_<?=$page;?> = new asdf_Button("button_<?=$page;?>", $("#main_navi").get(0), null, null, "transparent", null, null, "absolute", "generic_menu_button menu_button_<?=$page;?>", true, 510, "<?php bloginfo('stylesheet_directory');?>/media/<?=$page;?>_inaktiv.png", "<?php bloginfo('stylesheet_directory');?>/media/<?=$page;?>_aktiv.png");
@@ -112,7 +111,7 @@
 						var rollout_<?=$page;?> = loadRolloutpanel('<?=$page;?>', '<?php bloginfo('stylesheet_directory');?>', <?=str_replace("\"", "'",json_encode($categorieNames));?>,<?=str_replace("\"", "'",json_encode($categorieLinks));?>, menu_button_<?=$page;?>);	
 						
 						rollout_<?=$page;?>.registerOnMouseOutEvent(asdf_Engine.bind(menu_button_<?=$page?>, "deactivate"), true);
-						rollout_<?=$page;?>.registerOnMouseEnterEvent(asdf_Engine.bind(menu_button_<?=$page?>, "activate"), true);
+						rollout_<?=$page;?>.registerOnMouseOverEvent(asdf_Engine.bind(menu_button_<?=$page?>, "activate"), true);
 							
 					</script>
 				<?php 
