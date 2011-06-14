@@ -23,9 +23,11 @@
 				<font>Theme LeGourmand by <a href="http://www.asdf-systems.de" rel="designer">asdf-systems</a></font>
 			</div>
 
-<SCRIPT type='text/javascript' language='JavaScript' src='http://xslt.alexa.com/site_stats/js/s/a?url=http%3A%2F%2Fwww.legourmand.de%2F'></SCRIPT>
+<!--<SCRIPT type='text/javascript' language='JavaScript' src='http://xslt.alexa.com/site_stats/js/s/a?url=http%3A%2F%2Fwww.legourmand.de%2F'></SCRIPT>-->
 <!-- BlogCounter Code START -->
+<!--
 <p><a href="http://www.blogcounter.de/" id="bclink" title="kostenloser Counter fuer Weblogs"><span id="bccount" style="font-size:8px">kostenloser Counter</span></a></p><script type="text/javascript" src="http://track.blogcounter.de/js.php?user=GAP089&amp;style=6"></script><noscript><p><a href="http://blogcounter.de/"><img style="border: 0px;" alt="Weblog counter" src="http://track.blogcounter.de/log.php?id=GAP089"/></a></p></noscript>
+-->
 <!-- BlogCounter Code END -->
     <a href="http://www.blogoscoop.net/blog/394">
 	<img src="http://stats.blogoscoop.net/394/7.gif"

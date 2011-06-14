@@ -380,6 +380,21 @@ body {
 			}
 		}
 	}
+	.post-189 .entry-content { // links / verweise
+		text-align: justify;
+		-moz-column-count: 2;
+		-moz-column-gap: 12px;
+		-moz-column-rule: 0px solid #c4c8cc;
+		-webkit-column-count: 2;
+		-webkit-column-gap: 12px;
+		-webkit-column-rule: 0px solid #c4c8cc;
+
+		color: black;
+		a:visited, a:active, a:hover, a:link {
+			color: black;
+			text-decoration: none;
+		}
+	}
 	#comments {
 		padding: 25px;
 		margin-top: 10px;
@@ -975,9 +990,21 @@ article.comment {
 	display: block;
 	padding: 1em;
 	text-align: center;
+	background-color: @dunkelgrau;
+	width: 1019px;
+	margin-left: 0px;
+	margin-right: 0px;
 }
 #site-generator {
 	margin-bottom: 1em;
+	#Fonts > .Brandon > .Regular;
+	color: @mittelgrau;
+	a {
+		color: @mittelgrau;
+		&:visited {
+			color: @mittelgrau;
+		}
+	}
 }
 
 #social_footer {
