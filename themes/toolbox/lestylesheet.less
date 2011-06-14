@@ -32,6 +32,7 @@ Use it to make something cool, have fun, and share what you've learned with othe
 		.Common {
 			font-family: 'BrandonGrotesque-Regular', Verdana;
 			line-height: 1.4;
+			font-weight: 100;
 		}
 
 		.Regular {
@@ -41,6 +42,7 @@ Use it to make something cool, have fun, and share what you've learned with othe
 		.Bold {
 			#Fonts > .Brandon > .Common;
 			font-family: 'BrandonGrotesque-Bold', Verdana;
+			font-weight: 400;
 		}
 
 		.Italic {
@@ -175,18 +177,53 @@ body {
 /* =Menu
 -------------------------------------------------------------- */
 
+#branding {
+	position: relative;
+}
+
+.generic_menu_point {
+	position: relative;
+	@voffset: -53px;
+	@imgheight: 43px;
+
+	img, a {
+		border: 0px;
+	}
+	.inactive {
+		display:block;
+	}
+	.active {
+		display:none;
+	}
+	&:hover {
+		.inactive {
+			display: none;
+		}
+		.active {
+			display: block;
+		}
+	}
+}
+
 #main_navi {
+	position: relative;
 	background: #eee;
 	display: block;
-	float: left;
+	//float: left;
 	margin: 0 auto 1em;
 	width: 100%;
-	height: 0px;
+	height: 10px;
 
-	.generic_menu_point {
-		position: relative;
-		@voffset: -53px;
-		@imgheight: 43px;
+	.generic_menu {
+		position: absolute;
+		top: -53px;
+	}
+
+	.generic_menu_button {
+		position: absolute;
+		width: auto;
+		height: 43px;
+		top: -60px;
 
 		img, a {
 			border: 0px;
@@ -207,44 +244,58 @@ body {
 		}
 	}
 
-	.main_menu_news {
-		.generic_menu_point;
-		top: @voffset - 0 * @imgheight;
-		left: 5px;
+	.menu_button_news {
+	   left: 19px;	
+	   width: 67px;   
 	}
 
-	.main_menu_essentrinken {
-		.generic_menu_point;
-		top: @voffset - 1 * @imgheight;
-		left: 86px;
-	}
-	.main_menu_reise {
-		.generic_menu_point;
-		top: @voffset - 2 * @imgheight;
-		left: 280px;
-	}
-	.main_menu_hotels {
-		.generic_menu_point;
-		top: @voffset - 3 * @imgheight;
-		left: 364px;
-	}
-	.main_menu_social {
-		.generic_menu_point;
-		top: @voffset - 4 * @imgheight;
-		left: 464px;
-	}
-	.main_menu_termine {
-		.generic_menu_point;
-		top: @voffset - 5 * @imgheight;
-		left: 633px;
-	}
-	.main_menu_tv {
-		.generic_menu_point;
-		top: @voffset - 6 * @imgheight;
-		left: 744px;
+	.menu_button_essentrinken {
+	   left: 100px;
+	   width: 179px;
 	}
 
+	.menu_button_reise {
+	   left: 294px;
+		width: 68px;
+	}
 
+	.menu_button_hotels {
+	   left: 378px;
+	   width: 85px;
+	}
+
+	.menu_button_social {
+	   left: 478px;
+	   width: 156px;
+	}
+
+	.menu_button_termine {
+	   left: 647px;
+	   width: 98px;
+	}
+
+	.menu_button_tv {
+		left: 758px;
+		width: 176px;
+	}
+
+	.generic_menu_rollout {
+		width: auto;
+		height: auto;
+		position: absolute;
+		background-color: #FFFFFF;
+	}
+	
+	.generic_text {
+		color: white;	
+		#Fonts > .Brandon > .Bold;
+		a:link, a:visited, a:active, a:hover {
+		#Fonts > .Brandon > .Bold;
+		color: white;
+		text-decoration: none;
+	}
+	}
+	
 	ul {
 		list-style: none;
 		margin: 0;
@@ -299,23 +350,30 @@ body {
 
 
 #top_navi {
-	#Fonts > .Brandon > .Regular;
+	#Fonts > .Brandon > .Bold;
+	a, a:link, a:active, a:visited, a:hover {
+		color: @mittelgrau;
+		text-decoration: none;
+		text-transform: uppercase;
+		font-size: 8pt;
+	}
+
 	ul {
 		position: relative;
 		float: right;
 		list-style-type: none;
 		li {
 			position: absolute;
-			top: -7px;
+			top: -5px;
 		}
 		// Mediadaten
 		#menu-item-4593 {
-			left: -185px;
+			left: -200px;
 			width: 100px;
 		}
 		// Impressum
 		#menu-item-4594 {
-			left: -100px;
+			left: -110px;
 		}
 		//Vita
 		#menu-item-4635 {
@@ -363,6 +421,7 @@ body {
 		background-color: @weiss;
 		padding: 25px;
 		overflow: hidden;
+		margin-bottom: 10px;
 		.entry-title {
 			#Fonts > .Droid > .Italic;
 			color: @rot;
@@ -373,6 +432,7 @@ body {
 			}
 		}
 		.entry-content {
+			overflow: hidden;
 			#Fonts > .Brandon > .Regular;
 			font-size: 12pt;
 			strong {
@@ -565,7 +625,8 @@ body {
 	height: 388px - 2 * 30px;
 	padding: 30px;
 	.entry-title {
-		font-size: 18px;
+		#Fonts > .Droid > .Bold;
+		font-size: 16px;
 	}
 
 	.entry-content {
@@ -573,6 +634,9 @@ body {
 			display: none;
 		}
 		display: block;
+		#Fonts > .Brandon > .Bold;
+		font-size: 11pt;
+
 	}
 	.entry-meta {
 		display: none;
@@ -701,6 +765,13 @@ img.alignright {
 #search {
 	float: right;
 	margin-left: 2em;
+	padding-left: 0px;
+	padding-right: 0px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	height: 1em;
+	margin-top: 5px;
+	margin-bottom: 5px;
 }
 #searchform {
 	label {
@@ -708,7 +779,7 @@ img.alignright {
 	}
 	input#searchinput {
 		#Fonts > .Brandon > .Regular;
-		height: 30px;
+		height: 1em;
 		width: 180px;
 		border: 0;
 		/*background-image: url('media/pfeil_hellgrau_suche.png');
@@ -782,50 +853,207 @@ article.comment {
 		font-size: 11pt;
 		text-transform: uppercase;
 	}
+}
 
-	.tagcloud {
-		a:link, a:visited, a:active, a:hover {
-			#Fonts > .Droid > .Italic;
-			color: @schwarz;
-			text-decoration: none;
-		}
+.widget_tag_cloud {
+	a:link, a:visited, a:active, a:hover {
+		#Fonts > .Droid > .Italic;
+		color: @schwarz;
+		text-decoration: none;
 	}
+}
 
-	.widget_linksammlung {
-		display: inline;
-		list-style: none;
-		font-size: 11pt;
-		line-height: 25px;
-		// Ugly, fix me.
-		-webkit-padding-start: 0px;
-		a:link, a:visited, a:active, a:hover {
-			#Fonts > .Brandon > .Bold;
-			color: @schwarz;
-			text-decoration: none;
-		}
+.widget_text .widget_linksammlung {
+	display: inline;
+	list-style: none;
+	font-size: 11pt;
+	line-height: 25px;
+	// Ugly, fix me.
+	-webkit-padding-start: 0px;
+	a:link, a:visited, a:active, a:hover {
+		#Fonts > .Brandon > .Bold;
+		color: @schwarz;
+		text-decoration: none;
 	}
+}
 
-	.slickr-flickr-gallery {
-		padding: 0px;
-		ul {
-			line-height: 0px;
-			li {
-				margin: 0px;
-				a {
-					img {
-						border: 0px;
-						padding: 0px;
-						margin-right: 10px;
-						margin-bottom: 10px;
-						&:hover {
-							background-color: transparent;
-						}
+.widget_text .slickr-flickr-gallery {
+	padding: 0px;
+	ul {
+		line-height: 0px;
+		li {
+			margin: 0px;
+			a {
+				img {
+					border: 0px;
+					padding: 0px;
+					margin-right: 10px;
+					margin-bottom: 10px;
+					&:hover {
+						background-color: transparent;
 					}
 				}
 			}
 		}
 	}
+}
 
+.widget_collapsarch {
+	.sym {
+		display: none;
+	}
+	ul.list {
+		list-style-type: none;
+		li {
+			line-height: 20px;
+			a, a:link, a:visited, a:active, a:hover {
+				#Fonts > .Brandon > .Bold;
+				color: @schwarz;
+				text-decoration: none;
+			}
+		}
+	}
+}
+
+.widget_text .vernetzen {
+	position: relative;
+	height: 80px;
+	.generic_menu_point {
+		position: absolute;
+		.active {
+			width: 26px;
+			height: 26px;
+			background: url('media/rss_aktiv.png');
+			float: left;
+		}
+		.inactive {
+			width: 26px;
+			height: 26px;
+			background: url('media/rss_inaktiv.png');
+			float: left;
+		}
+		a, a:link, a:visited, a:active, a:hover {
+			text-transform: uppercase;
+			margin-left: 5px;
+			#Fonts > .Brandon > .Bold;
+			font-size: 8pt;
+
+			position: relative;
+			top: 8px;
+			color: @dunkelgrau;
+			text-decoration: none;
+		}
+	}
+
+	@firstrow: 0px;
+	@secondrow: 45px;
+	@firstcol: 0px;
+	@secondcol: 75px;
+	@thirdcol: 180px;
+
+	.rss_button {
+		top: @firstrow;
+		left: @firstcol;
+		.active {
+			background: url('media/rss_aktiv.png');
+		}
+		.inactive {
+			background: url('media/rss_inaktiv.png');
+		}
+	}
+
+	.linkedin_button {
+		top: @firstrow;
+		left: @secondcol;
+		.active {
+			background: url('media/linkedin_aktiv.png');
+		}
+		.inactive {
+			background: url('media/linkedin_inaktiv.png');
+		}
+	}
+
+	.twitter_button {
+		top: @firstrow;
+		left: @thirdcol;
+		.active {
+			background: url('media/twitter_aktiv.png');
+		}
+		.inactive {
+			background: url('media/twitter_inaktiv.png');
+		}
+	}
+	.mail_button {
+		top: @secondrow;
+		left: @firstcol;
+		.active {
+			background: url('media/mail_aktiv.png');
+		}
+		.inactive {
+			background: url('media/mail_inaktiv.png');
+		}
+	}
+	.facebook_button {
+		top: @secondrow;
+		left: @secondcol;
+		.active {
+			background: url('media/facebook_aktiv.png');
+		}
+		.inactive {
+			background: url('media/facebook_inaktiv.png');
+		}
+	}
+	.xing_button {
+		top: @secondrow;
+		left: @thirdcol;
+		.active {
+			background: url('media/xing_aktiv.png');
+		}
+		.inactive {
+			background: url('media/xing_inaktiv.png');
+		}
+	}
+}
+
+.widget_newsletterwidget {
+	.aboform {
+		position: relative;
+		input.email {
+			#Fonts > .Brandon > .Bold;
+			font-size: 8pt;
+			display: inline;
+			height: 1em;
+			border: 0px;
+			padding: 5px;
+			background-color: @hellgrau;
+			color: @mittelgrau;
+			text-transform: uppercase;
+			width: 125px;
+		}
+		.arrow {
+			position: relative;
+			top: 4px;
+			display: inline-block;
+			width: 21px;
+			height: 17px;
+			background: url('media/pfeil_schwarz_newsletter.png');
+		}
+		input.submit {
+			position: relative;
+			top: 1px;
+			display: inline;
+			#Fonts > .Brandon > .Bold;
+			font-size: 8pt;
+			border: 0px;
+			margin: 0px;
+			padding: 0px;
+			padding-top: 2px;
+			text-transform: uppercase;
+			color: @schwarz;
+			background-color: transparent;
+		}
+	}
+}
 	.asdf_most_recent {
 		margin: 0;
 		padding: 0;
@@ -974,14 +1202,15 @@ article.comment {
 		}
 	}
 
+.widget {
+
 	.widget_search {
 		overflow: hidden;
 	}
 	.widget_search input {
 		float: left;
 	}
-}
-
+} 
 
 /* =Footer
 -------------------------------------------------------------- */
@@ -1032,7 +1261,7 @@ article.comment {
 		//.alignleft;
 		float: left;
 		> div {
-			#main_navi > .generic_menu_point;
+			.generic_menu_point;
 		}
 	}
 	#facebook_div {
@@ -1044,11 +1273,20 @@ article.comment {
 			height:20px;
 		}
 		> div {
-			#main_navi > .generic_menu_point;
+			.generic_menu_point;
 		}
 	}
 	#flattr_div  {
 		//.alignright;
 		float: right;
+	}
+}
+
+#site-generator {
+	right: 2em;
+	color: @mittelgrau;
+	a, a:active, a:hover, a:link, a:visited {
+		color: @blau;
+		text-decoration: underline;
 	}
 }

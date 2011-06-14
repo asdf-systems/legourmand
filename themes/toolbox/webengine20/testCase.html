@@ -1,0 +1,62 @@
+<html>
+<head> 
+	<script type="text/javascript" src="../jquery.js"></script>
+	<script type="text/javascript" src="Engine.js"></script>
+	<script type="text/javascript" src="EngineEvents.js"></script>
+	<script type="text/javascript" src="EventParameter.js"></script>
+	<script type="text/javascript" src="EngineGlobals.js"></script>
+	<script type="text/javascript" src="Unit.js"></script>
+	
+	<script type="text/javascript" src="Element.js"></script>
+	<script type="text/javascript" src="Panel.js"></script>
+	<script type="text/javascript" src="Rolloutpanel.js"></script>
+	<script type="text/javascript" src="Background.js"></script>
+	<script type="text/javascript" src="Button.js"></script>
+	<script type="text/javascript" src="Text.js"></script>
+	
+	<script type="text/javascript">
+		function load(){
+			/*var elem1 = new asdf_Element("testElement", $("#mainBody").get(0), 10, 10, "black", 200, 200, "absolute", "testclass", true, 600);
+			elem1.registerOnMouseClickEvent(hide, true);
+			elem1.show();
+			var pan1 = new asdf_Panel("testPanel", $("#mainBody").get(0), 10, 10, "red", 400, 400, "absolute", "testclass", true, 500);
+			pan1.show();
+			pan1.addElement(elem1);
+			pan1.registerOnMouseClickEvent(show, true);*/
+			
+			// Test RolloutPanel
+			var elem2 = new asdf_Button("button1", $("#mainBody").get(0), 10, 10, "transparent", 200, 50, "absolute", "testclass", true, 510, "../media/essentrinken_inaktiv.png", "../media/essentrinken_aktiv.png");
+			elem2.show();
+			var rollout = new asdf_Rolloutpanel("rollout", $("#mainBody").get(0), 10, 60, "green", 200, 500, "absolute", "testclass", true, 500, 200, elem2);
+			//rollout.show();
+			var rElem1 = new asdf_Text("buttonr1", rollout, 10, 10, "red", 150, 30, "absolute", "testclass", true, 600, "kalte Küche");
+			var rElem2 = new asdf_Text("buttonr2", rollout, 10, 60, "red", 150, 30, "absolute", "testclass", true, 600, "SPAß an der FREUDE");
+			rElem1.show();
+			rElem2.show();
+			var imgArray = new Array("../media/essentrinken_rollout_kurz.png", "../media/essentrinken_rollout_lang.png");
+			// ONLY WORKING WITH ABSOLUTE VALUES for width and Height
+			var bg = new asdf_Background("bg", rollout, 10, 60, "red", 500, 500, "absolute", "testclass", true, 800, "stretch",imgArray);
+			bg.show();
+			
+		}
+		
+		function hide(){
+			alert("Hide");
+			$("#testElement").hide();
+		}
+		
+		function show(){
+			alert("Show");
+			$("#testElement").show();	
+		}
+		
+		
+		
+		
+	</script>
+</head>
+
+<body id="mainBody" onLoad="javascript:load();">
+
+</body>
+</html>

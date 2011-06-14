@@ -11,7 +11,7 @@ get_header(); ?>
 
 				<?php the_post(); ?>
 
-				<header class="page-header">
+				<!--<header class="page-header">
 					<h1 class="page-title">
 						<?php if ( is_day() ) : ?>
 							<?php printf( __( 'Daily Archives: <span>%s</span>', 'toolbox' ), get_the_date() ); ?>
@@ -23,7 +23,7 @@ get_header(); ?>
 							<?php _e( 'Blog Archives', 'toolbox' ); ?>
 						<?php endif; ?>
 					</h1>
-				</header>
+				</header>-->
 
 				<?php rewind_posts(); ?>
 

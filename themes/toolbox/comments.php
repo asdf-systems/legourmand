@@ -106,9 +106,9 @@ endif; // ends check for toolbox_comment()
 		<textarea name="comment" id="comment" tabindex="4" onFocus="clearText(this)" onBlur="clearText(this)" ></textarea>
 	</div>
 	<div>
-		<input type="text" name="author" id="author" value="" size="22" tabindex="1" onFocus="clearText(this)" onBlur="clearText(this)" value="NAME (erforderlich)">
-		<input type="text" name="email" id="email" value="" size="22" tabindex="2"  value="EMAIL (wird nicht publiziert)">
-		<input type="text" name="website" id="website" value="" size="22" tabindex="3"  value="WEBSITE">
+		<input type="text" name="author" id="author" size="22" tabindex="1" onFocus="clearText(this)" onBlur="clearText(this)" value="NAME (erforderlich)">
+		<input type="text" name="email" id="email" size="22" tabindex="2"  value="EMAIL (wird nicht publiziert)">
+		<input type="text" name="website" id="website" size="22" tabindex="3"  value="WEBSITE">
 	</div>
 
 	<div class="submitdiv">
