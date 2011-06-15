@@ -1046,15 +1046,22 @@ article.comment {
 		}
 	}
 }
+
+
 	.asdf_most_recent {
 		margin: 0;
 		padding: 0;
 		#Fonts > .Brandon > .Regular;
-		color:@mittelgrau;
+		* {
+			color:@mittelgrau;
+		}
+		.buttons > h1.articles {
+			color:@blau;
+		}
 		.buttons > h1 {
 			display: inline;
 		}
-		.content {
+		> .content {
 			/*.comments, .tweets {
 				display: none;
 			 }*/
@@ -1077,6 +1084,63 @@ article.comment {
 				img {
 					float: left;
 					margin-right: 10px;
+				}
+			 }
+			 .comments {
+				* {
+					padding: 0px;
+					margin: 0px;
+					a {
+						text-decoration: none;
+					}
+				}
+			 	.author {
+					#Fonts > .Brandon > .Bold;
+					font-size: 12pt;
+					color: @blau;
+					display: inline;
+					margin-right: 5px;
+					a {
+						color: @blau;
+						&:visited {
+							color:@blau;
+						}
+					}
+				}
+				.post {
+					#Fonts > .Droid > .Italic;
+					#Fonts > .Droid > .Bold;
+					font-size: 10pt;
+					color: black;
+					display: inline;
+					a {
+						color: black;
+						&:visited {
+							color:black;
+						}
+					}
+				}
+				div {
+					display:inline;
+				}
+				hr {
+					margin-top: 15px;
+					margin-bottom: 15px;
+				}
+				img {
+					float: left;
+					margin-right: 10px;
+				}
+			 }
+			 .tweets {
+			 	.date {
+					#Fonts > .Brandon > .Bold;
+				}
+				.content {
+					#Fonts > .Brandon > .Regular;
+				}
+				div {
+					margin-top: 15px;
 				}
 			 }
 		}
