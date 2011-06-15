@@ -85,4 +85,9 @@ asdf_Button.prototype.toggleActive = function(){
 		this.activate();
 }
 
+asdf_Button.prototype.link = function(params){
+	var target = params.parameter[0];
+	window.location = target;	
+}
+
 
