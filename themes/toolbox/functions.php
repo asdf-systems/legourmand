@@ -34,12 +34,12 @@ register_nav_menus( array(
 /* customized searchbar */
 function get_asdf_search_form() {
 	?>
-	<form role="search" method="get" id="searchform" action="http://projects.asdf-systems.de/gourmand/wordpress/" > 
+	<form role="search" method="get" id="searchform" action="<?=home_url("/");?>">
 	<div><label class="screen-reader-text" id="s">Search for:</label>
-	<img id = "headerimage" src="<?php echo bloginfo( 'stylesheet_directory' ); ?>/media/pfeil_hellgrau_suche.png" >	
-	<input type="text" value="HIER SUCHEN" name="searchinput" id="searchinput" /> 
-	<input type="submit" id="searchsubmit" value="Search" /> 
-	</div> 
+	<img id="headerimage" src="<?php echo bloginfo( 'stylesheet_directory' ); ?>/media/pfeil_hellgrau_suche.png" />
+	<input type="text" value="HIER SUCHEN" name="s" id="searchinput" />
+	<input type="submit" id="searchsubmit" value="Search" />
+	</div>
 	</form>
 	<?
 }
