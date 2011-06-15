@@ -100,15 +100,28 @@ endif; // ends check for toolbox_comment()
 		</div>
 
 	<?php /*comment_form();*/ ?>
-	<form action="<?php echo get_option('siteurl'); ?>/wp-comments-post.php" method="post" id="commentform">
 
+	<script>
+		function clearIt(obj) {
+			if(obj.value == obj.defaultValue) {
+				obj.value = "";
+			}
+		}
+
+		function resetIt(obj) {
+			if(obj.value == "") {
+				obj.value = obj.defaultValue;
+			}
+		}
+	</script>
+	<form action="<?php echo get_option('siteurl'); ?>/wp-comments-post.php" method="post" id="commentform">
 	<div>
-		<textarea name="comment" id="comment" tabindex="4" onFocus="clearText(this)" onBlur="clearText(this)" ></textarea>
+		<textarea name="comment" id="comment" tabindex="4" onFocus="clearText(this)" onBlur="clearText(this)"></textarea>
 	</div>
 	<div>
-		<input type="text" name="author" id="author" size="22" tabindex="1" onFocus="clearText(this)" onBlur="clearText(this)" value="NAME (erforderlich)">
-		<input type="text" name="email" id="email" size="22" tabindex="2"  value="EMAIL (wird nicht publiziert)">
-		<input type="text" name="website" id="website" size="22" tabindex="3"  value="WEBSITE">
+		<input type="text" name="author" id="author" size="22" tabindex="1" onFocus="clearIt(this)" onBlur="resetIt(this)" value="NAME (erforderlich)">
+		<input type="text" name="email" id="email" size="22" tabindex="2"  onFocus="clearIt(this)" onBlur="resetIt(this)"  value="EMAIL (wird nicht publiziert)">
+		<input type="text" name="website" id="website" size="22" tabindex="3"  onFocus="clearIt(this)" onBlur="resetIt(this)"  value="WEBSITE">
 	</div>
 
 	<div class="submitdiv">
