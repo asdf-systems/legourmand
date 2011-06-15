@@ -112,7 +112,16 @@
 						
 						rollout_<?=$page;?>.registerOnMouseOutEvent(asdf_Engine.bind(menu_button_<?=$page?>, "deactivate"), true);
 						rollout_<?=$page;?>.registerOnMouseOverEvent(asdf_Engine.bind(menu_button_<?=$page?>, "activate"), true);
-							
+						var params = new EventParameter();
+						<?php 
+							//var_dump($count);
+							//var_dump($categorySlugs[$count]);
+							$target = get_category_link( get_category_by_slug($categorySlugs[$count])->cat_ID ) ;
+							//var_dump($target);
+						?>
+						var target = "<?=$target;?>";
+						params.parameter.push(target);
+						menu_button_<?=$page;?>.registerOnMouseClickEvent(asdf_Engine.bind(menu_button_<?=$page;?>, "link"), true,params );	
 					</script>
 				<?php 
 					}
